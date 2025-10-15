@@ -1,0 +1,96 @@
+/* IT312 Phase 2 – TechCare Theme
+   - HTML5 + CSS only (no JS)
+   - Flexbox used for navigation, service cards, dashboards, and team strip
+   - Tables with borders + rowspan/colspan in staff profile
+*/
+:root{
+  --brand:#e86fa5;
+  --dark:#222;
+  --muted:#666;
+  --light:#f7f7f9;
+  --white:#fff;
+  --border:#ddd;
+}
+
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;font-family:Arial,Helvetica,sans-serif;color:var(--dark);background:var(--light)}
+img{max-width:100%;display:block}
+
+.container{width:90%;max-width:1200px;margin:0 auto}
+
+/* Header + Navigation (Flexbox) */
+header.site-header{background:var(--white);border-bottom:1px solid var(--border)}
+.header-top{display:flex;align-items:center;gap:12px;padding:12px 0}
+.header-top img{height:44px;width:44px}
+.header-top .title{font-size:1.25rem;font-weight:700}
+.header-top .vision{color:var(--muted);font-size:.95rem}
+
+nav.site-nav{background:var(--brand)}
+nav.site-nav .nav-wrap{display:flex;gap:10px;flex-wrap:wrap}
+nav.site-nav a{
+  color:#fff;text-decoration:none;padding:12px 14px;display:inline-block;font-weight:600
+}
+nav.site-nav a:hover{text-decoration:underline}
+.breadcrumbs{font-size:.9rem;color:var(--muted);padding:8px 0}
+
+/* Footer */
+footer.site-footer{margin-top:40px;background:var(--white);border-top:1px solid var(--border);padding:16px 0;color:var(--muted);font-size:.95rem}
+footer .foot-wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
+/* Sections & cards */
+.section{background:#fff;border:1px solid var(--border);border-radius:8px;padding:16px;margin:24px 0}
+.center{text-align:center}
+.small{font-size:.9rem;color:var(--muted)}
+.badge{display:inline-block;background:var(--brand);color:#fff;border-radius:999px;padding:4px 10px;font-size:.85rem}
+
+/* Home: services (Flex row wrap) + hover info */
+.services-row{display:flex;gap:16px;flex-wrap:wrap}
+.service-card{position:relative;background:#fff;border:1px solid var(--border);border-radius:8px;min-width:260px;flex:1 1 300px;overflow:hidden}
+.service-card .thumb{height:160px;overflow:hidden}
+.service-card .pad{padding:12px}
+.service-info-hover{
+  position:absolute;inset:0;background:rgba(0,0,0,.65);color:#fff;padding:16px;
+  opacity:0;transition:.25s;display:flex;align-items:center;justify-content:center;text-align:center
+}
+.service-card:hover .service-info-hover{opacity:1}
+
+/* Reviews (Flex wrap) */
+.reviews{display:flex;gap:16px;flex-wrap:wrap}
+.review{background:#fff;border:1px solid var(--border);border-radius:8px;padding:12px;min-width:260px;flex:1}
+
+/* Generic Flex helpers */
+.flex{display:flex}
+.flex-wrap{flex-wrap:wrap}
+.gap-16{gap:16px}
+.col{flex-direction:column}
+.item{background:#fff;border:1px solid var(--border);border-radius:8px;padding:16px}
+.min-220{min-width:220px}
+
+/* Forms */
+form{display:flex;flex-direction:column;gap:12px}
+label{font-weight:600}
+input[type="text"],input[type="email"],input[type="date"],input[type="number"],textarea,select{
+  width:100%;padding:10px;border:1px solid var(--border);border-radius:6px;background:#fff
+}
+textarea{min-height:110px;resize:vertical}
+button, input[type="submit"]{
+  background:var(--brand);color:#fff;border:none;border-radius:6px;padding:10px 14px;font-weight:700;cursor:pointer
+}
+button.secondary{background:#444}
+button:disabled{opacity:.6;cursor:not-allowed}
+
+/* Services page list (Flex wrap) */
+.services-list{display:flex;flex-wrap:wrap;gap:16px}
+.service-item{background:#fff;border:1px solid var(--border);border-radius:8px;overflow:hidden;flex:1 1 260px;min-width:260px}
+.service-item .meta{display:flex;justify-content:space-between;align-items:center;padding:10px 12px;border-top:1px solid var(--border)}
+
+/* About: horizontal scroll team strip */
+.team-strip{display:flex;gap:16px;overflow-x:auto;padding-bottom:6px}
+.team-card{flex:0 0 220px;background:#fff;border:1px solid var(--border);border-radius:8px;overflow:hidden}
+
+/* Profile table (rowspan/colspan + nested lists) */
+.profile-table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--border)}
+.profile-table th, .profile-table td{border:1px solid var(--border);padding:10px;vertical-align:top}
+.profile-table thead th{background:#fafafa}
+.profile-table .name{font-size:1.1rem;font-weight:800}
+ul.nested{margin:0 0 0 16px}
