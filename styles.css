@@ -19,35 +19,77 @@ img{max-width:100%;display:block}
 .container{width:90%;max-width:1200px;margin:0 auto}
 
 /* Header + Navigation (Flexbox) */
-/* === New styles to align nav next to logo === */
+/* ====== Custom Header & Navigation Styles ====== */
 
 .header-flex {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
+  justify-content: flex-start;
   gap: 20px;
+  padding: 12px 0;
+  flex-wrap: wrap;
 }
 
 .logo {
-  max-height: 50px;
+  height: 44px;
+  width: 44px;
+  object-fit: contain;
+  flex-shrink: 0;
 }
 
 .header-right {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  align-items: flex-start;
+  gap: 10px;
   flex: 1;
 }
 
+.header-right .title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--dark);
+}
+
 .site-nav {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
   background: transparent;
   padding: 0;
 }
 
 .site-nav a {
   color: var(--brand);
+  text-decoration: none;
   padding: 8px 10px;
+  font-weight: 600;
+}
+
+.site-nav a:hover {
+  text-decoration: underline;
+}
+
+/* ====== Responsive for Mobile ====== */
+@media (max-width: 600px) {
+  .header-flex {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .header-right {
+    align-items: flex-start;
+    width: 100%;
+  }
+
+  .site-nav {
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .site-nav a {
+    padding: 6px 0;
+  }
 }
 
 
