@@ -191,6 +191,29 @@ button:disabled{opacity:.6;cursor:not-allowed}
       margin-top: 1rem;
       margin-bottom: 1rem;
     }
+.services-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 أعمدة */
+  gap: 20px; /* مسافة بين العناصر */
+  margin-top: 20px;
+}
+
+.service-item {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #f9f9f9;
+}
+
+.service-item img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.pad {
+  padding: 10px;
+}
 
 /* About: horizontal scroll team strip */
 .team-strip{display:flex;gap:16px;overflow-x:auto;padding-bottom:6px}
