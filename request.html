@@ -1,73 +1,71 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>Request a Service – TechCare</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Request a Service | TechCare</title>
+  <link rel="stylesheet" href="style.css"> <!-- نفس ملف التنسيق المستخدم في index -->
 </head>
 <body>
-  
-<header class="site-header">
-  <div class="container header-top">
-    <img src="images/logo.png" alt="Logo">
-    <div>
-      <div class="title">TechCare – IT Solutions for Everyone</div>
-      <div class="vision">Vision: To simplify access to technical support through fast, reliable, and accessible solutions that enhance the overall user experience.</div>
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <h1 class="logo">techcare</h1>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="customer-dashboard.html" class="active">Customer Dashboard</a></li>
+          <li><a href="provider-dashboard.html">Provider Dashboard</a></li>
+        </ul>
+      </nav>
     </div>
-  </div>
-  <nav class="site-nav">
-    <div class="container nav-wrap">
-      <a href="index.html">Home</a>
-      <a href="services.html">Services</a>
-      <a href="about.html">About Us</a>
-      <a href="customer-dashboard.html">Customer Dashboard</a>
-      <a href="provider-dashboard.html">Provider Dashboard</a>
-    </div>
-  </nav>
-</header>
+  </header>
 
-  <div class="container breadcrumbs">Home › Customer Dashboard › Request</div>
-  <main class="container">
-    
-<section class="section">
-  <h2>New Service Request</h2>
-  <form>
-    <div class="flex flex-wrap gap-16">
-      <div class="min-220" style="flex:1 1 300px">
-        <label for="rq-name">Customer Name</label>
-        <input id="rq-name" type="text" required>
-      </div>
-      <div class="min-220" style="flex:1 1 300px">
-        <label for="rq-date">Due Date</label>
-        <input id="rq-date" type="date" required>
-      </div>
-      <div class="min-220" style="flex:1 1 300px">
-        <label for="rq-service">Select Service</label>
-        <select id="rq-service" required>
-          <option value="">-- choose --</option>
-          <option>Quick Diagnosis</option>
-          <option>Home Network Setup</option>
+  <!-- Breadcrumb -->
+  <div class="breadcrumb">
+    <p>Home &gt; Customer dashboard &gt; Request a service</p>
+  </div>
+
+  <!-- Main Section -->
+  <main class="request-section">
+    <div class="request-container">
+      <h2>Request a Service</h2>
+      <form class="request-form">
+        <label for="service">Select Service</label>
+        <select id="service" required>
+          <option value="" disabled selected>Select a service</option>
           <option>Device Repair</option>
+          <option>Software Installation</option>
+          <option>Network Setup</option>
         </select>
+
+        <label for="name">Client Name</label>
+        <input type="text" id="name" placeholder="Enter your name" required>
+
+        <label for="date">Due Date</label>
+        <input type="date" id="date" required>
+
+        <label for="desc">Request Description</label>
+        <textarea id="desc" rows="4" placeholder="Describe your request"></textarea>
+
+        <button type="submit" class="btn">Submit Request</button>
+      </form>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-container">
+      <p>©2025 techcare</p>
+      <div class="footer-icons">
+        <a href="#"><img src="email-icon.png" alt="Email"></a>
+        <a href="#"><img src="phone-icon.png" alt="Phone"></a>
+        <a href="#"><img src="twitter-icon.png" alt="Twitter"></a>
+        <a href="#"><img src="linkedin-icon.png" alt="LinkedIn"></a>
       </div>
     </div>
-    <div>
-      <label for="rq-desc">Request Description</label>
-      <textarea id="rq-desc" placeholder="Describe your issue..."></textarea>
-    </div>
-    <input type="submit" value="Submit Request">
-  </form>
-</section>
-
-  </main>
-  
-<footer class="site-footer">
-  <div class="container foot-wrap">
-    <div>© 2025 TechCare. All rights reserved.</div>
-    <div>Contact: support@techcare.example • +966-5X-XXXXXXX</div>
-  </div>
-</footer>
-
+  </footer>
 </body>
 </html>
