@@ -19,6 +19,39 @@ img{max-width:100%;display:block}
 .container{width:90%;max-width:1200px;margin:0 auto}
 
 /* Header + Navigation (Flexbox) */
+/* === New styles to align nav next to logo === */
+
+.header-flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.logo {
+  max-height: 50px;
+}
+
+.header-right {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+
+.site-nav {
+  background: transparent;
+  padding: 0;
+}
+
+.site-nav a {
+  color: var(--brand);
+  padding: 8px 10px;
+}
+
+
+/*
 header.site-header{background:var(--white);border-bottom:1px solid var(--border)}
 .header-top{display:flex;align-items:center;gap:12px;padding:12px 0}
 .header-top img{height:44px;width:44px}
@@ -31,6 +64,8 @@ nav.site-nav a{
   color:#fff;text-decoration:none;padding:12px 14px;display:inline-block;font-weight:600
 }
 nav.site-nav a:hover{text-decoration:underline}
+
+*/
 .breadcrumbs{font-size:.9rem;color:var(--muted);padding:8px 0}
 
 /* Footer */
