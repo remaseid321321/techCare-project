@@ -5,19 +5,13 @@
   <title>Services – TechCare</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-  
-header class="site-header">
+<header class="site-header">
   <div class="container header-flex">
-    
-    <!-- يسار: اللوقو والعنوان -->
     <div class="header-left">
       <img src="images/logo.png" alt="TechCare Logo" class="logo">
       <div class="title">TechCare</div>
     </div>
 
-    <!-- يمين: روابط الناف -->
     <nav class="site-nav">
       <a href="index.html">Home</a>
       <a href="services.html">Services</a>
@@ -25,64 +19,142 @@ header class="site-header">
       <a href="customer-dashboard.html">Customer Dashboard</a>
       <a href="provider-dashboard.html">Provider Dashboard</a>
     </nav>
-
   </div>
 </header>
 
-  <div class="container breadcrumbs">Home › Services</div>
-  <main class="container">
-    
-<section class="section">
-  <h2>Display Services</h2>
-  <label for="sort">Sort by</label>
-  <select id="sort" name="sort">
-    <optgroup label="Price">
-      <option value="price-asc">Low → High</option>
-      <option value="price-desc">High → Low</option>
-    </optgroup>
-    <optgroup label="Name">
-      <option value="name-asc">A → Z</option>
-      <option value="name-desc">Z → A</option>
-    </optgroup>
-  </select>
-  <p class="small">* Sorting behavior will be implemented in Phase 3 (JavaScript).</p>
+<div class="container breadcrumbs">Home › Services</div>
 
-  <div class="services-list">
-    <article class="service-item">
-      <img src="images/quick.jpg" alt="software installation">
-      <div class="pad">
-        <h3>software installation</h3>
-        <p>complete software setup and configuration for your devices and systems.</p>
-        <div class="meta"><strong>Price:</strong><span>79 SAR</span></div>
-      </div>
-    </article>
-    <article class="service-item">
-      <img src="images/homeNetwork.jpg" alt="data recovery">
-      <div class="pad">
-        <h3>data recovery</h3>
-        <p>professional data recovery srevice for all types of storage devices</p>
-        <div class="meta"><strong>Price:</strong><span>199 SAR</span></div>
-      </div>
-    </article>
-    <article class="service-item">
-      <img src="images/deviceRepair.jpg" alt="Device Repair">
-      <div class="pad">
-        <h3>Device Repair</h3>
-        <p>expert repair service for smartphones, tablets, and laptops with genuine parts.</p>
-        <div class="meta"><strong>Price:</strong><span>249 SAR</span></div>
-      </div>
-    </article>
-  </div>
-</section>
+<main class="container">
+  <section class="section">
+    <h2>Display Services</h2>
 
-  </main>
-  
+    <div class="top-bar">
+      <!-- Left: Search -->
+      <div class="search-bar">
+        <label for="search">Search:</label>
+        <input type="text" id="search" placeholder="Search services...">
+      </div>
+
+      <!-- Right: Sort -->
+      <div class="sort-select">
+        <label for="sort">Sort by:</label>
+        <select id="sort" name="sort">
+          <optgroup label="Price">
+            <option value="price-asc">Low → High</option>
+            <option value="price-desc">High → Low</option>
+          </optgroup>
+          <optgroup label="Name">
+            <option value="name-asc">A → Z</option>
+            <option value="name-desc">Z → A</option>
+          </optgroup>
+        </select>
+      </div>
+    </div>
+
+    <p class="small">* Sorting behavior will be implemented in Phase 3 (JavaScript).</p>
+
+    <!-- Services Grid -->
+    <div class="services-list">
+
+      <!-- الخدمة 1 -->
+      <article class="service-item">
+        <img src="images/quick.jpg" alt="Software Installation">
+        <div class="pad">
+          <h3>Software Installation</h3>
+          <p>Complete software setup and configuration for your devices and systems.</p>
+          <div class="meta"><strong>Price:</strong> 79 SAR</div>
+        </div>
+      </article>
+
+      <!-- الخدمة 2 -->
+      <article class="service-item">
+        <img src="images/homeNetwork.jpg" alt="Data Recovery">
+        <div class="pad">
+          <h3>Data Recovery</h3>
+          <p>Professional data recovery service for all types of storage devices.</p>
+          <div class="meta"><strong>Price:</strong> 199 SAR</div>
+        </div>
+      </article>
+
+      <!-- الخدمة 3 -->
+      <article class="service-item">
+        <img src="images/deviceRepair.jpg" alt="Device Repair">
+        <div class="pad">
+          <h3>Device Repair</h3>
+          <p>Expert repair service for smartphones, tablets, and laptops with genuine parts.</p>
+          <div class="meta"><strong>Price:</strong> 249 SAR</div>
+        </div>
+      </article>
+
+      <!-- الخدمة 4 -->
+      <article class="service-item">
+        <img src="images/cloud.jpg" alt="Cloud Backup">
+        <div class="pad">
+          <h3>Cloud Backup</h3>
+          <p>Secure and automatic cloud backup solutions for all your devices.</p>
+          <div class="meta"><strong>Price:</strong> 129 SAR</div>
+        </div>
+      </article>
+
+      <!-- الخدمة 5 -->
+      <article class="service-item">
+        <img src="images/networkSetup.jpg" alt="Network Setup">
+        <div class="pad">
+          <h3>Network Setup</h3>
+          <p>Setup and troubleshooting of wired and wireless networks for home or business.</p>
+          <div class="meta"><strong>Price:</strong> 149 SAR</div>
+        </div>
+      </article>
+
+      <!-- الخدمة 6 -->
+      <article class="service-item">
+        <img src="images/virusRemoval.jpg" alt="Virus Removal">
+        <div class="pad">
+          <h3>Virus Removal</h3>
+          <p>Fast and secure removal of malware and viruses from your devices.</p>
+          <div class="meta"><strong>Price:</strong> 99 SAR</div>
+        </div>
+      </article>
+
+      <!-- الخدمة 7 -->
+      <article class="service-item">
+        <img src="images/hardwareUpgrade.jpg" alt="Hardware Upgrade">
+        <div class="pad">
+          <h3>Hardware Upgrade</h3>
+          <p>Upgrade your PC or laptop with new components for better performance.</p>
+          <div class="meta"><strong>Price:</strong> 179 SAR</div>
+        </div>
+      </article>
+
+      <!-- الخدمة 8 -->
+      <article class="service-item">
+        <img src="images/itConsulting.jpg" alt="IT Consulting">
+        <div class="pad">
+          <h3>IT Consulting</h3>
+          <p>Professional advice on IT infrastructure, software, and security planning.</p>
+          <div class="meta"><strong>Price:</strong> 299 SAR</div>
+        </div>
+      </article>
+
+      <!-- الخدمة 9 -->
+      <article class="service-item">
+        <img src="images/printerSupport.jpg" alt="Printer Support">
+        <div class="pad">
+          <h3>Printer Support</h3>
+          <p>Troubleshooting and setup support for various printer brands and models.</p>
+          <div class="meta"><strong>Price:</strong> 89 SAR</div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+</main>
+
 <footer class="site-footer">
   <div class="container foot-wrap">
     <div>© 2025 TechCare. All rights reserved.</div>
     <div>Contact: support@techcare.example • +966-5X-XXXXXXX</div>
   </div>
 </footer>
-
 </body>
 </html>
