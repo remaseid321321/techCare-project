@@ -84,23 +84,6 @@ img{max-width:100%;display:block}
   }
 }
 
-
-
-/*
-header.site-header{background:var(--white);border-bottom:1px solid var(--border)}
-.header-top{display:flex;align-items:center;gap:12px;padding:12px 0}
-.header-top img{height:44px;width:44px}
-.header-top .title{font-size:1.25rem;font-weight:700}
-.header-top .vision{color:var(--muted);font-size:.95rem}
-
-nav.site-nav{background:var(--brand)}
-nav.site-nav .nav-wrap{display:flex;gap:10px;flex-wrap:wrap}
-nav.site-nav a{
-  color:#fff;text-decoration:none;padding:12px 14px;display:inline-block;font-weight:600
-}
-nav.site-nav a:hover{text-decoration:underline}
-
-*/
 .breadcrumbs{font-size:.9rem;color:var(--muted);padding:8px 0}
 
 /* Footer */
@@ -150,9 +133,64 @@ button.secondary{background:#444}
 button:disabled{opacity:.6;cursor:not-allowed}
 
 /* Services page list (Flex wrap) */
-.services-list{display:flex;flex-wrap:wrap;gap:16px}
-.service-item{background:#fff;border:1px solid var(--border);border-radius:8px;overflow:hidden;flex:1 1 260px;min-width:260px}
-.service-item .meta{display:flex;justify-content:space-between;align-items:center;padding:10px 12px;border-top:1px solid var(--border)}
+  .top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .sort-select {
+      min-width: 180px;
+      font-size: 0.9rem;
+    }
+
+    .search-bar {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .search-bar input[type="text"] {
+      padding: 5px 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .services-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+
+    .service-item {
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      overflow: hidden;
+      background-color: #f9f9f9;
+    }
+
+    .service-item img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+    }
+
+    .pad {
+      padding: 10px;
+    }
+
+    .meta {
+      margin-top: 10px;
+      font-size: 0.9rem;
+      color: #333;
+    }
+
+    .breadcrumbs {
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+    }
 
 /* About: horizontal scroll team strip */
 .team-strip{display:flex;gap:16px;overflow-x:auto;padding-bottom:6px}
