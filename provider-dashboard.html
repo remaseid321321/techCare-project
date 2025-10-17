@@ -5,84 +5,6 @@
   <title>Provider Dashboard – TechCare</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="styles.css">
-  <style>
-    .stats {
-      display: flex;
-      gap: 16px;
-      flex-wrap: wrap;
-      margin-bottom: 24px; 
-    }
-    .stat-box {
-      flex: 1 1 250px;
-      background: #fff;
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 20px;
-      text-align: center;
-    }
-    .stat-box h3 {
-      font-size: 1.2rem;
-      color: var(--muted);
-      margin-bottom: 8px;
-    }
-    .stat-box .number {
-      font-size: 1.8rem;
-      font-weight: 800;
-      color: var(--brand);
-    }
-
-    /* Table */
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      background: #fff;
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      overflow: hidden;
-    }
-    th, td {
-      padding: 12px;
-      border-bottom: 1px solid var(--border);
-      text-align: left;
-      font-size: 0.95rem;
-    }
-    th {
-      background: #f9f9f9;
-      text-transform: uppercase;
-      font-weight: 700;
-    }
-    td:last-child {
-      text-align: right;
-    }
-    .action-btn {
-      color: var(--brand);
-      text-decoration: none;
-      font-weight: 600;
-      margin-left: 10px;
-    }
-
-    /* Bottom buttons */
-    .dashboard-buttons {
-      display: flex;
-      justify-content: center;
-      gap: 16px;
-      margin-top: 24px;
-    }
-    .dashboard-buttons a {
-      background: var(--dark);
-      color: #fff;
-      text-decoration: none;
-      padding: 10px 18px;
-      border-radius: 6px;
-      font-weight: 600;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .dashboard-buttons a:hover {
-      background: var(--brand);
-    }
-  </style>
 </head>
 
 <body>
@@ -91,15 +13,14 @@
   <div class="container header-flex">
     <div class="header-left">
       <img src="images/logo.png" alt="TechCare Logo" class="logo">
-      <div class="title">TechCare</div>
+      <div class="title">TechCare – IT Solutions for Everyone</div>
     </div>
-
     <nav class="site-nav">
       <a href="index.html">Home</a>
       <a href="services.html">Services</a>
       <a href="about.html">About Us</a>
       <a href="customer-dashboard.html">Customer Dashboard</a>
-      <a href="provider-dashboard.html">Provider Dashboard</a>
+      <a href="provider-dashboard.html" class="active">Provider Dashboard</a>
     </nav>
   </div>
 </header>
@@ -113,14 +34,17 @@
     <!-- Stats -->
     <div class="stats">
       <div class="stat-box">
+        <span class="stat-icon">📋</span>
         <h3>Total Bookings</h3>
         <div class="number">142</div>
       </div>
       <div class="stat-box">
+        <span class="stat-icon">👥</span>
         <h3>Active Staff</h3>
         <div class="number">4</div>
       </div>
       <div class="stat-box">
+        <span class="stat-icon">⭐</span>
         <h3>Average Rating</h3>
         <div class="number">4.8</div>
       </div>
@@ -133,7 +57,7 @@
           <th>Service Name</th>
           <th>Price</th>
           <th>Status</th>
-          <th>            Action</th>
+          <th style="text-align:right;">Action</th>
         </tr>
       </thead>
       <tbody>
@@ -152,8 +76,8 @@
 
     <!-- Buttons -->
     <div class="dashboard-buttons">
-      <a href="#"><span style="color:white;">➕</span>Add a New Service</a>
-      <a href="#"><span style="color:white;">👥</span>Manage Staff</a>
+      <a href="#"><span class="icon">➕</span>Add a New Service</a>
+      <a href="#"><span class="icon">👥</span>Manage Staff</a>
     </div>
 
   </section>
