@@ -228,6 +228,7 @@ ul.nested{margin:0 0 0 16px}
 
 
 /* Provider dashboard page */
+
 .stats {
       display: flex;
       gap: 16px;
@@ -257,4 +258,60 @@ ul.nested{margin:0 0 0 16px}
       font-size: 1.8rem;
       font-weight: 800;
       color: var(--brand);
+    }
+
+    /* Table */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    th, td {
+      padding: 12px;
+      border-bottom: 1px solid var(--border);
+      text-align: left;
+      font-size: 0.95rem;
+    }
+    th {
+      background: #f9f9f9;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+    th:last-child, td:last-child {
+      text-align: right;
+    }
+    .action-btn {
+      color: var(--brand);
+      text-decoration: none;
+      font-weight: 600;
+      margin-left: 10px;
+    }
+
+    /* Bottom buttons */
+    .dashboard-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      margin-top: 24px;
+    }
+    .dashboard-buttons a {
+      background: var(--dark);
+      color: #fff;
+      text-decoration: none;
+      padding: 10px 18px;
+      border-radius: 6px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .dashboard-buttons a:hover {
+      background: var(--brand);
+    }
+    .dashboard-buttons a span.icon {
+      font-size: 1.1rem;
+      color: #fff;
     }
