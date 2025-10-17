@@ -225,3 +225,36 @@ button:disabled{opacity:.6;cursor:not-allowed}
 .profile-table thead th{background:#fafafa}
 .profile-table .name{font-size:1.1rem;font-weight:800}
 ul.nested{margin:0 0 0 16px}
+
+
+/* Provider dashboard page */
+.stats {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 24px;
+    }
+    .stat-box {
+      flex: 1 1 250px;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 20px;
+      text-align: center;
+    }
+    .stat-icon {
+      font-size: 2rem;
+      color: var(--brand);
+      margin-bottom: 8px;
+      display: block;
+    }
+    .stat-box h3 {
+      font-size: 1.1rem;
+      color: var(--muted);
+      margin: 4px 0;
+    }
+    .stat-box .number {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--brand);
+    }
