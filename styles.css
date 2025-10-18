@@ -315,3 +315,69 @@ ul.nested{margin:0 0 0 16px}
       font-size: 1.1rem;
       color: #fff;
     }
+
+
+
+
+
+/*Manage staff page*/
+
+table.staff-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+    .staff-table th, .staff-table td {
+      padding: 12px;
+      border-bottom: 1px solid var(--border);
+      text-align: left;
+      font-size: 0.95rem;
+    }
+    .staff-table th {
+      background: #f9f9f9;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+    .staff-table td img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+    .btn-black {
+      background: var(--dark);
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 10px 16px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+    .btn-black:hover {
+      background: var(--brand);
+    }
+
+    /* Form layout */
+    .staff-form {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .staff-form .full {
+      grid-column: span 2;
+    }
+    .photo-upload {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      background: #fff;
+      padding: 10px;
+      height: 120px;
+    }
