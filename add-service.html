@@ -2,59 +2,57 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Add a New Service – TechCare</title>
+  <title>Add New Service – TechCare</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-   
+  
 <header class="site-header">
   <div class="container header-flex">
     <div class="header-left">
       <img src="images/logo.png" alt="TechCare Logo" class="logo">
-      <div class="title">TechCare</div>
+      <div class="title">TechCare – IT Solutions for Everyone</div>
     </div>
-
     <nav class="site-nav">
       <a href="index.html">Home</a>
       <a href="services.html">Services</a>
       <a href="about.html">About Us</a>
       <a href="customer-dashboard.html">Customer Dashboard</a>
-      <a href="provider-dashboard.html">Provider Dashboard</a>
+      <a href="provider-dashboard.html" class="active">Provider Dashboard</a>
     </nav>
   </div>
 </header>
 
-  <div class="container breadcrumbs">Home › Provider Dashboard › Add Service</div>
-  <main class="container">
-    
-<section class="section">
-  <h2>Add a New Service</h2>
-  <form>
-    <div class="flex flex-wrap gap-16">
-      <div class="min-220" style="flex:1 1 300px">
-        <label for="sv-name">Service Name</label>
-        <input id="sv-name" type="text" required>
-      </div>
-      <div class="min-220" style="flex:1 1 300px">
-        <label for="sv-price">Price (SAR)</label>
-        <input id="sv-price" type="number" min="0" step="1" required>
-      </div>
-    </div>
-    <div>
-      <label for="sv-photo">Photo (URL)</label>
-      <input id="sv-photo" type="text" placeholder="images/service-new.jpg">
-    </div>
-    <div>
-      <label for="sv-desc">Description</label>
-      <textarea id="sv-desc" required></textarea>
-    </div>
-    <input type="submit" value="Add Service">
-  </form>
-</section>
+<div class="container breadcrumbs">Home › Provider Dashboard › Add New Service</div>
 
-  </main>
-  
+<main class="container">
+  <section class="section">
+    <h2 class="center">Add New Service</h2>
+
+    <form>
+      <!-- Service Name -->
+      <label for="name">Service Name</label>
+      <input type="text" id="name" placeholder="Enter service name" required>
+
+      <!-- Upload Photo -->
+      <label for="photo">Upload Photo</label>
+      <input type="file" id="photo" accept="image/*" style="padding:10px; background:#fff; border:1px solid var(--border); border-radius:6px;">
+
+      <!-- Price -->
+      <label for="price">Price</label>
+      <input type="text" id="price" placeholder="00.00 SR" required>
+
+      <!-- Description -->
+      <label for="desc">Description</label>
+      <textarea id="desc" placeholder="Enter service description..." required></textarea>
+
+      <!-- Submit Button -->
+      <button type="submit">Submit Service</button>
+    </form>
+  </section>
+</main>
+
 <footer class="site-footer">
   <div class="container foot-wrap">
     <div>© 2025 TechCare. All rights reserved.</div>
