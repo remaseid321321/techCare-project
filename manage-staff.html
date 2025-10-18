@@ -6,85 +6,98 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="styles.css">
 </head>
+
+  
 <body>
-   
+  
 <header class="site-header">
   <div class="container header-flex">
     <div class="header-left">
       <img src="images/logo.png" alt="TechCare Logo" class="logo">
-      <div class="title">TechCare</div>
+      <div class="title">TechCare – IT Solutions for Everyone</div>
     </div>
-
     <nav class="site-nav">
       <a href="index.html">Home</a>
       <a href="services.html">Services</a>
       <a href="about.html">About Us</a>
       <a href="customer-dashboard.html">Customer Dashboard</a>
-      <a href="provider-dashboard.html">Provider Dashboard</a>
+      <a href="provider-dashboard.html" class="active">Provider Dashboard</a>
     </nav>
   </div>
 </header>
-  <div class="container breadcrumbs">Home › Provider Dashboard › Manage Staff</div>
-  <main class="container">
-    
-<section class="section">
-  <h2>Delete Members</h2>
-  <form>
-    <div class="flex flex-wrap gap-16">
-      <label class="item min-220" style="display:flex;align-items:center;gap:10px;flex:1 1 260px">
-        <input type="checkbox" name="member" value="lujain">
-        <img src="images/team1.svg" alt="Lujain" style="width:40px;height:40px;border-radius:6px">
-        Lujain
-      </label>
-      <label class="item min-220" style="display:flex;align-items:center;gap:10px;flex:1 1 260px">
-        <input type="checkbox" name="member" value="noura">
-        <img src="images/team2.svg" alt="Noura" style="width:40px;height:40px;border-radius:6px">
-        Noura
-      </label>
-    </div>
-    <input type="submit" value="Delete Selected">
-  </form>
-</section>
 
-<section class="section">
-  <h2>Add New Member</h2>
-  <form>
-    <div class="flex flex-wrap gap-16">
-      <div class="min-220" style="flex:1 1 300px">
-        <label for="ad-name">Name</label>
-        <input id="ad-name" type="text" required>
-      </div>
-      <div class="min-220" style="flex:1 1 300px">
-        <label for="ad-photo">Photo (URL)</label>
-        <input id="ad-photo" type="text" placeholder="images/new-member.jpg">
-      </div>
-      <div class="min-220" style="flex:1 1 300px">
-        <label for="ad-dob">DoB</label>
-        <input id="ad-dob" type="date">
-      </div>
-      <div class="min-220" style="flex:1 1 300px">
-        <label for="ad-email">Email</label>
-        <input id="ad-email" type="email" required>
-      </div>
-      <div class="min-220" style="flex:1 1 300px">
-        <label for="ad-exp">Area of Expertise</label>
-        <input id="ad-exp" type="text">
-      </div>
-      <div class="min-220" style="flex:1 1 300px">
-        <label for="ad-skills">Skills</label>
-        <input id="ad-skills" type="text">
-      </div>
-    </div>
-    <div>
-      <label for="ad-edu">Education</label>
-      <input id="ad-edu" type="text">
-    </div>
-    <input type="submit" value="Add Member">
-  </form>
-</section>
+<div class="container breadcrumbs">Home › Provider Dashboard › Manage Staff</div>
 
-  </main>
-  
+<main class="container">
+  <section class="section">
+    <h2 class="center">Manage Staff</h2>
+
+    <h3>Current Staff Members</h3>
+    <table class="staff-table">
+      <thead>
+        <tr>
+          <th>Photo</th>
+          <th>Name</th>
+          <th>Select</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td><img src="images/profile.png" alt=""></td><td>Jood Alkhneem</td><td><input type="checkbox" checked></td></tr>
+        <tr><td><img src="images/profile.png" alt=""></td><td>Remas Almutairi</td><td><input type="checkbox" checked></td></tr>
+        <tr><td><img src="images/profile.png" alt=""></td><td>Lujain Almajhul</td><td><input type="checkbox" checked></td></tr>
+        <tr><td><img src="images/profile.png" alt=""></td><td>Jwana Alothman</td><td><input type="checkbox" checked></td></tr>
+      </tbody>
+    </table>
+
+    <button class="btn-black">🗑 Delete Selected Staff</button>
+
+    <br><br>
+    <h3>Add New Staff</h3>
+    <form class="staff-form">
+      <div>
+        <label for="staff-name">Staff Name</label>
+        <input type="text" id="staff-name" placeholder="Enter staff name" required>
+      </div>
+
+      <div>
+        <label for="photo">Upload Photo</label>
+        <div class="photo-upload">
+          <input type="file" id="photo" accept="image/*">
+        </div>
+      </div>
+
+      <div>
+        <label for="dob">Date of Birth</label>
+        <input type="date" id="dob">
+      </div>
+
+      <div>
+        <label for="email">Email</label>
+        <input type="email" id="email" placeholder="Enter email">
+      </div>
+
+      <div>
+        <label for="expertise">Area of Expertise</label>
+        <input type="text" id="expertise" placeholder="e.g., Networking, Hardware">
+      </div>
+
+      <div>
+        <label for="skills">Skills</label>
+        <input type="text" id="skills" placeholder="List main skills">
+      </div>
+
+      <div class="full">
+        <label for="education">Education</label>
+        <textarea id="education" placeholder="Enter educational background"></textarea>
+      </div>
+
+      <div class="full" style="text-align:right;">
+        <button type="submit" class="btn-black">Submit</button>
+      </div>
+    </form>
+  </section>
+</main>
+
 <footer class="site-footer">
   <div class="container foot-wrap">
     <div>© 2025 TechCare. All rights reserved.</div>
