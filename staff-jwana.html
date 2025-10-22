@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <title>Staff Profiles – TechCare</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="stylesheet" href="styles.css" /> <!-- رابط ملف التنسيق الخارجي -->
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
 
@@ -34,44 +34,41 @@
     <table class="profile-table" aria-label="Profile information of Jwana Alothman">
       <thead>
         <tr>
-          <th colspan="3" class="name">Team Member Information</th>
+          <th>Photo</th>
+          <th>Name</th>
+          <th>Date of Birth</th>
+          <th>Email</th>
+          <th>Area of Expertise</th>
+          <th>Skills</th>
+          <th>Education</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td rowspan="3" style="width:220px; text-align:center;">
-            <img src="images/jwana.jpg" alt="Photo of Jwana Alothman" />
+          <td rowspan="2" style="text-align:center;">
+            <img src="images/jwana.jpg" alt="Photo of Jwana Alothman" style="border-radius:8px; max-width: 200px;" />
           </td>
-          <td>Name</td>
-          <td>Jwana Alothman</td>
-        </tr>
-        <tr>
-          <td>Email</td>
-          <td><a href="mailto:jwana@example.com">jwana@example.com</a></td>
-        </tr>
-        <tr>
-          <td>Date of Birth</td>
-          <td>2005-06-12</td>
-        </tr>
-        <tr>
-          <td>Area of Expertise</td>
-          <td colspan="2">Cybersecurity</td>
-        </tr>
-        <tr>
-          <td>Skills</td>
-          <td colspan="2">
+          <td class="name">Jwana Alothman</td>
+          <td rowspan="2">2005-06-12</td>
+          <td rowspan="2"><a href="mailto:jwana@example.com">jwana@example.com</a></td>
+          <td rowspan="2">Cybersecurity</td>
+          <td>
             <ul class="nested">
               <li>Firewall Management</li>
               <li>Risk Assessment</li>
               <li>Malware Analysis</li>
+            </ul>
+          </td>
+          <td rowspan="2">BSc in Cybersecurity</td>
+        </tr>
+        <tr>
+          <td>
+            <ul class="nested">
               <li>Security Policies</li>
               <li>Incident Handling</li>
             </ul>
           </td>
-        </tr>
-        <tr>
-          <td>Education</td>
-          <td colspan="2">BSc in Cybersecurity</td>
+          <td></td>
         </tr>
       </tbody>
     </table>
