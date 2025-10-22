@@ -1,54 +1,171 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="utf-8" />
+  <title>Staff Profiles – TechCare</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Staff Profile – Lujain Almajhul</title>
-  <link rel="stylesheet" href="staff-profile.css" />
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <div class="container">
-    <h1>Lujain Almajhul</h1>
-    <table class="profile-table" aria-label="Profile information of Lujain Almajhul">
+
+<header class="site-header">
+  <div class="container header-flex">
+    <div class="header-left">
+      <img src="images/logo.png" alt="TechCare Logo" class="logo" />
+      <div class="title">TechCare</div>
+    </div>
+
+    <nav class="site-nav">
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="about.html">About Us</a>
+      <a href="customer-dashboard.html">Customer Dashboard</a>
+      <a href="provider-dashboard.html">Provider Dashboard</a>
+    </nav>
+  </div>
+</header>
+
+<div class="container breadcrumbs">Home › About Us › Profile</div>
+
+<main class="container">
+
+  <!-- عضو 1: Lujain -->
+  <section class="section">
+    <h2>Lujain – Profile</h2>
+    <table class="profile-table" aria-label="Profile information of Lujain">
       <thead>
         <tr>
-          <th>Photo</th>
-          <th>Name</th>
-          <th>Date of Birth</th>
-          <th>Email</th>
-          <th>Area of Expertise</th>
-          <th>Skills</th>
-          <th>Education</th>
+          <th colspan="3" class="name">Team Member Information</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td rowspan="2">
-            <img src="images/lujain.jpg" alt="Photo of Lujain Almajhul" />
+          <td rowspan="4" style="width:220px; text-align:center;">
+            <img src="images/team1.svg" alt="Photo of Lujain" style="border-radius:8px; max-width: 200px;" />
           </td>
-          <td class="name">Lujain Almajhul</td>
-          <td rowspan="2">2005-11-05</td>
-          <td rowspan="2"><a href="mailto:lujain@example.com">lujain@example.com</a></td>
-          <td rowspan="2">Cybersecurity</td>
-          <td>
-            <ul class="nested">
-              <li>Penetration Testing</li>
-              <li>Network Security</li>
-              <li>Cryptography</li>
-            </ul>
-          </td>
-          <td rowspan="2">BSc in Cybersecurity</td>
+          <td>Name</td>
+          <td>Lujain</td>
         </tr>
         <tr>
-          <td>
+          <td>Email</td>
+          <td><a href="mailto:lujain@example.com">lujain@example.com</a></td>
+        </tr>
+        <tr>
+          <td>Date of Birth</td>
+          <td>2003-05-12</td>
+        </tr>
+        <tr>
+          <td>Area of Expertise</td>
+          <td>Network Security, Frontend</td>
+        </tr>
+        <tr>
+          <td>Skills</td>
+          <td colspan="2">
             <ul class="nested">
-              <li>Incident Response</li>
-              <li>Security Auditing</li>
+              <li>Web
+                <ul class="nested">
+                  <li>HTML5</li>
+                  <li>CSS3 (Flexbox)</li>
+                </ul>
+              </li>
+              <li>Networking
+                <ul class="nested">
+                  <li>Socket Programming</li>
+                  <li>Basic Hardening</li>
+                </ul>
+              </li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <td>Education</td>
+          <td colspan="2">
+            <ul class="nested">
+              <li>BSc – IT (KSU)</li>
+              <li>Courses:
+                <ul class="nested">
+                  <li>IT312 Web Applications</li>
+                  <li>IT326 Data Mining</li>
+                  <li>CSC113 Data Structures</li>
+                </ul>
+              </li>
             </ul>
           </td>
         </tr>
       </tbody>
     </table>
+  </section>
+
+  <!-- عضو 2: Another Member Example -->
+  <section class="section">
+    <h2>Ahmed AlQahtani – Profile</h2>
+    <table class="profile-table" aria-label="Profile information of Ahmed AlQahtani">
+      <thead>
+        <tr>
+          <th colspan="3" class="name">Team Member Information</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td rowspan="4" style="width:220px; text-align:center;">
+            <img src="images/ahmed.jpg" alt="Photo of Ahmed AlQahtani" style="border-radius:8px; max-width: 200px;" />
+          </td>
+          <td>Name</td>
+          <td>Ahmed AlQahtani</td>
+        </tr>
+        <tr>
+          <td>Email</td>
+          <td><a href="mailto:ahmed@example.com">ahmed@example.com</a></td>
+        </tr>
+        <tr>
+          <td>Date of Birth</td>
+          <td>1998-11-04</td>
+        </tr>
+        <tr>
+          <td>Area of Expertise</td>
+          <td>Backend Development, Cloud Computing</td>
+        </tr>
+        <tr>
+          <td>Skills</td>
+          <td colspan="2">
+            <ul class="nested">
+              <li>Programming Languages
+                <ul class="nested">
+                  <li>Java</li>
+                  <li>Python</li>
+                  <li>Node.js</li>
+                </ul>
+              </li>
+              <li>Cloud Platforms
+                <ul class="nested">
+                  <li>AWS</li>
+                  <li>Azure</li>
+                </ul>
+              </li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <td>Education</td>
+          <td colspan="2">
+            <ul class="nested">
+              <li>MSc Computer Science (KSU)</li>
+              <li>BSc Software Engineering</li>
+            </ul>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container foot-wrap">
+    <div>© 2025 TechCare. All rights reserved.</div>
+    <div>Contact: support@techcare.example • +966-5X-XXXXXXX</div>
   </div>
+</footer>
+
 </body>
 </html>
