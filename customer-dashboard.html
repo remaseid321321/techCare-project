@@ -12,60 +12,57 @@
   <div class="container header-flex">
     <div class="header-left">
       <img src="images/logo.png" alt="TechCare Logo" class="logo">
-      <div class="title">TechCare</div>
+      <div class="title">TechCare – IT Solutions for Everyone</div>
     </div>
-
     <nav class="site-nav">
       <a href="index.html">Home</a>
       <a href="services.html">Services</a>
       <a href="about.html">About Us</a>
-      <a href="customer-dashboard.html">Customer Dashboard</a>
+      <a href="customer-dashboard.html" class="active">Customer Dashboard</a>
       <a href="provider-dashboard.html">Provider Dashboard</a>
     </nav>
   </div>
 </header>
 
-  <div class="container breadcrumbs">Home › Customer Dashboard</div>
-  <main class="container">
-    
-<section class="section">
-  <h2>Previous Requests</h2>
-  <div class="flex flex-wrap gap-16">
-    <div class="item min-220" style="flex:1 1 300px">
-      <strong>Service:</strong> Home Network Setup<br>
-      <strong>Date:</strong> 2025-09-28<br>
-      <strong>Cost:</strong> 199 SAR<br>
-      <strong>Status:</strong> <span class="badge">provided</span>
-    </div>
-    <div class="item min-220" style="flex:1 1 300px">
-      <strong>Service:</strong> Quick Diagnosis<br>
-      <strong>Date:</strong> 2025-10-02<br>
-      <strong>Cost:</strong> 79 SAR<br>
-      <strong>Status:</strong> <span class="badge">pending</span>
-    </div>
-    <div class="item min-220" style="flex:1 1 300px">
-      <strong>Service:</strong> Device Repair<br>
-      <strong>Date:</strong> 2025-10-10<br>
-      <strong>Cost:</strong> 249 SAR<br>
-      <strong>Status:</strong> <span class="badge">declined</span>
-    </div>
-  </div>
-</section>
+<div class="container breadcrumbs">Home › Customer Dashboard</div>
 
-<section class="section">
-  <h2>Quick Actions</h2>
-  <div class="flex flex-wrap gap-16">
-    <a class="item min-220" style="text-decoration:none;color:inherit;flex:1 1 260px" href="request.html">Request a Service →</a>
-    <a class="item min-220" style="text-decoration:none;color:inherit;flex:1 1 260px" href="evaluate.html">Evaluate a Service →</a>
-  </div>
-</section>
+<main class="container">
+  <section class="section">
+    <h2 class="center">Customer Dashboard</h2>
 
-  </main>
-  
+    <table>
+      <thead>
+        <tr>
+          <th>Service Name</th>
+          <th>Date</th>
+          <th>Cost</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Device Repair</td><td>12/09/2025</td><td>90 SR</td><td>Pending</td></tr>
+        <tr><td>Software Installation</td><td>10/08/2025</td><td>200 SR</td><td>Provided</td></tr>
+        <tr><td>Network Setup</td><td>05/07/2025</td><td>99 SR</td><td>Declined</td></tr>
+        <tr><td>Data Recovery</td><td>22/06/2025</td><td>150 SR</td><td>Provided</td></tr>
+        <tr><td>System Upgrade</td><td>18/05/2025</td><td>130 SR</td><td>Pending</td></tr>
+        <tr><td>Device Repair</td><td>12/09/2025</td><td>90 SR</td><td>Pending</td></tr>
+        <tr><td>Software Installation</td><td>10/08/2025</td><td>200 SR</td><td>Provided</td></tr>
+        <tr><td>Network Setup</td><td>05/07/2025</td><td>99 SR</td><td>Declined</td></tr>
+        <tr><td>Data Recovery</td><td>22/06/2025</td><td>150 SR</td><td>Provided</td></tr>
+        <tr><td>System Upgrade</td><td>18/05/2025</td><td>130 SR</td><td>Pending</td></tr>
+      </tbody>
+    </table>
+
+    <div class="dashboard-buttons">
+      <a href="request.html">Request New Service</a>
+      <a href="evaluation.html">Evaluate Service</a>
+    </div>
+  </section>
+</main>
+
 <footer class="site-footer">
   <div class="container foot-wrap">
-    <div>© 2025 TechCare. All rights reserved.</div>
-    <div>Contact: support@techcare.example • +966-5X-XXXXXXX</div>
+    <div>©2025 techcare</div>
   </div>
 </footer>
 
