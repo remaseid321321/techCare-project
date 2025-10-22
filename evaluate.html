@@ -5,33 +5,7 @@
   <title>Service Evaluation – TechCare</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="styles.css">
-  <style>
-    /* النجوم */
-    .rating { 
-      display: flex;
-      flex-direction: row-reverse;
-      justify-content: start;
-      gap: 5px;
-    }
-
-    .rating input {
-      display: none;
-    }
-
-    .rating label {
-      font-size: 1.8rem;
-      color: #ccc;
-      cursor: pointer;
-      transition: color 0.2s;
-    }
-
-    .rating input:checked ~ label,
-    .rating label:hover,
-    .rating label:hover ~ label {
-      color: gold;
-    }
-  </style>
-</head>
+  </head>
 <body>
   
 <header class="site-header">
@@ -56,6 +30,7 @@
 <main class="container">
   <section class="section">
     <h2 class="center">Service Evaluation</h2>
+
     <form>
       <label for="service">Select Service</label>
       <select id="service" required>
