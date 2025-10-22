@@ -225,7 +225,53 @@ button:disabled{opacity:.6;cursor:not-allowed}
 .profile-table thead th{background:#fafafa}
 .profile-table .name{font-size:1.1rem;font-weight:800}
 ul.nested{margin:0 0 0 16px}
+.profile-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+  margin: 20px 0;
+}
 
+.profile-table th, 
+.profile-table td {
+  border: 1px solid var(--border);
+  padding: 12px;
+  vertical-align: top;
+  text-align: left;
+}
+
+.profile-table thead th {
+  background: var(--brand);
+  color: white;
+  font-weight: 700;
+}
+
+.profile-table .name {
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: var(--dark);
+}
+
+.profile-table ul.nested {
+  margin: 0 0 0 20px;
+  padding-left: 0;
+  list-style-type: disc;
+}
+
+.profile-table ul.nested li {
+  margin-bottom: 6px;
+}
+
+/* Image styling in profile */
+.profile-photo {
+  width: 180px;
+  border-radius: 8px;
+  display: block;
+  margin: auto;
+}
 
 /* Provider dashboard page */
 
