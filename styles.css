@@ -427,3 +427,43 @@ table.staff-table {
       padding: 10px;
       height: 120px;
     }
+
+/* customer dashboard page */
+
+table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    th, td {
+      padding: 12px;
+      border-bottom: 1px solid var(--border);
+      text-align: left;
+      font-size: 0.95rem;
+    }
+    th {
+      background: #f9f9f9;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    .dashboard-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      margin-top: 24px;
+    }
+    .dashboard-buttons a {
+      background: var(--dark);
+      color: #fff;
+      text-decoration: none;
+      padding: 10px 18px;
+      border-radius: 6px;
+      font-weight: 600;
+    }
+    .dashboard-buttons a:hover {
+      background: var(--brand);
+    }
