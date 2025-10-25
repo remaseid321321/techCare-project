@@ -97,13 +97,45 @@ footer .foot-wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:
 .badge{display:inline-block;background:var(--brand);color:#fff;border-radius:999px;padding:4px 10px;font-size:.85rem}
 
 /* Home: services (Flex row wrap) + hover info */
-.services-row{display:flex;gap:16px;flex-wrap:wrap}
-.service-card{position:relative;background:#fff;border:1px solid var(--border);border-radius:8px;min-width:260px;flex:1 1 300px;overflow:hidden}
-.service-card .thumb{height:160px;overflow:hidden}
-.service-card .pad{padding:12px}
+
+.services-row{
+              display:flex;
+              gap:16px;
+              flex-wrap:wrap
+             }
+
+.service-card{
+              position:relative;
+              background:#fff;
+              border:1px solid var(--border);
+              border-radius:8px;
+              min-width:260px;
+              flex:1 1 300px;
+              overflow:hidden
+             }
+
+.service-card .thumb{
+   height:160px;
+   overflow:hidden
+}
+.service-card .pad{
+   padding:12px
+}
 .service-info-hover{
-  position:absolute;inset:0;background:rgba(0,0,0,.65);color:#fff;padding:16px;
-  opacity:0;transition:.25s;display:flex;align-items:center;justify-content:center;text-align:center
+  position:absolute;
+   top: 0;
+   right: 0;
+   bottom: 0;
+   left: 0;
+   background:rgba(0,0,0,.65);
+   color:#fff;
+   padding:16px;
+  opacity:0;
+   transition:.25s;
+   display:flex;
+   align-items:center;
+   justify-content:center;
+   text-align:center
 }
 .service-card:hover .service-info-hover{opacity:1}
 
