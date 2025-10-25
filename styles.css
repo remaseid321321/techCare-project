@@ -51,7 +51,7 @@ img{max-width:100%;display:block}
   color: var(--dark);
 }
 
-/* Navbar aligned to the right */
+
 .site-nav {
   display: flex;
   gap: 16px;
