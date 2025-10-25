@@ -28,16 +28,13 @@
 <div class="container breadcrumbs">Home › About Us › Profile</div>
 
 <main class="container">
-
   <section class="section">
     <h2>Jwana Alothman – Profile</h2>
+
     <table class="profile-table" aria-label="Profile information of Jwana Alothman">
       <thead>
         <tr>
-          <th>Photo</th>
-          <th>Name</th>
-          <th>Date of Birth</th>
-          <th>Email</th>
+          <th colspan="2">Personal Information</th>
           <th>Area of Expertise</th>
           <th>Skills</th>
           <th>Education</th>
@@ -45,35 +42,59 @@
       </thead>
       <tbody>
         <tr>
-          <td rowspan="2" style="text-align:center;">
-            <img src="images/staff4.jpg" alt="Photo of Jwana Alothman" style="border-radius:8px; max-width: 200px;" />
+          <!-- الصورة -->
+          <td rowspan="3" style="text-align:center;">
+            <img src="images/staff4.jpg" alt="Photo of Jwana Alothman" class="profile-photo" />
           </td>
+
+          <!-- الاسم -->
           <td class="name">Jwana Alothman</td>
-          <td rowspan="2">2005-06-12</td>
-          <td rowspan="2"><a href="mailto:jwana@example.com">jwana@example.com</a></td>
-          <td rowspan="2">Cybersecurity</td>
-          <td>
+
+          <!-- الخبرة -->
+          <td rowspan="3">Cybersecurity & Risk Management</td>
+
+          <!-- المهارات -->
+          <td rowspan="3">
             <ul class="nested">
-              <li>Firewall Management</li>
-              <li>Risk Assessment</li>
-              <li>Malware Analysis</li>
+              <li>Threat Detection & Response</li>
+              <li>Firewall Configuration & Maintenance</li>
+              <li>Vulnerability Assessment</li>
+              <li>Incident Handling</li>
+              <li>Security Policy Development</li>
+              <li>Tools:
+                <ul class="nested">
+                  <li>Wireshark</li>
+                  <li>Metasploit</li>
+                  <li>Nmap</li>
+                </ul>
+              </li>
             </ul>
           </td>
-          <td rowspan="2">BSc in Cybersecurity</td>
+
+          <!-- التعليم -->
+          <td rowspan="3">
+            <ul class="nested">
+              <li>BSc in Cybersecurity – KSU</li>
+              <li>Certified Ethical Hacker (CEH)</li>
+              <li>Completed Courses:
+                <ul class="nested">
+                  <li>IT415 – Cyber Defense</li>
+                  <li>IT324 – Network Security</li>
+                  <li>IT331 – Ethical Hacking</li>
+                </ul>
+              </li>
+            </ul>
+          </td>
         </tr>
         <tr>
-          <td>
-            <ul class="nested">
-              <li>Security Policies</li>
-              <li>Incident Handling</li>
-            </ul>
-          </td>
-          <td></td>
+          <td><strong>Date of Birth:</strong> 2005-06-12</td>
+        </tr>
+        <tr>
+          <td><strong>Email:</strong> <a href="mailto:jwana@example.com">jwana@example.com</a></td>
         </tr>
       </tbody>
     </table>
   </section>
-
 </main>
 
 <footer class="site-footer">
