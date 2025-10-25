@@ -140,8 +140,27 @@ footer .foot-wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:
 .service-card:hover .service-info-hover{opacity:1}
 
 /* Reviews (Flex wrap) */
-.reviews{display:flex;gap:16px;flex-wrap:wrap}
-.review{background:#fff;border:1px solid var(--border);border-radius:8px;padding:12px;min-width:260px;flex:1}
+.reviews {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.review {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 12px;
+  min-width: 260px;
+  flex: 1;
+}
+
+
+.review .badge {
+  color: #f5a623;
+  font-size: 1.2rem;
+  margin-bottom: 8px;
+}
 
 /* Generic Flex helpers */
 .flex{display:flex}
