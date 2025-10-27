@@ -1,62 +1,54 @@
 /* IT312 Phase 2 – TechCare Theme
-   - HTML5 + CSS only (no JS)
-   - Flexbox used for navigation, service cards, dashboards, and team strip
-   - Tables with borders + rowspan/colspan in staff profile
+   Based strictly on Lecture 5 & 6 (Ch 11–16)
+   - Box Model, Floating, Positioning, Flexbox
+   - Tables, Forms, and Basic Layout
+   - HTML5 + CSS only (no JS, no gap)
 */
 
-*{box-sizing:border-box}
-html,body{
-  margin:0;
-  padding:0;
-  font-family:Arial,Helvetica,sans-serif;
-  color:#222;
-  background:#f7f7f9;
+* { box-sizing: border-box; }
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #222;
+  background: #f7f7f9;
 }
-img{max-width:100%;display:block}
+img { max-width: 100%; display: block; }
 
-.container{width:90%;max-width:1200px;margin:0 auto}
+.container { width: 90%; max-width: 1200px; margin: 0 auto; }
 
-/* ====== Header + Navigation ====== */
+/* ===== Header + Navigation ===== */
 .header-flex {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 16px 0;
   flex-wrap: wrap;
-  margin: 0 -10px; /* تعويض عن gap:20px */
+  margin: 0 -10px;
 }
-
 .header-left {
   display: flex;
   align-items: center;
   flex-shrink: 0;
-  margin: 0 -6px; /* تعويض عن gap:12px داخلي */
-  margin-left:10px;
-  margin-right:10px; /* تعويض المسافة بين الكتلتين */
+  margin: 0 -6px;
 }
-
 .logo {
   height: 44px;
   width: 44px;
   object-fit: contain;
   margin: 0 6px;
 }
-
 .title {
   font-size: 1.25rem;
   font-weight: 700;
   color: #222;
   margin: 0 6px;
 }
-
 .site-nav {
   display: flex;
   flex-wrap: wrap;
-  margin: 0 -8px; /* تعويض gap:16px داخلي */
-  margin-left:10px;
-  margin-right:10px; /* تعويض المسافة بين الكتلتين */
+  margin: 0 -8px;
 }
-
 .site-nav a {
   color: #002147;
   text-decoration: none;
@@ -64,173 +56,248 @@ img{max-width:100%;display:block}
   padding: 8px 12px;
   margin: 0 8px;
 }
+.site-nav a:hover { text-decoration: underline; }
 
-.site-nav a:hover {
-  text-decoration: underline;
-}
-
-/* ====== Responsive ====== */
+/* Responsive Navigation */
 @media (max-width: 700px) {
-  .header-flex {
-    flex-direction: column;
-    align-items: flex-start;
-    margin: 0; /* منع المسافات الجانبية الزائدة */
-  }
-
-  .site-nav {
-    flex-direction: column;
-    align-items: flex-start;
-    margin-top: 10px;
-  }
-
-  .site-nav a {
-    margin: 4px 0; /* بدل gap:8px */
-  }
+  .header-flex { flex-direction: column; align-items: flex-start; margin: 0; }
+  .site-nav { flex-direction: column; align-items: flex-start; margin-top: 10px; }
+  .site-nav a { margin: 4px 0; }
 }
 
-/* ====== Breadcrumbs ====== */
-.breadcrumbs{
-  font-size:.9rem;
-  color:#666;
-  padding:8px 0;
+/* Breadcrumbs */
+.breadcrumbs {
+  font-size: .9rem;
+  color: #666;
+  padding: 8px 0;
 }
 
-/* ====== Footer ====== */
-footer.site-footer{
-  margin-top:40px;
-  background:#fff;
-  border-top:1px solid #ddd;
-  padding:16px 0;
-  color:#666;
-  font-size:.95rem;
+/* ===== Footer ===== */
+footer.site-footer {
+  margin-top: 40px;
+  background: #fff;
+  border-top: 1px solid #ddd;
+  padding: 16px 0;
+  color: #666;
+  font-size: .95rem;
+}
+footer .foot-wrap {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin: 0 -8px;
+}
+footer .foot-wrap > * { margin: 0 8px; }
+
+/* ===== Sections & Cards ===== */
+.section {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 16px;
+  margin: 24px 0;
+}
+.center { text-align: center; }
+.small { font-size: .9rem; color: #666; }
+.badge {
+  display: inline-block;
+  background: #002147;
+  color: #fff;
+  border-radius: 999px;
+  padding: 4px 10px;
+  font-size: .85rem;
 }
 
-footer .foot-wrap{
-  display:flex;
-  justify-content:space-between;
-  flex-wrap:wrap;
-  margin:0 -8px; /* بدل gap:16px */
+/* ===== Services (Home Page) ===== */
+.services-row {
+  display: flex;
+  flex-wrap: wrap;
+  margin: -8px;
 }
+.service-card {
+  position: relative;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  min-width: 260px;
+  flex: 1 1 300px;
+  overflow: hidden;
+  margin: 8px;
+}
+.service-card .thumb { height: 160px; overflow: hidden; }
+.service-card .pad { padding: 12px; }
+.service-info-hover {
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0;
+  background: rgba(0,0,0,.65);
+  color: #fff;
+  padding: 16px;
+  opacity: 0;
+  transition: .25s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.service-card:hover .service-info-hover { opacity: 1; }
 
-footer .foot-wrap > *{
-  margin:0 8px;
-}
-
-/* ====== Sections & Cards ====== */
-.section{
-  background:#fff;
-  border:1px solid #ddd;
-  border-radius:8px;
-  padding:16px;
-  margin:24px 0;
-}
-.center{text-align:center}
-.small{font-size:.9rem;color:#666}
-.badge{
-  display:inline-block;
-  background:#002147;
-  color:#fff;
-  border-radius:999px;
-  padding:4px 10px;
-  font-size:.85rem;
-}
-
-/* ====== Services (Home) ====== */
-.services-row{
-  display:flex;
-  flex-wrap:wrap;
-  margin:-8px; /* بدل gap:16px */
-}
-
-.service-card{
-  position:relative;
-  background:#fff;
-  border:1px solid #ddd;
-  border-radius:8px;
-  min-width:260px;
-  flex:1 1 300px;
-  overflow:hidden;
-  margin:8px; /* تعويض الـ gap */
-}
-
-.service-card .thumb{
-  height:160px;
-  overflow:hidden;
-}
-.service-card .pad{
-  padding:12px;
-}
-.service-info-hover{
-  position:absolute;
-  top:0; right:0; bottom:0; left:0;
-  background:rgba(0,0,0,.65);
-  color:#fff;
-  padding:16px;
-  opacity:0;
-  transition:.25s;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-}
-.service-card:hover .service-info-hover{opacity:1}
-
-/* ====== Reviews Section ====== */
+/* ===== Reviews Section ===== */
 .reviews {
   display: flex;
   flex-wrap: wrap;
-  margin:-8px; /* بدل gap:16px */
+  margin: -8px;
 }
-
 .review {
-  background:#fff;
-  border:1px solid #ddd;
-  border-radius:8px;
-  padding:12px;
-  min-width:260px;
-  flex:1;
-  margin:8px;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 12px;
+  min-width: 260px;
+  flex: 1;
+  margin: 8px;
 }
-
 .review .badge {
   color: #f5a623;
   font-size: 1.2rem;
   margin-bottom: 8px;
 }
 
-/* ====== Generic Flex Helpers ====== */
-.flex{display:flex}
-.flex-wrap{flex-wrap:wrap}
-.col{flex-direction:column}
-.item{
-  background:#fff;
-  border:1px solid #ddd;
-  border-radius:8px;
-  padding:16px;
+/* ===== Forms ===== */
+form { display: flex; flex-direction: column; }
+form > * { margin-bottom: 12px; }
+label { font-weight: 600; }
+input[type="text"],
+input[type="email"],
+input[type="date"],
+input[type="number"],
+textarea,
+select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background: #fff;
 }
-.min-220{min-width:220px}
+textarea { min-height: 110px; resize: vertical; }
+button, input[type="submit"] {
+  background: #002147;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 10px;
+  cursor: pointer;
+}
 
-/* ====== Forms ====== */
-form{
-  display:flex;
-  flex-direction:column;
+/* ===== Dashboard Buttons ===== */
+.dashboard-buttons {
+  display: flex;
+  justify-content: center;
+  margin-top: 24px;
 }
-form > *{
-  margin-bottom:12px; /* بدل gap:12px */
+.dashboard-buttons a {
+  background: #222;
+  color: #fff;
+  text-decoration: none;
+  padding: 10px 18px;
+  border-radius: 6px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  margin: 0 8px;
 }
-label{font-weight:600}
-input[type="text"],input[type="email"],input[type="date"],input[type="number"],textarea,select{
-  width:100%;
-  padding:10px;
-  border:1px solid #ddd;
-  border-radius:6px;
-   background:#fff;
+.dashboard-buttons a:hover { background: #002147; }
+.dashboard-buttons a span.icon {
+  font-size: 1.1rem;
+  color: #fff;
 }
-textarea{min-height:110px;resize:vertical}
-button, input[type="submit"]{
-  background:#002147;
-  color:#fff;
-  border:none;
-  border-radius:6px;
-  padding:10px;
+
+/* ===== Manage Staff Page ===== */
+table.staff-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 16px;
 }
+.staff-table th, .staff-table td {
+  padding: 12px;
+  border-bottom: 1px solid #ddd;
+  text-align: left;
+  font-size: 0.95rem;
+}
+.staff-table th {
+  background: #f9f9f9;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+.staff-table td img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.btn-black {
+  background: #222;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 16px;
+  cursor: pointer;
+  font-weight: 600;
+}
+.btn-black:hover { background: #002147; }
+
+/* ===== Staff Form ===== */
+.staff-form {
+  display: flex;
+  flex-wrap: wrap;
+  margin: -8px;
+}
+.staff-form .full { width: 100%; }
+.photo-upload {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background: #fff;
+  padding: 10px;
+  height: 120px;
+  margin: 8px;
+}
+
+/* ===== Customer Dashboard Page ===== */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border: 1px solid #ccc;
+}
+th, td {
+  padding: 12px;
+  border-bottom: 1px solid #ccc;
+  text-align: left;
+  font-size: 0.95rem;
+}
+th {
+  background: #f9f9f9;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+.dashboard-buttons {
+  display: flex;
+  justify-content: center;
+  margin-top: 24px;
+}
+.dashboard-buttons a {
+  background: black;
+  color: #fff;
+  text-decoration: none;
+  padding: 10px 18px;
+  font-weight: 600;
+  margin: 0 8px;
+}
+.dashboard-buttons a:hover { background: #333; }
