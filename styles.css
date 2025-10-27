@@ -1,10 +1,9 @@
 /* IT312 Phase 2 – TechCare Theme
-   Based strictly on Lecture 5 & 6 (Ch 11–16)
-   - Box Model, Floating, Positioning, Flexbox
-   - Tables, Forms, and Basic Layout
-   - HTML5 + CSS only (no JS, no gap)
+   Lecture 5 & 6 (Ch 11–16)
+   HTML5 + CSS only
 */
 
+/* Reset + base */
 * { box-sizing: border-box; }
 html, body {
   margin: 0;
@@ -22,55 +21,40 @@ img { max-width: 100%; display: block; }
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 20px;
   padding: 16px 0;
   flex-wrap: wrap;
-  margin: 0 -10px;
 }
 .header-left {
   display: flex;
   align-items: center;
+  gap: 12px;
   flex-shrink: 0;
-  margin: 0 -6px;
 }
-.logo {
-  height: 44px;
-  width: 44px;
-  object-fit: contain;
-  margin: 0 6px;
-}
-.title {
-  font-size: 1.25rem;
-  font-weight: 700;
-  color: #222;
-  margin: 0 6px;
-}
+.logo { height: 44px; width: 44px; object-fit: contain; }
+.title { font-size: 1.25rem; font-weight: 700; color: #222; }
+
 .site-nav {
   display: flex;
+  gap: 16px;
   flex-wrap: wrap;
-  margin: 0 -8px;
 }
 .site-nav a {
   color: #002147;
   text-decoration: none;
   font-weight: 600;
   padding: 8px 12px;
-  margin: 0 8px;
 }
 .site-nav a:hover { text-decoration: underline; }
 
-/* Responsive Navigation */
+/* Responsive */
 @media (max-width: 700px) {
-  .header-flex { flex-direction: column; align-items: flex-start; margin: 0; }
-  .site-nav { flex-direction: column; align-items: flex-start; margin-top: 10px; }
-  .site-nav a { margin: 4px 0; }
+  .header-flex { flex-direction: column; align-items: flex-start; }
+  .site-nav { flex-direction: column; align-items: flex-start; gap: 8px; margin-top: 10px; }
 }
 
 /* Breadcrumbs */
-.breadcrumbs {
-  font-size: .9rem;
-  color: #666;
-  padding: 8px 0;
-}
+.breadcrumbs { font-size: .9rem; color: #666; padding: 8px 0; }
 
 /* ===== Footer ===== */
 footer.site-footer {
@@ -84,10 +68,9 @@ footer.site-footer {
 footer .foot-wrap {
   display: flex;
   justify-content: space-between;
+  gap: 16px;
   flex-wrap: wrap;
-  margin: 0 -8px;
 }
-footer .foot-wrap > * { margin: 0 8px; }
 
 /* ===== Sections & Cards ===== */
 .section {
@@ -108,11 +91,11 @@ footer .foot-wrap > * { margin: 0 8px; }
   font-size: .85rem;
 }
 
-/* ===== Services (Home Page) ===== */
+/* ===== Services (Home) ===== */
 .services-row {
   display: flex;
+  gap: 16px;
   flex-wrap: wrap;
-  margin: -8px;
 }
 .service-card {
   position: relative;
@@ -122,30 +105,26 @@ footer .foot-wrap > * { margin: 0 8px; }
   min-width: 260px;
   flex: 1 1 300px;
   overflow: hidden;
-  margin: 8px;
 }
 .service-card .thumb { height: 160px; overflow: hidden; }
 .service-card .pad { padding: 12px; }
 .service-info-hover {
-  position: absolute;
-  top: 0; right: 0; bottom: 0; left: 0;
+  position: absolute; top: 0; right: 0; bottom: 0; left: 0;
   background: rgba(0,0,0,.65);
   color: #fff;
   padding: 16px;
   opacity: 0;
   transition: .25s;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: flex; align-items: center; justify-content: center;
   text-align: center;
 }
 .service-card:hover .service-info-hover { opacity: 1; }
 
-/* ===== Reviews Section ===== */
+/* ===== Reviews ===== */
 .reviews {
   display: flex;
+  gap: 16px;
   flex-wrap: wrap;
-  margin: -8px;
 }
 .review {
   background: #fff;
@@ -154,17 +133,24 @@ footer .foot-wrap > * { margin: 0 8px; }
   padding: 12px;
   min-width: 260px;
   flex: 1;
-  margin: 8px;
 }
-.review .badge {
-  color: #f5a623;
-  font-size: 1.2rem;
-  margin-bottom: 8px;
+.review .badge { color: #f5a623; font-size: 1.2rem; margin-bottom: 8px; }
+
+/* ===== Helpers ===== */
+.flex { display: flex; }
+.flex-wrap { flex-wrap: wrap; }
+.gap-16 { gap: 16px; }
+.col { flex-direction: column; }
+.item {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 16px;
 }
+.min-220 { min-width: 220px; }
 
 /* ===== Forms ===== */
-form { display: flex; flex-direction: column; }
-form > * { margin-bottom: 12px; }
+form { display: flex; flex-direction: column; gap: 12px; }
 label { font-weight: 600; }
 input[type="text"],
 input[type="email"],
@@ -192,6 +178,7 @@ button, input[type="submit"] {
 .dashboard-buttons {
   display: flex;
   justify-content: center;
+  gap: 16px;
   margin-top: 24px;
 }
 .dashboard-buttons a {
@@ -203,13 +190,10 @@ button, input[type="submit"] {
   font-weight: 600;
   display: flex;
   align-items: center;
-  margin: 0 8px;
+  gap: 8px;
 }
 .dashboard-buttons a:hover { background: #002147; }
-.dashboard-buttons a span.icon {
-  font-size: 1.1rem;
-  color: #fff;
-}
+.dashboard-buttons a span.icon { font-size: 1.1rem; color: #fff; }
 
 /* ===== Manage Staff Page ===== */
 table.staff-table {
@@ -233,29 +217,21 @@ table.staff-table {
   font-weight: 700;
 }
 .staff-table td img {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  object-fit: cover;
+  width: 40px; height: 40px; border-radius: 50%; object-fit: cover;
 }
 .btn-black {
-  background: #222;
-  color: #fff;
-  border: none;
-  border-radius: 6px;
-  padding: 10px 16px;
-  cursor: pointer;
-  font-weight: 600;
+  background: #222; color: #fff; border: none;
+  border-radius: 6px; padding: 10px 16px; cursor: pointer; font-weight: 600;
 }
 .btn-black:hover { background: #002147; }
 
 /* ===== Staff Form ===== */
 .staff-form {
-  display: flex;
-  flex-wrap: wrap;
-  margin: -8px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
 }
-.staff-form .full { width: 100%; }
+.staff-form .full { grid-column: span 2; }
 .photo-upload {
   display: flex;
   flex-direction: column;
@@ -266,7 +242,6 @@ table.staff-table {
   background: #fff;
   padding: 10px;
   height: 120px;
-  margin: 8px;
 }
 
 /* ===== Customer Dashboard Page ===== */
@@ -282,14 +257,12 @@ th, td {
   text-align: left;
   font-size: 0.95rem;
 }
-th {
-  background: #f9f9f9;
-  text-transform: uppercase;
-  font-weight: 700;
-}
+th { background: #f9f9f9; text-transform: uppercase; font-weight: 700; }
+
 .dashboard-buttons {
   display: flex;
   justify-content: center;
+  gap: 16px;
   margin-top: 24px;
 }
 .dashboard-buttons a {
@@ -298,6 +271,5 @@ th {
   text-decoration: none;
   padding: 10px 18px;
   font-weight: 600;
-  margin: 0 8px;
 }
 .dashboard-buttons a:hover { background: #333; }
