@@ -20,7 +20,6 @@
       <a href="AboutUs.html">About Us</a>
       <a href="customer-dashboard.html">Customer Dashboard</a>
       <a href="provider-dashboard.html">Provider Dashboard</a>
-    </nav>
   </div>
 </header>
 
@@ -31,24 +30,19 @@
     <h2 class="center">Add New Service</h2>
 
     <form>
-      <!-- Service Name -->
       <label for="name">Service Name</label>
       <input type="text" id="name" placeholder="Enter service name" required>
 
-      <!-- Upload Photo -->
       <label for="photo">Upload Photo</label>
-      <input type="file" id="photo" accept="image/*" style="padding:10px; background:#fff; border:1px solid var(--border); border-radius:6px;">
+      <input type="file" id="photo" style="padding:10px; background:#fff; border:1px solid">
 
-      <!-- Price -->
       <label for="price">Price</label>
       <input type="text" id="price" placeholder="00.00 SR" required>
 
-      <!-- Description -->
       <label for="desc">Description</label>
       <textarea id="desc" placeholder="Enter service description..." required></textarea>
 
-      <!-- Submit Button -->
-      <button type="submit">Submit Service</button>
+      <input type="submit" value="Submit Service">
     </form>
   </section>
 </main>
