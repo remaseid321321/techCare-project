@@ -322,95 +322,54 @@ ul.nested{margin:0 0 0 16px}
 /* ===================== Extra function: Provider Rewards (Staff Profile) ===================== */
 /* ================= Extra Feature: Rewards Medal (Pure CSS) ================= */
 
-/* الحاوية العامة للبطاقة */
-.reward-pro {
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  background: var(--white);
-  padding: 14px;
-  margin: 18px 0;
-  max-width: 520px;
-  position: relative;
-  box-shadow: 0 6px 14px rgba(0,0,0,.06);
+.reward-box {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  padding: 20px;
+  width: 320px;
+  margin: 20px auto;
+  text-align: center;
 }
 
-/* ريبّون جانبي أنيق */
-.reward-pro::before{
-  content:"";
-  position:absolute;
-  left:0; top:14px;
-  width:6px; height:40px;
-  background: linear-gradient(180deg, #9aa8ff, var(--brand));
-  border-top-right-radius:6px;
-  border-bottom-right-radius:6px;
+.reward-title {
+  font-weight: bold;
+  font-size: 1.2em;
+  color: #333;
+  margin-bottom: 5px;
 }
 
-/* رأس البطاقة */
-.reward-head{
-  display:flex; align-items:center;
-}
-.reward-title{ margin:0; font-weight:800; font-size:1.1rem; color:var(--dark); }
-.reward-tier{
-  margin-left:10px;
-  font-size:.8rem; font-weight:700;
-  padding:2px 10px; border-radius:999px;
-  background:#e9ebf1; color:#56606d;
+.reward-tier {
+  font-size: 0.9em;
+  color: #777;
 }
 
-/* ============= الميدالية الدائرية ============= */
-.medal-wrap{
-  display:flex; align-items:center;
-  margin-top:10px;
-}
-.medal{
-  /* عدّلي --val لكل موظف: من 0 إلى 100 */
-  --val: 60;
-  width:96px; height:96px; border-radius:50%;
-  background:
-    conic-gradient(#6a5acd calc(var(--val)*1%), #e9e9f3 0);
-  display:inline-flex; align-items:center; justify-content:center;
-  margin-right:12px;
-  transition: transform .3s ease;
-}
-.medal:hover{ transform: rotate(2deg) scale(1.02); }
-
-.medal-inner{
-  width:76px; height:76px; border-radius:50%;
-  background: var(--white);
-  display:flex; align-items:center; justify-content:center;
-  box-shadow: inset 0 0 0 2px #f0f0f7;
-  text-align:center; padding:6px;
-}
-.medal-inner b{ display:block; font-size:.9rem; color:var(--dark); }
-.medal-inner small{ display:block; font-size:.7rem; color:var(--muted); }
-
-/* شريط نصّي مساعد يمين الميدالية */
-.reward-meta{
-  font-size:.95rem; color:var(--dark);
-}
-.reward-bar{
-  height:10px; background:#ececf5; border-radius:7px; overflow:hidden; margin:6px 0;
-}
-.reward-fill{
-  height:10px; width:60%; background: linear-gradient(90deg,#6a5acd,#8d80ff);
-  border-radius:7px;
+.reward-points {
+  font-size: 1.5em;
+  font-weight: bold;
+  margin: 10px 0;
+  color: #4a4a8a;
 }
 
-/* milestones (شيبس نقاط) */
-.milestones{ margin-top:4px; display:flex; flex-wrap:wrap; }
-.ms{
-  border:1px solid var(--border);
-  border-radius:999px;
-  padding:2px 8px; font-size:.78rem; margin-right:6px; margin-top:6px;
-  color:var(--muted); background:#fff;
+.reward-bar {
+  background-color: #ddd;
+  height: 14px;
+  border-radius: 6px;
+  overflow: hidden;
+  margin: 10px 0;
 }
-.ms.achieved{ background:#eef0ff; color:var(--brand); border-color:#d6dbff; }
 
-/* تمييز المستوى بالألوان */
-.reward-pro.bronze .medal{ background: conic-gradient(#cd7f32 calc(var(--val)*1%), #e9e9f3 0); }
-.reward-pro.gold   .medal{ background: conic-gradient(#d4af37 calc(var(--val)*1%), #e9e9f3 0); }
-.reward-pro.bronze .reward-tier{ background:#f4e3d7; color:#7a4b27; }
-.reward-pro.gold   .reward-tier{ background:#fff4c2; color:#8a6b00; }
+.reward-fill {
+  background-color: #6a5acd;
+  height: 14px;
+  width: 60%; 
+}
+
+.reward-next {
+  font-size: 0.85em;
+  color: #555;
+}
+
 /* Provider dashboard page */
 
 .stats {
