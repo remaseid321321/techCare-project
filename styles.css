@@ -87,10 +87,14 @@ img{
   }
 }
 
-.breadcrumbs{
-  font-size:.9rem;
-  color:var(--muted);
-  padding:8px 0}
+.breadcrumbs a {
+  text-decoration: none; 
+  color: #333; 
+}
+
+.breadcrumbs a:hover {
+  color: #6a5acd; 
+}
 
 /* Footer */
 footer.site-footer{
