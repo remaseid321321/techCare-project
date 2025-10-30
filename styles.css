@@ -323,7 +323,87 @@ ul.nested{margin:0 0 0 16px}
   display: block;
   margin: auto;
 }
+/* ===================== Extra function: Provider Rewards (Staff Profile) ===================== */
 
+.reward-card{
+  border:1px solid var(--border);
+  border-radius:10px;
+  background:var(--white);
+  padding:14px;
+  margin:16px 0;
+  max-width:560px;
+  box-shadow: 0 0 0 rgba(0,0,0,0)؛
+}
+
+
+.reward-head{
+  display:flex;
+  align-items:center;
+  /* لا نستخدم gap */
+}
+.reward-title{
+  margin:0;
+  font-size:18px;
+  font-weight:800;
+  color:var(--dark);
+}
+
+
+.reward-badge{
+  display:inline-block;
+  margin-left:10px;          
+  padding:2px 10px;
+  border-radius:999px;
+  font-size:12px;
+  font-weight:700;
+  line-height:1.6;
+}
+.reward-badge--bronze{ background:#f4e3d7; color:#7a4b27; }
+.reward-badge--silver{ background:#e9ebf1; color:#56606d; }
+.reward-badge--gold  { background:#fff4c2; color:#8a6b00; }
+
+
+.reward-meta{
+  margin-top:8px;
+  font-size:14px;
+  color:var(--muted);
+}
+
+
+.reward-bar{
+  background:#e6e6ef;
+  height:12px;
+  border-radius:8px;
+  overflow:hidden;
+  margin-top:8px;
+}
+.reward-bar .fill{
+  height:12px;
+  background:#6a5acd;     
+  width:0%;
+  border-radius:8px;
+  transition:width .3s ease;
+}
+
+
+.reward-bar .fill.p0{width:0%}
+.reward-bar .fill.p10{width:10%}
+.reward-bar .fill.p20{width:20%}
+.reward-bar .fill.p30{width:30%}
+.reward-bar .fill.p40{width:40%}
+.reward-bar .fill.p50{width:50%}
+.reward-bar .fill.p60{width:60%}
+.reward-bar .fill.p70{width:70%}
+.reward-bar .fill.p80{width:80%}
+.reward-bar .fill.p90{width:90%}
+.reward-bar .fill.p100{width:100%}
+
+
+.reward-hint{
+  margin-top:6px;
+  font-size:12px;
+  color:var(--muted);
+}
 /* Provider dashboard page */
 
 .stats {
