@@ -96,6 +96,12 @@ img{
   color: #6a5acd; 
 }
 
+.breadcrumbs a:visited,
+.breadcrumbs a:active {
+  text-decoration: none;
+  color: #333;
+}
+
 /* Footer */
 footer.site-footer{
   margin-top:40px;
