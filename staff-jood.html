@@ -74,23 +74,39 @@
       </tbody>
     </table>
 
-<div class="points-card" aria-label="Provider points and level">
-  <div class="points-head">
-    <h3 class="points-title">Provider Rewards</h3>
-
-    <span class="badge silver">Silver</span>
+<!-- Extra Feature: Creative Rewards Card (Pure CSS) -->
+<div class="reward-pro silver">
+  <div class="reward-head">
+    <h3 class="reward-title">Provider Rewards</h3>
+    <span class="reward-tier">Silver</span>
   </div>
 
+  <div class="medal-wrap">
+    <!-- عدّلي --val للنسبة: مثال 60 يعني 60% -->
+    <div class="medal" style="--val:60">
+      <div class="medal-inner">
+        <b>120 pts</b>
+        <small>to 200</small>
+      </div>
+    </div>
 
-  <div class="points-meta"><strong>Points:</strong> 120</div>
+    <div class="reward-meta">
+      <div><strong>Points:</strong> 120</div>
+      <div class="reward-bar">
+        <!-- عدّلي العرض ليتوافق مع --val -->
+        <div class="reward-fill" style="width:60%"></div>
+      </div>
+      <div class="small">Next level at 200 points</div>
 
-  <div class="progress-wrap" aria-hidden="true">
-
-    <div class="progress p60"></div>
+      <!-- milestones: حطي achieved للمنجز -->
+      <div class="milestones">
+        <span class="ms achieved">50</span>
+        <span class="ms achieved">100</span>
+        <span class="ms">200</span>
+        <span class="ms">300</span>
+      </div>
+    </div>
   </div>
-
-
-  <div class="level-hint">Next level at 200 points</div>
 </div>
   </section>
 </main>
