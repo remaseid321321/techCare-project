@@ -1,8 +1,4 @@
-/* IT312 Phase 2 – TechCare Theme
-   - HTML5 + CSS only (no JS)
-   - Flexbox used for navigation, service cards, dashboards, and team strip
-   - Tables with borders + rowspan/colspan in staff profile
-*/
+
 :root{
   --brand: #002147; 
   --dark:#222;
