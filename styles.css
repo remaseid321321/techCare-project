@@ -8,16 +8,23 @@
   --border:#ddd;
 }
 
-*{box-sizing:border-box}
-html,body{margin:0;padding:0;font-family:Arial,Helvetica,sans-serif;color:var(--dark);background:var(--light)}
-img{max-width:100%;display:block}
+*{
+  box-sizing:border-box}
+
+html,body
+{margin:0;
+ padding:0;
+ font-family:Arial,Helvetica,sans-serif;
+ color:var(--dark);
+ background:var(--light)}
+
+img{
+  max-width:100%;
+  display:block}
 
 .container{width:90%;max-width:1200px;margin:0 auto}
 
 /* Header + Navigation (Flexbox) */
-/* ====== Custom Header & Navigation Styles ====== */
-
-/* ====== Header Layout with Navbar on the Right ====== */
 
 .header-flex {
   display: flex;
