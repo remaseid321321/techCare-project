@@ -5,38 +5,36 @@
   <title>Home – TechCare</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="styles.css">
+  <script defer src="script.js"></script>
 </head>
 
-<body class="light">
+<body>
+
+<!-- 🌙☀️ Theme Switcher -->
+<button id="themeToggle" class="theme-btn">🌙</button>
+
+<!-- 🔼 Back to Top -->
+<button id="backToTop" class="backTop">↑</button>
 
 <header class="site-header">
   <div class="container header-flex">
 
-    <!-- Logo + Title -->
     <div class="header-left">
       <img src="images/logo.png" alt="TechCare Logo" class="logo">
-      <div class="title">TechCare</div>
+      <div class="title">TechCare </div>
     </div>
 
-    <!-- Navigation -->
     <div class="site-nav">
-      <a href="index.html" class="active">Home</a>
+      <a href="index.html">Home</a>
       <a href="services.html">Services</a>
       <a href="AboutUs.html">About Us</a>
       <a href="customer-dashboard.html">Customer Dashboard</a>
       <a href="provider-dashboard.html">Provider Dashboard</a>
     </div>
 
-    <!-- Theme Toggle -->
-    <div class="theme-toggle">
-      <span id="lightIcon" class="theme-icon">🌞</span>
-      <span id="darkIcon" class="theme-icon">🌙</span>
-    </div>
-
   </div>
 </header>
 
-<!-- Breadcrumbs -->
 <div class="container breadcrumbs">
   <a href="index.html">Home</a>
 </div>
@@ -44,7 +42,7 @@
 
 <main class="container">
 
-  <!-- Vision -->
+  <!-- Vision & Mission -->
   <section class="section">
     <h2 class="center">our vision & Mission</h2>
     <div style="text-align: center;">
@@ -60,10 +58,9 @@
   <!-- Services -->
   <section class="section">
     <h2 class="center">Our Services</h2>
-    
+
     <div class="services-row">
 
-      <!-- Service 1 -->
       <article class="service-card">
         <div class="thumb"><img src="images/quick.jpg" alt="software installation"></div>
         <div class="pad">
@@ -73,15 +70,12 @@
         <div class="service-info-hover">
           <div>
             <strong>software installation</strong>
-            <p>
-              Seamless installation, setup, and optimization of software for all your devices and systems.
-              We ensure everything runs smoothly, securely, and is tailored to your specific needs.
-            </p>
+            <p>Seamless installation, setup, and optimization of software for all your devices and systems.
+            We ensure everything runs smoothly, securely, and is tailored to your specific needs.</p>
           </div>
         </div>
       </article>
 
-      <!-- Service 2 -->
       <article class="service-card">
         <div class="thumb"><img src="images/homeNetwork.jpg" alt="data recovery"></div>
         <div class="pad">
@@ -91,16 +85,13 @@
         <div class="service-info-hover">
           <div>
             <strong>data recovery</strong>
-            <p>
-              Reliable data recovery for all types of storage devices — hard drives, SSDs, USBs,
-              memory cards, and more. We recover lost, deleted, or corrupted data with precision
-              and confidentiality.
-            </p>
+            <p>Reliable data recovery for all types of storage devices — hard drives, SSDs, USBs,
+            memory cards, and more. We recover lost, deleted, or corrupted data with precision
+            and confidentiality.</p>
           </div>
         </div>
       </article>
 
-      <!-- Service 3 -->
       <article class="service-card">
         <div class="thumb"><img src="images/deviceRepair.jpg" alt="Device Repair"></div>
         <div class="pad">
@@ -110,9 +101,7 @@
         <div class="service-info-hover">
           <div>
             <strong>Device Repair</strong>
-            <p>
-              expert repair service for smartphones, tablets, and laptops with genuine parts.
-            </p>
+            <p>expert repair service for smartphones, tablets, and laptops with genuine parts.</p>
           </div>
         </div>
       </article>
@@ -121,16 +110,16 @@
   </section>
 
 
-  <!-- Customer Reviews -->
+  <!-- Reviews -->
   <section class="section">
     <h2 class="center">Customer Reviews</h2>
+
     <div class="reviews">
 
       <div class="review">
         <div class="badge">★★★★★</div>
         <p class="service-name">Data Recovery</p>
-        <p>"Tech Care transformed our IT infrastructure with minimal downtime.
-          Their team is responsive and technically excellent."</p>
+        <p>"Tech Care transformed our IT infrastructure with minimal downtime. Their team is responsive and technically excellent."</p>
         <p>- Noura</p>
       </div>
 
@@ -144,7 +133,7 @@
       <div class="review">
         <div class="badge">★★★★★</div>
         <p class="service-name">Device Repair</p>
-        <p>"The cloud migration was seamless. Tech Care's expertise saved us both time and money while improving performance."</p>
+        <p>"The cloud migration was seamless. TechCare's expertise saved us both time and money while improving performance."</p>
         <p>- Sara</p>
       </div>
 
@@ -156,7 +145,7 @@
   <section class="section">
     <h2 class="center">Tech Tips</h2>
 
-    <div class="flex gap-16 tech-tips-row" style="flex-wrap: nowrap; justify-content: center; overflow-x: auto;">
+    <div class="flex gap-16" style="flex-wrap: nowrap; justify-content: center; overflow-x: auto;">
 
       <div class="item min-220" style="display: flex; align-items: flex-start; gap: 10px;">
         <img src="images/update-icon.png" alt="Update Icon" width="24" height="24">
@@ -185,28 +174,20 @@
       </div>
 
     </div>
+
   </section>
 
 </main>
 
 
-<!-- Footer -->
 <footer class="site-footer">
   <div class="container foot-wrap">
     <div>© 2025 TechCare. All rights reserved.</div>
-    <div>
-      Contact: support@techcare.com • +966-55-5555555
-      <span id="clock"></span>
-    </div>
+    <div>Contact: support@techcare.com • +966-55-5555555</div>
+    <div id="clock"></div>
   </div>
 </footer>
 
-
-<!-- Back to Top -->
-<button id="topBtn">Top ↑</button>
-
-<!-- JS File -->
-<script src="script.js"></script>
 
 </body>
 </html>
