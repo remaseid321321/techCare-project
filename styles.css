@@ -981,27 +981,4 @@ background:var(--card-bg);
 #themeSwitch:checked + .switch::after {
   transform: translateX(24px);
 }
-  /* ============================================================
-   FIX: Title + Service Text in Dark Mode
-============================================================= */
-
-/* يخلي عنوان TechCare واضح */
-.dark-mode .title {
-    color: #ffffff !important;
-}
-
-/* يخلي اسم الخدمة واضح */
-.dark-mode .service-item h3 {
-    color: #ffffff !important;
-}
-
-/* يخلي وصف الخدمة واضح */
-.dark-mode .service-item p {
-    color: #dddddd !important;
-}
-
-/* يخلي price واضح */
-.dark-mode .service-item .meta {
-    color: #ffffff !important;
-}
-}
+  
