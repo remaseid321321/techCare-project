@@ -15,19 +15,34 @@ document.addEventListener("DOMContentLoaded", function () {
 /* ============================================================
    2) THEME TOGGLE — يعمل فقط في الصفحة الرئيسية
 ============================================================ */
-const themeSwitch = document.getElementById("themeSwitch");
+// ===============================
+// Theme Toggle (Dark / Light)
+// ===============================
 
-if (themeSwitch) {
-    themeSwitch.addEventListener("change", () => {
-        if (themeSwitch.checked) {
-            document.body.classList.add("dark");
-            localStorage.setItem("theme", "dark");
-        } else {
-            document.body.classList.remove("dark");
-            localStorage.setItem("theme", "light");
-        }
-    });
+// زر التبديل
+const themeButton = document.getElementById("themeToggle");
+
+// إذا فيه ثيم محفوظ من قبل – طبّقيه
+if (localStorage.getItem("theme") === "dark") {
+    document.body.classList.add("dark");
+    themeButton.textContent = "☀️";
 }
+
+// عند الضغط على الزر
+themeButton.addEventListener("click", () => {
+
+    document.body.classList.toggle("dark");
+
+    // إذا صار دارك
+    if (document.body.classList.contains("dark")) {
+        themeButton.textContent = "☀️";      // يطلع رمز الشمس
+        localStorage.setItem("theme", "dark");
+    } 
+    else {
+        themeButton.textContent = "🌙";       // يطلع رمز القمر
+        localStorage.setItem("theme", "light");
+    }
+});
 
 /* ============================================================
    3) BACK TO TOP BUTTON — (الصفحة الرئيسية فقط)
