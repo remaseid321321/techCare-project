@@ -982,3 +982,82 @@ background:var(--card-bg);
   transform: translateX(24px);
 }
   
+/* ============================================================
+   UNIVERSAL DARK MODE FIX (WORKS FOR ALL PAGES)
+============================================================= */
+
+.dark {
+  background: #111 !important;
+  color: #f5f5f5 !important;
+}
+
+/* Sections + Cards */
+.dark .section,
+.dark .service-card,
+.dark .service-item,
+.dark .review,
+.dark .item,
+.dark .team-card,
+.dark .profile-table,
+.dark .stat-box,
+.dark table,
+.dark .service-item,
+.dark .pad {
+  background: #1b1b1b !important;
+  border-color: #444 !important;
+}
+
+/* Titles + Regular Text */
+.dark h1,
+.dark h2,
+.dark h3,
+.dark h4,
+.dark h5,
+.dark p,
+.dark a,
+.dark span,
+.dark .title,
+.dark .service-name,
+.dark .meta,
+.dark .small {
+  color: #ffffff !important;
+}
+
+/* Navigation */
+.dark .site-nav a {
+  color: #cdd9ff !important;
+}
+
+.dark .site-nav a:hover {
+  color: white !important;
+}
+
+/* Breadcrumbs */
+.dark .breadcrumbs a {
+  color: #ddd !important;
+}
+
+/* Footer */
+.dark footer {
+  background: #1a1a1a !important;
+  color: #ccc !important;
+}
+
+/* Forms + Inputs */
+.dark input,
+.dark textarea,
+.dark select {
+  background: #222 !important;
+  color: white !important;
+  border-color: #555 !important;
+}
+
+/* Service images overlay */
+.dark .service-info-hover {
+  background: rgba(0, 0, 0, 0.7) !important;
+}
+
+/* Fix for TechCare title */
+.dark .title {
+  color: #fff !important;
+}
