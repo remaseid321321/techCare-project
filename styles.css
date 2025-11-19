@@ -893,18 +893,23 @@ background:var(--card-bg);
 /* ===================================================================
    BACK TO TOP BUTTON
 =================================================================== */
-#topBtn {
-  position:fixed;
-  bottom:25px;
-  right:25px;
-  padding:10px 16px;
-  background:var(--brand);
-  color:#fff;
-  border:none;
-  border-radius:6px;
-  cursor:pointer;
-  display:none;
-  font-weight:700;
+#backToTop {
+    position: fixed;
+    top: 20px;      /* هنا نخليه فوق */
+    left: 50%;      /* بالنص بالعرض */
+    transform: translateX(-50%); /* ضبط التوسيط الحقيقي */
+    background: var(--brand);
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 8px;
+    font-size: 20px;
+    cursor: pointer;
+    display: none; /* مخفي إلى أن يبدأ المستخدم بالتمرير */
+    z-index: 9999;
+}
+#backToTop:hover {
+    background: #333;
 }
 
 /* ===================================================================
