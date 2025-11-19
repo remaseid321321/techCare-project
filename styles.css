@@ -1061,18 +1061,19 @@ background:var(--card-bg);
 .dark .title {
   color: #fff !important;
 }
-  /* ===== Dark Mode: Full Black Service Boxes ===== */
+  /* ============================================
+   DARK MODE — Fix service cards (FULL BLACK)
+===============================================*/
 
 .dark .service-card,
 .dark .service-item {
-    background: #000 !important;          /* يخلي الصندوق أسود بالكامل */
-    border: 1px solid #333 !important;    /* بوردر خفيف نفس الصورة */
-    box-shadow: 0 0 6px rgba(0,0,0,0.4);  /* يضيف لمسة ظل بسيطة مثل اللي ظاهر عندك */
+    background: #000 !important;
+    border: 1px solid #444 !important;
 }
 
 .dark .service-card .pad,
 .dark .service-item .pad {
-    background: #000 !important;          /* يخلي منطقة النص أسود */
+    background: #000 !important;
 }
 
 .dark .service-card h3,
@@ -1080,6 +1081,10 @@ background:var(--card-bg);
 .dark .service-item h3,
 .dark .service-item p,
 .dark .service-item .meta {
-    color: #fff !important;               /* نص أبيض وواضح */
+    color: #fff !important;
 }
 
+.dark .service-card img,
+.dark .service-item img {
+    filter: brightness(0.7) !important;
+}
