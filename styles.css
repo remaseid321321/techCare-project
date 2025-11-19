@@ -933,6 +933,13 @@ background:var(--card-bg);
     width:100%;
     max-width:350px;
   }
+ 
+
+  .tech-tips-row .item {
+    width: 100%;
+    max-width: 350px;
+  }
+
   /* ===== Theme Switch (iPhone Style) ===== */
 .theme-toggle {
   position: fixed;
