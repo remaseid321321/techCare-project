@@ -628,7 +628,7 @@ table {
 =================================================================== */
 body.dark {
   --bg-color: #1d1f22;
-  --text-color: #f5f5f5;
+  --text-color: white;
   --card-bg: #2a2d31;
   --border: #444;
 }
