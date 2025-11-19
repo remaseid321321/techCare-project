@@ -1,60 +1,66 @@
-/* ===========================================================
-   REAL-TIME CLOCK IN FOOTER
-=========================================================== */
-function updateClock() {
-  const now = new Date();
-  const formatted =
-    now.getFullYear() +
-    "-" +
-    String(now.getMonth() + 1).padStart(2, "0") +
-    "-" +
-    String(now.getDate()).padStart(2, "0") +
-    " " +
-    now.toLocaleTimeString();
+/* ================================
+   🌙 Theme Switcher (Light / Dark)
+   ================================ */
 
-  const clockSpan = document.getElementById("clock");
-  if (clockSpan) clockSpan.textContent = " | " + formatted;
+// نجلب زر القمر/الشمس
+const themeToggle = document.getElementById("theme-toggle");
+
+// إذا فيه ثيم محفوظ من قبل – طبقيه
+const savedTheme = localStorage.getItem("theme");
+
+if (savedTheme === "dark") {
+    document.body.classList.add("dark");
+}
+
+// عند الضغط على زر الثيم
+themeToggle.addEventListener("click", () => {
+
+    document.body.classList.toggle("dark");
+
+    // نحفظ الثيم المختار
+    if (document.body.classList.contains("dark")) {
+        localStorage.setItem("theme", "dark");
+    } else {
+        localStorage.setItem("theme", "light");
+    }
+});
+    
+
+
+/* ================================
+   Back to Top Button
+   ================================ */
+const backToTopBtn = document.getElementById("backToTop");
+
+window.addEventListener("scroll", () => {
+    if (window.scrollY > 300) {
+        backToTopBtn.style.display = "block";
+    } else {
+        backToTopBtn.style.display = "none";
+    }
+});
+
+backToTopBtn.addEventListener("click", () => {
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+});
+
+
+
+/* ================================
+   Real-Time Clock in Footer
+   ================================ */
+
+function updateClock() {
+    const clock = document.getElementById("clock");
+
+    const now = new Date();
+    const timeString = now.toLocaleTimeString();
+
+    clock.textContent = timeString;
 }
 
 setInterval(updateClock, 1000);
-updateClock();
-
-/* ===========================================================
-   BACK TO TOP BUTTON
-=========================================================== */
-const topBtn = document.getElementById("topBtn");
-
-window.onscroll = function () {
-  if (window.scrollY > 300) topBtn.style.display = "block";
-  else topBtn.style.display = "none";
-};
-
-topBtn.onclick = function () {
-  window.scrollTo({ top: 0, behavior: "smooth" });
-};
-
-/* ===========================================================
-   THEME SWITCHER (SUN / MOON)
-=========================================================== */
-document.addEventListener("DOMContentLoaded", function () {
-
-  const lightIcon = document.getElementById("lightIcon");
-  const darkIcon = document.getElementById("darkIcon");
-
-  function applyTheme(theme) {
-    document.body.className = theme;
-    localStorage.setItem("theme", theme);
-  }
-
-  if (lightIcon) {
-    lightIcon.onclick = () => applyTheme("light");
-  }
-
-  if (darkIcon) {
-    darkIcon.onclick = () => applyTheme("dark");
-  }
-
-  const savedTheme = localStorage.getItem("theme") || "light";
-  applyTheme(savedTheme);
-
-});
+updateClock(); 
