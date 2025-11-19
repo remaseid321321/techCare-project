@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const savedTheme = localStorage.getItem("theme");
 
     if (savedTheme === "dark") {
-        document.body.classList.add("dark-mode");
+        document.body.classList.add("dark");
 
         const themeSwitch = document.getElementById("themeSwitch");
         if (themeSwitch) themeSwitch.checked = true;
@@ -20,10 +20,10 @@ const themeSwitch = document.getElementById("themeSwitch");
 if (themeSwitch) {
     themeSwitch.addEventListener("change", () => {
         if (themeSwitch.checked) {
-            document.body.classList.add("dark-mode");
+            document.body.classList.add("dark");
             localStorage.setItem("theme", "dark");
         } else {
-            document.body.classList.remove("dark-mode");
+            document.body.classList.remove("dark");
             localStorage.setItem("theme", "light");
         }
     });
