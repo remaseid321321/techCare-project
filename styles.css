@@ -721,59 +721,8 @@ img {
     cursor: pointer;
     z-index: 9999;
 }
-}
-/* ================= DARK MODE FIX ================= */
 
-/* ===== Dark Mode ===== */
 
-.dark-mode {
-  background: #111;
-  color: #eee;
-}
-
-/* Sections / cards */
-.dark-mode .section,
-.dark-mode .service-card,
-.dark-mode .review,
-.dark-mode .item {
-  background: #1b1b1b;
-  border-color: #555;
-}
-
-/* Texts */
-.dark-mode h2,
-.dark-mode h3,
-.dark-mode p,
-.dark-mode .small,
-.dark-mode .service-name {
-  color: #eee;
-}
-
-/* Navigation */
-.dark-mode .site-nav a {
-  color: #c9d8ff;
-}
-
-.dark-mode .site-nav a:hover {
-  color: #fff;
-}
-
-/* Breadcrumbs */
-.dark-mode .breadcrumbs a {
-  color: #bbb;
-}
-
-/* Footer */
-.dark-mode footer {
-  background: #1b1b1b;
-  color: #bbb;
-}
-
-/* Back-to-top button */
-.dark-mode #backToTop {
-  background: #6a5acd;
-  color: white;
-}
 /* ===================================================================
    BREADCRUMBS
 =================================================================== */
