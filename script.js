@@ -1,53 +1,44 @@
-/* ================================
-   🌙 Theme Switcher (Light / Dark)
-   ================================ */
+// ===================== Theme Toggle =====================
+const themeBtn = document.getElementById("themeToggle");
+const body = document.body;
 
-// نجلب زر القمر/الشمس
-const themeToggle = document.getElementById("theme-toggle");
-
-// إذا فيه ثيم محفوظ من قبل – طبقيه
-const savedTheme = localStorage.getItem("theme");
+// اقرأ الثيم من الذاكرة
+let savedTheme = localStorage.getItem("theme");
 
 if (savedTheme === "dark") {
-    document.body.classList.add("dark");
+    body.classList.add("dark-mode");
+    themeBtn.textContent = "☀️";
+} else {
+    body.classList.remove("dark-mode");
+    themeBtn.textContent = "🌙";
 }
 
-// عند الضغط على زر الثيم
-themeToggle.addEventListener("click", () => {
+themeBtn.onclick = function () {
+    body.classList.toggle("dark-mode");
 
-    document.body.classList.toggle("dark");
-
-    // نحفظ الثيم المختار
-    if (document.body.classList.contains("dark")) {
+    if (body.classList.contains("dark-mode")) {
+        themeBtn.textContent = "☀️";
         localStorage.setItem("theme", "dark");
     } else {
+        themeBtn.textContent = "🌙";
         localStorage.setItem("theme", "light");
     }
-});
-    
+};
 
+// ===================== Back to Top =====================
+const topBtn = document.getElementById("backToTop");
 
-/* ================================
-   Back to Top Button
-   ================================ */
-const backToTopBtn = document.getElementById("backToTop");
-
-window.addEventListener("scroll", () => {
-    if (window.scrollY > 300) {
-        backToTopBtn.style.display = "block";
+window.onscroll = function () {
+    if (document.documentElement.scrollTop > 200) {
+        topBtn.style.display = "block";
     } else {
-        backToTopBtn.style.display = "none";
+        topBtn.style.display = "none";
     }
-});
+};
 
-backToTopBtn.addEventListener("click", () => {
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-    });
-});
-
-
+topBtn.onclick = function () {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+};
 
 /* ================================
    Real-Time Clock in Footer
