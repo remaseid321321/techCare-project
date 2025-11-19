@@ -36,16 +36,25 @@ topBtn.onclick = function () {
 /* ===========================================================
    THEME SWITCHER (SUN / MOON)
 =========================================================== */
-const lightIcon = document.getElementById("lightIcon");
-const darkIcon = document.getElementById("darkIcon");
+document.addEventListener("DOMContentLoaded", function () {
 
-function applyTheme(theme) {
-  document.body.className = theme;
-  localStorage.setItem("theme", theme);
-}
+  const lightIcon = document.getElementById("lightIcon");
+  const darkIcon = document.getElementById("darkIcon");
 
-lightIcon.onclick = () => applyTheme("light");
-darkIcon.onclick = () => applyTheme("dark");
+  function applyTheme(theme) {
+    document.body.className = theme;
+    localStorage.setItem("theme", theme);
+  }
 
-const savedTheme = localStorage.getItem("theme") || "light";
-applyTheme(savedTheme);
+  if (lightIcon) {
+    lightIcon.onclick = () => applyTheme("light");
+  }
+
+  if (darkIcon) {
+    darkIcon.onclick = () => applyTheme("dark");
+  }
+
+  const savedTheme = localStorage.getItem("theme") || "light";
+  applyTheme(savedTheme);
+
+});
