@@ -1061,3 +1061,6 @@ background:var(--card-bg);
 .dark .title {
   color: #fff !important;
 }
+  .dark .service-item .meta {
+    color: #fff !important;
+}
