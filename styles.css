@@ -1,31 +1,32 @@
-
-:root{
-  --brand: #002147; 
-  --dark:#222;
-  --muted:#666;
-  --light:#f7f7f9;
-  --white:#fff;
-  --border:#ddd;
+/* ============================================================
+   GLOBAL RESET
+============================================================= */
+* {
+  box-sizing: border-box;
 }
 
-*{
-  box-sizing:border-box}
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f7f7f9;
+  color: #222;
+}
 
-html,body
-{margin:0;
- padding:0;
- font-family:Arial,Helvetica,sans-serif;
- color:var(--dark);
- background:var(--light)}
+img {
+  max-width: 100%;
+  display: block;
+}
 
-img{
-  max-width:100%;
-  display:block}
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
 
-.container{width:90%;max-width:1200px;margin:0 auto}
-
-/* Header + Navigation (Flexbox) */
-
+/* ============================================================
+   HEADER
+============================================================= */
 .header-flex {
   display: flex;
   align-items: center;
@@ -39,7 +40,6 @@ img{
   display: flex;
   align-items: center;
   gap: 12px;
-  flex-shrink: 0;
 }
 
 .logo {
@@ -51,10 +51,12 @@ img{
 .title {
   font-size: 1.25rem;
   font-weight: 700;
-  color: var(--dark);
+  color: #222;
 }
 
-
+/* ============================================================
+   NAVIGATION
+============================================================= */
 .site-nav {
   display: flex;
   gap: 16px;
@@ -62,7 +64,7 @@ img{
 }
 
 .site-nav a {
-  color: var(--brand);
+  color: #002147;
   text-decoration: none;
   font-weight: 600;
   padding: 8px 12px;
@@ -72,113 +74,106 @@ img{
   text-decoration: underline;
 }
 
-/* ====== Responsive on small screens ====== */
-@media (max-width: 700px) {
-  .header-flex {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .site-nav {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 8px;
-    margin-top: 10px;
-  }
-}
-
+/* ============================================================
+   BREADCRUMBS
+============================================================= */
 .breadcrumbs a {
-  text-decoration: none; 
-  color: #333; 
+  color: #333;
+  text-decoration: none;
 }
 
 .breadcrumbs a:hover {
-  color: #6a5acd; 
+  color: #6a5acd;
 }
 
-
-
-/* Footer */
-footer.site-footer{
-  margin-top:40px;
-  background:var(--white);
-  border-top:1px solid var(--border);
-  padding:16px 0;
-  color:var(--muted);
-  font-size:.95rem}
-
-
-footer .foot-wrap{
-  display:flex;
-  justify-content:space-between;
-  gap:16px;
-  flex-wrap:wrap}
-
-/* Sections & cards */
-.section{
-  background:#fff;
-  border:1px solid var(--border);
-  border-radius:8px;
-  padding:16px;
-  margin:24px 0}
-
-.center{
-  text-align:center}
-.small{
-  font-size:.9rem;
-  color:var(--muted)}
-
-.badge{
-  display:inline-block;
-  background:var(--brand);
-  color:#fff;
-  border-radius:999px;
-  padding:4px 10px;font-size:.85rem}
-
-/* Home: services (Flex row wrap) + hover info */
-
-.services-row{
-              display:flex;
-              gap:16px;
-              flex-wrap:wrap
-             }
-
-.service-card{
-              position:relative;
-              background:#fff;
-              border:1px solid var(--border);
-              border-radius:8px;
-              min-width:260px;
-              flex:1 1 300px;
-              overflow:hidden
-             }
-
-.service-card .thumb{
-   height:160px;
-   overflow:hidden
+/* ============================================================
+   THEME TOGGLE BUTTON (SUN / MOON)
+============================================================= */
+#themeToggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: #002147;
+  color: white;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 18px;
+  cursor: pointer;
+  z-index: 9999;
 }
-.service-card .pad{
-   padding:12px
+/* ============================================================
+   SECTIONS (الصناديق الكبيرة في الصفحات)
+============================================================= */
+.section {
+  background: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 16px;
+  margin: 24px 0;
 }
-.service-info-hover{
-  position:absolute;
-   top: 0;
-   right: 0;
-   bottom: 0;
-   left: 0;
-   background:rgba(0,0,0,.65);
-   color:#fff;
-   padding:16px;
-  opacity:0;
-   transition:.25s;
-   display:flex;
-   align-items:center;
-   justify-content:center;
-   text-align:center
-}
-.service-card:hover .service-info-hover{opacity:1}
 
-/* Reviews (Flex wrap) */
+.center {
+  text-align: center;
+}
+
+.small {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+/* ============================================================
+   SERVICES (HOME PAGE) — ثلاث بطاقات
+============================================================= */
+
+.services-row {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.service-card {
+  position: relative;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  min-width: 260px;
+  flex: 1 1 300px;
+  overflow: hidden;
+}
+
+.service-card .thumb {
+  height: 160px;
+  overflow: hidden;
+}
+
+.service-card .pad {
+  padding: 12px;
+}
+
+/* Hover info (الوصف اللي يظهر عند تمرير الفارة) */
+.service-info-hover {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+  color: #ffffff;
+  padding: 16px;
+  opacity: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  transition: 0.25s;
+}
+
+.service-card:hover .service-info-hover {
+  opacity: 1;
+}
+
+/* ============================================================
+   REVIEWS (مراجعات العملاء)
+============================================================= */
+
 .reviews {
   display: flex;
   gap: 16px;
@@ -187,557 +182,103 @@ footer .foot-wrap{
 
 .review {
   background: #fff;
-  border: 1px solid var(--border);
+  border: 1px solid #ddd;
   border-radius: 8px;
   padding: 12px;
   min-width: 260px;
   flex: 1;
 }
 
-
 .review .badge {
-  color: #f5a623;
-  font-size: 1.2rem;
+  display: inline-block;
+  background: #002147;
+  color: white;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 0.85rem;
   margin-bottom: 8px;
 }
 
-/* Generic Flex helpers */
-.flex{display:flex}
-.flex-wrap{flex-wrap:wrap}
-.gap-16{gap:16px}
-.col{flex-direction:column}
-.item{background:#fff;border:1px solid var(--border);border-radius:8px;padding:16px}
-.min-220{min-width:220px}
+/* ============================================================
+   TECH TIPS (ثلاث نصائح)
+============================================================= */
 
-/* Forms */
-form{display:flex;flex-direction:column;gap:12px}
-label{font-weight:600}
-input[type="text"],input[type="email"],input[type="date"],input[type="number"],textarea,select{
-  width:100%;padding:10px;border:1px solid var(--border);border-radius:6px;background:#fff
-}
-textarea{min-height:110px;resize:vertical}
-button, input[type="submit"]{
-  background:var(--brand);color:#fff;border:none;border-radius:6px;padding:10px 14px;font-weight:700;cursor:pointer
-}
-button.secondary{background:#444}
-button:disabled{opacity:.6;cursor:not-allowed}
-
-/* Services page list (Flex wrap) */
-  .top-bar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 1.5rem;
-      flex-wrap: wrap;
-    }
-
-    .sort-select {
-      min-width: 180px;
-      font-size: 0.9rem;
-    }
-
-    .search-bar {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .search-bar input[type="text"] {
-      padding: 5px 10px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-    }
-
-    .services-list {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 20px;
-    }
-
-    .service-item {
-      border: 1px solid #ddd;
-      border-radius: 8px;
-      overflow: hidden;
-      background-color: #f9f9f9;
-    }
-
-    .service-item img {
-      width: 100%;
-      height: 160px;
-      object-fit: cover;
-    }
-
-    .pad {
-      padding: 10px;
-    }
-
-    .meta {
-      margin-top: 10px;
-      font-size: 0.9rem;
-      color: #333;
-    }
-
-    .breadcrumbs {
-      margin-top: 1rem;
-      margin-bottom: 1rem;
-    }
-.services-list {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr); 
-  gap: 20px;
-  margin-top: 20px;
+.tech-tips-row {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
 }
 
-.service-item {
+.item {
+  background: #fff;
   border: 1px solid #ddd;
   border-radius: 8px;
-  overflow: hidden;
-  background-color: #f9f9f9;
+  padding: 16px;
+  min-width: 220px;
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
 }
+/* ============================================================
+   FOOTER
+============================================================= */
 
-.service-item img {
-  width: 100%;
-  height: 180px;
-  object-fit: cover;
-}
-
-.pad {
-  padding: 10px;
-}
-
-/* About: horizontal scroll team strip */
-.team-strip{display:flex;gap:16px;overflow-x:auto;padding-bottom:6px}
-.team-card{flex:0 0 220px;background:#fff;border:1px solid var(--border);border-radius:8px;overflow:hidden}
-
-/* Profile table (rowspan/colspan + nested lists) */
-.profile-table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--border)}
-.profile-table th, .profile-table td{border:1px solid var(--border);padding:10px;vertical-align:top}
-.profile-table thead th{background:#fafafa}
-.profile-table .name{font-size:1.1rem;font-weight:800}
-ul.nested{margin:0 0 0 16px}
-.profile-table {
-  width: 100%;
-  border-collapse: collapse;
+footer.site-footer {
+  margin-top: 40px;
   background: #fff;
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  overflow: hidden;
-  margin: 20px 0;
+  border-top: 1px solid #ddd;
+  padding: 16px 0;
+  color: #666;
+  font-size: 0.95rem;
 }
 
-.profile-table th, 
-.profile-table td {
-  border: 1px solid var(--border);
-  padding: 12px;
-  vertical-align: top;
-  text-align: left;
+footer .foot-wrap {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
 }
 
-.profile-table thead th {
-  background: var(--brand);
+/* ============================================================
+   BACK TO TOP BUTTON
+============================================================= */
+
+#backToTop {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #002147;
   color: white;
-  font-weight: 700;
-}
-
-.profile-table .name {
-  font-size: 1.2rem;
-  font-weight: 800;
-  color: var(--dark);
-}
-
-.profile-table ul.nested {
-  margin: 0 0 0 20px;
-  padding-left: 0;
-  list-style-type: disc;
-}
-
-.profile-table ul.nested li {
-  margin-bottom: 6px;
-}
-
-/* Image styling in profile */
-.profile-photo {
-  width: 180px;
+  border: none;
+  padding: 10px 18px;
   border-radius: 8px;
-  display: block;
-  margin: auto;
-}
-/* ===================== Extra function: Provider Rewards (Staff Profile) ===================== */
-
-
-.reward-box {
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  background-color: #f9f9f9;
-  padding: 20px;
-  width: 320px;
-  margin: 20px auto;
-  text-align: center;
+  font-size: 20px;
+  cursor: pointer;
+  display: none; 
+  z-index: 9999;
 }
 
-.reward-title {
-  font-weight: bold;
-  font-size: 1.2em;
-  color: #333;
-  margin-bottom: 5px;
+#backToTop:hover {
+  background: #333;
 }
 
-.reward-tier {
-  font-size: 0.9em;
-  color: #777;
-}
-
-.reward-points {
-  font-size: 1.5em;
-  font-weight: bold;
-  margin: 10px 0;
-  color: #4a4a8a;
-}
-
-.reward-bar {
-  background-color: #ddd;
-  height: 14px;
-  border-radius: 6px;
-  overflow: hidden;
-  margin: 10px 0;
-}
-
-.reward-fill {
-  background-color: #6a5acd;
-  height: 14px;
-  width: 60%; 
-}
-
-.reward-next {
-  font-size: 0.85em;
-  color: #555;
-}
-
-/* Provider dashboard page */
-
-.stats {
-      display: flex;
-      gap: 16px;
-      flex-wrap: wrap;
-      margin-bottom: 24px;
-    }
-    .stat-box {
-      flex: 1 1 250px;
-      background: #fff;
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 20px;
-      text-align: center;
-    }
-    .stat-icon {
-      font-size: 2rem;
-      color: var(--brand);
-      margin-bottom: 8px;
-      display: block;
-    }
-    .stat-box h3 {
-      font-size: 1.1rem;
-      color: var(--muted);
-      margin: 4px 0;
-    }
-    .stat-box .number {
-      font-size: 1.8rem;
-      font-weight: 800;
-      color: var(--brand);
-    }
-
-    /* Table */
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      background: #fff;
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      overflow: hidden;
-    }
-    th, td {
-      padding: 12px;
-      border-bottom: 1px solid var(--border);
-      text-align: left;
-      font-size: 0.95rem;
-    }
-    th {
-      background: #f9f9f9;
-      text-transform: uppercase;
-      font-weight: 700;
-    }
-    th:last-child, td:last-child {
-      text-align: right;
-    }
-    .action-btn {
-      color: var(--brand);
-      text-decoration: none;
-      font-weight: 600;
-      margin-left: 10px;
-    }
-
-    /* Bottom buttons */
-    .dashboard-buttons {
-      display: flex;
-      justify-content: center;
-      gap: 16px;
-      margin-top: 24px;
-    }
-    .dashboard-buttons a {
-      background: var(--dark);
-      color: #fff;
-      text-decoration: none;
-      padding: 10px 18px;
-      border-radius: 6px;
-      font-weight: 600;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .dashboard-buttons a:hover {
-      background: var(--brand);
-    }
-    .dashboard-buttons a span.icon {
-      font-size: 1.1rem;
-      color: #fff;
-    }
-
-
-
-
-
-/*Manage staff page*/
-
-table.staff-table {
-      width: 100%;
-      border-collapse: collapse;
-      background: #fff;
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      overflow: hidden;
-      margin-bottom: 16px;
-    }
-    .staff-table th, .staff-table td {
-      padding: 12px;
-      border-bottom: 1px solid var(--border);
-      text-align: left;
-      font-size: 0.95rem;
-    }
-    .staff-table th {
-      background: #f9f9f9;
-      text-transform: uppercase;
-      font-weight: 700;
-    }
-    .staff-table td img {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      object-fit: cover;
-    }
-    .btn-black {
-      background: var(--dark);
-      color: #fff;
-      border: none;
-      border-radius: 6px;
-      padding: 10px 16px;
-      cursor: pointer;
-      font-weight: 600;
-    }
-    .btn-black:hover {
-      background: var(--brand);
-    }
-
-    /* Form layout */
-    .staff-form {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-    }
-    .staff-form .full {
-      grid-column: span 2;
-    }
-    .photo-upload {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      background: #fff;
-      padding: 10px;
-      height: 120px;
-    }
-
-/* customer dashboard page */
-
-table {
-      width: 100%;
-      border-collapse: collapse;
-      background: #fff;
-      border: 1px solid #ccc;
-    }
-    th, td {
-      padding: 12px;
-      border-bottom: 1px solid #ccc;
-      text-align: left;
-      font-size: 0.95rem;
-    }
-    th {
-      background: #f9f9f9;
-      text-transform: uppercase;
-      font-weight: 700;
-    }
-
-    .dashboard-buttons {
-      display: flex;
-      justify-content: center;
-      gap: 16px;
-      margin-top: 24px;
-    }
-    .dashboard-buttons a {
-      background: black;
-      color: #fff;
-      text-decoration: none;
-      padding: 10px 18px;
-      font-weight: 600;
-    }
-    .dashboard-buttons a:hover {
-      background: #333;
-    }
-
-
-/* Home page */
-/* ===================================================================
-   VARIABLES (LIGHT MODE BY DEFAULT)
-=================================================================== */
-:root {
-  --brand: #002147;
-  --dark: #222;
-  --muted: #666;
-  --light: #f7f7f9;
-  --white: #fff;
-  --border: #ddd;
-
-  /* Theme colors */
-  --bg-color: var(--light);
-  --text-color: var(--dark);
-  --card-bg: #fff;
-}
-
-/* ===================================================================
-   DARK THEME VARIABLES
-=================================================================== */
-body.dark {
-  --bg-color: #1d1f22;
-  --text-color: #f5f5f5;
-  --card-bg: #2a2d31;
-  --border: #444;
-}
-
-/* ===================================================================
-   BASE STYLES
-=================================================================== */
-* { box-sizing: border-box; }
-
-html,body {
-  margin:0;
-  padding:0;
-  font-family:Arial,Helvetica,sans-serif;
-  color: var(--text-color);
-  background: var(--bg-color);
-}
-
-img {
-  max-width:100%;
-  display:block;
-}
-
-.container {
-  width:90%;
-  max-width:1200px;
-  margin:0 auto;
-}
-
-/* ===================================================================
-   HEADER + NAV
-=================================================================== */
-.header-flex {
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:20px;
-  padding:16px 0;
-  flex-wrap:wrap;
-}
-
-.header-left {
-  display:flex;
-  align-items:center;
-  gap:12px;
-}
-
-.logo {
-  height:44px;
-  width:44px;
-  object-fit:contain;
-}
-
-.title {
-  font-size:1.25rem;
-  font-weight:700;
-}
-
-/* Navigation */
-.site-nav {
-  display:flex;
-  gap:16px;
-  flex-wrap:wrap;
-}
-
-.site-nav a {
-  color: var(--brand);
-  text-decoration:none;
-  font-weight:600;
-  padding:8px 12px;
-}
-
-.site-nav a:hover {
-  text-decoration: underline;
-}
-
-/* ===================================================================
-   THEME TOGGLE (SUN / MOON)
-=================================================================== */
-/* زر تغيير الثيم */
-#themeToggle {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    background: var(--brand);
-    color: white;
-    border: none;
-    padding: 10px 14px;
-    border-radius: 8px;
-    font-size: 18px;
-    cursor: pointer;
-    z-index: 9999;
-}
-/* ================= DARK MODE FIX ================= */
-
-/* ===== Dark Mode ===== */
+/* ============================================================
+   DARK MODE (FULL FIX)
+============================================================= */
 
 .dark-mode {
   background: #111;
   color: #eee;
 }
 
-/* Sections / cards */
+/* Cards + Sections */
 .dark-mode .section,
 .dark-mode .service-card,
 .dark-mode .review,
 .dark-mode .item {
   background: #1b1b1b;
-  border-color: #555;
+  border-color: #444;
 }
 
 /* Texts */
@@ -749,239 +290,65 @@ img {
   color: #eee;
 }
 
+/* FIX: عنوان TechCare يصير واضح */
+.dark-mode .title {
+  color: #ffffff !important;
+}
+
 /* Navigation */
 .dark-mode .site-nav a {
-  color: #c9d8ff;
+  color: #9bbcff;
 }
 
 .dark-mode .site-nav a:hover {
-  color: #fff;
+  color: white;
 }
 
 /* Breadcrumbs */
 .dark-mode .breadcrumbs a {
-  color: #bbb;
+  color: #ccc;
 }
 
 /* Footer */
 .dark-mode footer {
   background: #1b1b1b;
-  color: #bbb;
+  color: #ccc;
 }
 
-/* Back-to-top button */
+/* Back to top */
 .dark-mode #backToTop {
   background: #6a5acd;
   color: white;
 }
-/* ===================================================================
-   BREADCRUMBS
-=================================================================== */
-.breadcrumbs a {
-  text-decoration:none;
-  color: var(--text-color);
-}
 
-/* ===================================================================
-   FOOTER
-=================================================================== */
-footer.site-footer {
-  margin-top:40px;
-  background: var(--card-bg);
-  border-top:1px solid var(--border);
-  padding:16px 0;
-  color:var(--muted);
-  font-size:.95rem;
-}
-
-footer .foot-wrap {
-  display:flex;
-  justify-content:space-between;
-  gap:16px;
-  flex-wrap:wrap;
-}
-
-/* ===================================================================
-   SECTIONS + CARDS
-=================================================================== */
-.section {
-  background: var(--card-bg);
-  border:1px solid var(--border);
-  border-radius:8px;
-  padding:16px;
-  margin:24px 0;
-}
-
-.center { text-align:center; }
-.small { font-size:.9rem; color:var(--muted); }
-
-.services-row {
-  display:flex;
-  gap:16px;
-  flex-wrap:wrap;
-}
-
-.service-card {
-  background: var(--card-bg);
-  border:1px solid var(--border);
-  border-radius:8px;
-  min-width:260px;
-  flex:1 1 300px;
-  position:relative;
-  overflow:hidden;
-}
-
-.service-card .thumb {
-  height:160px;
-  overflow:hidden;
-}
-
-.service-card .pad {
-  padding:12px;
-}
-
-/* Hover info */
-.service-info-hover {
-  position:absolute;
-  inset:0;
-  background:rgba(0,0,0,.65);
-  color:#fff;
-  opacity:0;
-  padding:16px;
-  transition:.25s;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-}
-
-.service-card:hover .service-info-hover {
-  opacity:1;
-}
-
-/* ===================================================================
-   REVIEWS
-=================================================================== */
-.reviews {
-  display:flex;
-  gap:16px;
-  flex-wrap:wrap;
-}
-
-.review {
-background:var(--card-bg);
-  border:1px solid var(--border);
-  border-radius:8px;
-  padding:12px;
-  min-width:260px;
-  flex:1;
-}
-
-/* ===================================================================
-   TECH TIPS
-=================================================================== */
-.tech-tips-row {
-  display:flex;
-  gap:16px;
-}
-
-.tip-box {
-  display:flex;
-  align-items:flex-start;
-  gap:10px;
-}
-
-/* ===================================================================
-   BACK TO TOP BUTTON
-=================================================================== */
-
-/* زر العودة للأعلى (بالنص فوق) */
-#backToTop {
-    position: fixed;
-    top: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: var(--brand);
-    color: white;
-    border: none;
-    padding: 10px 18px;
-    border-radius: 8px;
-    font-size: 20px;
-    cursor: pointer;
-    display: none; /* يظهر عند التمرير */
-    z-index: 9999;
-}
-#backToTop:hover {
-    background: #333;
-}
-
-/* ===================================================================
+/* ============================================================
    RESPONSIVE DESIGN
-=================================================================== */
+============================================================= */
+
 @media (max-width: 768px) {
-  
+
   .services-row,
   .reviews,
   .tech-tips-row {
-    flex-direction:column;
-    align-items:center;
+    flex-direction: column;
+    align-items: center;
   }
 
   .service-card,
   .review,
-  .tip-box {
-    width:100%;
-    max-width:350px;
-  }
- 
-
-  .tech-tips-row .item {
+  .item {
     width: 100%;
     max-width: 350px;
   }
 
-  /* ===== Theme Switch (iPhone Style) ===== */
-.theme-toggle {
-  position: fixed;
-  top: 20px;
-  left: 20px;
-  z-index: 9999;
-}
+  /* Header responsive */
+  .header-flex {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 
-.theme-toggle input {
-  display: none;
-}
-
-/* Switch body */
-.switch {
-  width: 52px;
-  height: 28px;
-  background: #ccc;
-  border-radius: 30px;
-  position: relative;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-/* Circle */
-.switch::after {
-  content: "";
-  width: 22px;
-  height: 22px;
-  background: white;
-  position: absolute;
-  top: 3px;
-  left: 3px;
-  border-radius: 50%;
-  transition: 0.3s;
-}
-
-/* When activated */
-#themeSwitch:checked + .switch {
-  background: #6a5acd;
-}
-
-#themeSwitch:checked + .switch::after {
-  transform: translateX(24px);
-}
+  .site-nav {
+    flex-direction: column;
+    gap: 8px;
+  }
 }
