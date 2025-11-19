@@ -633,6 +633,32 @@ body.dark {
   --border: #444;
 }
 
+.dark {
+  background: #111 !important;
+  color: #eee !important;
+}
+
+.dark .title,
+.dark .site-nav a {
+  color: #fff !important;
+}
+
+.dark .section,
+.dark .service-card,
+.dark .review,
+.dark footer,
+.dark header {
+  background: #1c1c1c !important;
+  border-color: #444 !important;
+}
+
+.dark .small,
+.dark p,
+.dark h2,
+.dark h3 {
+  color: #eee !important;
+}
+
 /* ===================================================================
    BASE STYLES
 =================================================================== */
