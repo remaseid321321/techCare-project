@@ -626,39 +626,61 @@ table {
 /* ===================================================================
    DARK THEME VARIABLES
 =================================================================== */
-body.dark {
-  --bg-color: #1d1f22;
-  --text-color: white;
-  --card-bg: #2a2d31;
-  --border: #444;
-}
+/* ================= DARK MODE ================= */
 
 .dark {
   background: #111 !important;
   color: #eee !important;
 }
 
-.dark .title,
-.dark .site-nav a {
-  color: #fff !important;
-}
-
+/* Sections / Cards / Boxes */
 .dark .section,
 .dark .service-card,
 .dark .review,
-.dark footer,
-.dark header {
-  background: #1c1c1c !important;
-  border-color: #444 !important;
+.dark .item,
+.dark .team-card,
+.dark .profile-table,
+.dark .stats .stat-box {
+  background: #1b1b1b !important;
+  border-color: #555 !important;
 }
 
-.dark .small,
-.dark p,
+/* Titles + Text */
+.dark h1,
 .dark h2,
-.dark h3 {
-  color: #eee !important;
+.dark h3,
+.dark p,
+.dark .small,
+.dark .service-name,
+.dark .title {
+  color: #f5f5f5 !important;
 }
 
+/* Navigation */
+.dark .site-nav a {
+  color: #cdd9ff !important;
+}
+
+.dark .site-nav a:hover {
+  color: #fff !important;
+}
+
+/* Breadcrumbs */
+.dark .breadcrumbs a {
+  color: #ccc !important;
+}
+
+/* Footer */
+.dark footer.site-footer {
+  background: #1b1b1b !important;
+  color: #ddd !important;
+}
+
+/* Back to top button */
+.dark #backToTop {
+  background: #6a5acd !important;
+  color: #fff !important;
+}
 /* ===================================================================
    BASE STYLES
 =================================================================== */
