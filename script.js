@@ -1,63 +1,78 @@
+/* ============================================================
+   1) LOAD THEME (DARK/LIGHT) — يعمل في جميع الصفحات
+============================================================ */
 document.addEventListener("DOMContentLoaded", function () {
+    const savedTheme = localStorage.getItem("theme");
 
-    /* ==================== THEME SWITCH ==================== */
-    const themeSwitch = document.getElementById("themeSwitch");
-
-    if (localStorage.getItem("theme") === "dark") {
+    if (savedTheme === "dark") {
         document.body.classList.add("dark-mode");
+
+        const themeSwitch = document.getElementById("themeSwitch");
         if (themeSwitch) themeSwitch.checked = true;
     }
+});
 
-    if (themeSwitch) {
-        themeSwitch.addEventListener("change", () => {
-            if (themeSwitch.checked) {
-                document.body.classList.add("dark-mode");
-                localStorage.setItem("theme", "dark");
-            } else {
-                document.body.classList.remove("dark-mode");
-                localStorage.setItem("theme", "light");
-            }
-        });
-    }
+/* ============================================================
+   2) THEME TOGGLE — يعمل فقط في الصفحة الرئيسية
+============================================================ */
+const themeSwitch = document.getElementById("themeSwitch");
 
-
-    /* ==================== BACK TO TOP ==================== */
-    const topBtn = document.getElementById("backToTop");
-
-    if (topBtn) {
-        window.addEventListener("scroll", () => {
-            topBtn.style.display = (window.scrollY > 400) ? "block" : "none";
-        });
-
-        topBtn.addEventListener("click", () => {
-            window.scrollTo({ top: 0, behavior: "smooth" });
-        });
-    }
-
-
-    /* ==================== CLOCK ==================== */
-    const clock = document.getElementById("clock");
-
-    if (clock) {
-        function updateClock() {
-            clock.textContent = new Date().toLocaleTimeString();
+if (themeSwitch) {
+    themeSwitch.addEventListener("change", () => {
+        if (themeSwitch.checked) {
+            document.body.classList.add("dark-mode");
+            localStorage.setItem("theme", "dark");
+        } else {
+            document.body.classList.remove("dark-mode");
+            localStorage.setItem("theme", "light");
         }
-        setInterval(updateClock, 1000);
-        updateClock();
-    }
+    });
+}
 
+/* ============================================================
+   3) BACK TO TOP BUTTON — (الصفحة الرئيسية فقط)
+============================================================ */
+const topBtn = document.getElementById("backToTop");
 
-    /* ==================== SERVICES PAGE — SEARCH + SORT ==================== */
+if (topBtn) {
+    window.addEventListener("scroll", () => {
+        if (window.scrollY > 400) topBtn.style.display = "block";
+        else topBtn.style.display = "none";
+    });
 
-    const searchInput = document.getElementById("search");
-    const sortSelect = document.getElementById("sort");
-    const servicesList = document.querySelector(".services-list");
+    topBtn.addEventListener("click", () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+}
 
-    if (servicesList && searchInput) {
+/* ============================================================
+   4) REAL-TIME CLOCK — (الصفحة الرئيسية فقط)
+============================================================ */
+function updateClock() {
+    const clockEl = document.getElementById("clock");
+    if (!clockEl) return;
 
-        const services = document.querySelectorAll(".service-item");
+    const now = new Date();
+    clockEl.textContent = now.toLocaleTimeString();
+}
 
-        /* ---- SEARCH ---- */
+setInterval(updateClock, 1000);
+updateClock();
+
+/* ============================================================
+   5) SERVICES PAGE — SEARCH + SORT  (يشتغل فقط عند وجود العناصر)
+============================================================ */
+
+const searchInput = document.getElementById("search");
+const sortSelect = document.getElementById("sort");
+const servicesList = document.querySelector(".services-list");
+
+if (servicesList) {
+
+    const services = Array.from(document.querySelectorAll(".service-item"));
+
+    /* ---------- SEARCH ---------- */
+    if (searchInput) {
         searchInput.addEventListener("input", function () {
             const keyword = searchInput.value.toLowerCase();
 
@@ -71,41 +86,51 @@ document.addEventListener("DOMContentLoaded", function () {
                         : "none";
             });
         });
-
-        /* ---- SORT ---- */
-        if (sortSelect) {
-            sortSelect.addEventListener("change", function () {
-                let sorted = Array.from(services);
-
-                switch (sortSelect.value) {
-                    case "price-asc":
-                        sorted.sort((a, b) => extractPrice(a) - extractPrice(b));
-                        break;
-
-                    case "price-desc":
-                        sorted.sort((a, b) => extractPrice(b) - extractPrice(a));
-                        break;
-
-                    case "name-asc":
-                        sorted.sort((a, b) => extractName(a).localeCompare(extractName(b)));
-                        break;
-
-                    case "name-desc":
-                        sorted.sort((a, b) => extractName(b).localeCompare(extractName(a)));
-                        break;
-                }
-
-                sorted.forEach(item => servicesList.appendChild(item));
-            });
-        }
     }
 
-    function extractPrice(element) {
-        return parseInt(element.querySelector(".meta").textContent.replace(/\D/g, ""));
-    }
+    /* ---------- SORT ---------- */
+    if (sortSelect) {
+        sortSelect.addEventListener("change", function () {
 
-    function extractName(element) {
-        return element.querySelector("h3").textContent.trim().toLowerCase();
-    }
+            let sortedItems = [...services];
 
-});
+            switch (sortSelect.value) {
+
+                case "price-asc":
+                    sortedItems.sort((a, b) => extractPrice(a) - extractPrice(b));
+                    break;
+
+                case "price-desc":
+                    sortedItems.sort((a, b) => extractPrice(b) - extractPrice(a));
+                    break;
+
+                case "name-asc":
+                    sortedItems.sort((a, b) =>
+                        extractName(a).localeCompare(extractName(b))
+                    );
+                    break;
+
+                case "name-desc":
+                    sortedItems.sort((a, b) =>
+                        extractName(b).localeCompare(extractName(a))
+                    );
+                    break;
+            }
+
+            /* إعادة ترتيب العناصر داخل الصفحة */
+                                    sortedItems.forEach(item => servicesList.appendChild(item));
+        });
+    }
+}
+
+/* ============================================================
+   6) Helper Functions — Price & Name
+============================================================ */
+function extractPrice(el) {
+    const priceText = el.querySelector(".meta").textContent;
+    return parseInt(priceText.replace(/\D/g, ""));
+}
+
+function extractName(el) {
+    return el.querySelector("h3").textContent.trim().toLowerCase();
+}
