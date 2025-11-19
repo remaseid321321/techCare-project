@@ -604,3 +604,276 @@ table {
     .dashboard-buttons a:hover {
       background: #333;
     }
+
+
+/* Home page */
+/* ===================================================================
+   VARIABLES (LIGHT MODE BY DEFAULT)
+=================================================================== */
+:root {
+  --brand: #002147;
+  --dark: #222;
+  --muted: #666;
+  --light: #f7f7f9;
+  --white: #fff;
+  --border: #ddd;
+
+  /* Theme colors */
+  --bg-color: var(--light);
+  --text-color: var(--dark);
+  --card-bg: #fff;
+}
+
+/* ===================================================================
+   DARK THEME VARIABLES
+=================================================================== */
+body.dark {
+  --bg-color: #1d1f22;
+  --text-color: #f5f5f5;
+  --card-bg: #2a2d31;
+  --border: #444;
+}
+
+/* ===================================================================
+   BASE STYLES
+=================================================================== */
+* { box-sizing: border-box; }
+
+html,body {
+  margin:0;
+  padding:0;
+  font-family:Arial,Helvetica,sans-serif;
+  color: var(--text-color);
+  background: var(--bg-color);
+}
+
+img {
+  max-width:100%;
+  display:block;
+}
+
+.container {
+  width:90%;
+  max-width:1200px;
+  margin:0 auto;
+}
+
+/* ===================================================================
+   HEADER + NAV
+=================================================================== */
+.header-flex {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+  padding:16px 0;
+  flex-wrap:wrap;
+}
+
+.header-left {
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.logo {
+  height:44px;
+  width:44px;
+  object-fit:contain;
+}
+
+.title {
+  font-size:1.25rem;
+  font-weight:700;
+}
+
+/* Navigation */
+.site-nav {
+  display:flex;
+  gap:16px;
+  flex-wrap:wrap;
+}
+
+.site-nav a {
+  color: var(--brand);
+  text-decoration:none;
+  font-weight:600;
+  padding:8px 12px;
+}
+
+.site-nav a:hover {
+  text-decoration: underline;
+}
+
+/* ===================================================================
+   THEME TOGGLE (SUN / MOON)
+=================================================================== */
+.theme-toggle {
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.theme-icon {
+  font-size:1.4rem;
+  cursor:pointer;
+  transition:0.2s;
+}
+
+.theme-icon:hover {
+  transform: scale(1.2);
+}
+
+/* ===================================================================
+   BREADCRUMBS
+=================================================================== */
+.breadcrumbs a {
+  text-decoration:none;
+  color: var(--text-color);
+}
+
+/* ===================================================================
+   FOOTER
+=================================================================== */
+footer.site-footer {
+  margin-top:40px;
+  background: var(--card-bg);
+  border-top:1px solid var(--border);
+  padding:16px 0;
+  color:var(--muted);
+  font-size:.95rem;
+}
+
+footer .foot-wrap {
+  display:flex;
+  justify-content:space-between;
+  gap:16px;
+  flex-wrap:wrap;
+}
+
+/* ===================================================================
+   SECTIONS + CARDS
+=================================================================== */
+.section {
+  background: var(--card-bg);
+  border:1px solid var(--border);
+  border-radius:8px;
+  padding:16px;
+  margin:24px 0;
+}
+
+.center { text-align:center; }
+.small { font-size:.9rem; color:var(--muted); }
+
+.services-row {
+  display:flex;
+  gap:16px;
+  flex-wrap:wrap;
+}
+
+.service-card {
+  background: var(--card-bg);
+  border:1px solid var(--border);
+  border-radius:8px;
+  min-width:260px;
+  flex:1 1 300px;
+  position:relative;
+  overflow:hidden;
+}
+
+.service-card .thumb {
+  height:160px;
+  overflow:hidden;
+}
+
+.service-card .pad {
+  padding:12px;
+}
+
+/* Hover info */
+.service-info-hover {
+  position:absolute;
+  inset:0;
+  background:rgba(0,0,0,.65);
+  color:#fff;
+  opacity:0;
+  padding:16px;
+  transition:.25s;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+}
+
+.service-card:hover .service-info-hover {
+  opacity:1;
+}
+
+/* ===================================================================
+   REVIEWS
+=================================================================== */
+.reviews {
+  display:flex;
+  gap:16px;
+  flex-wrap:wrap;
+}
+
+.review {
+background:var(--card-bg);
+  border:1px solid var(--border);
+  border-radius:8px;
+  padding:12px;
+  min-width:260px;
+  flex:1;
+}
+
+/* ===================================================================
+   TECH TIPS
+=================================================================== */
+.tech-tips-row {
+  display:flex;
+  gap:16px;
+}
+
+.tip-box {
+  display:flex;
+  align-items:flex-start;
+  gap:10px;
+}
+
+/* ===================================================================
+   BACK TO TOP BUTTON
+=================================================================== */
+#topBtn {
+  position:fixed;
+  bottom:25px;
+  right:25px;
+  padding:10px 16px;
+  background:var(--brand);
+  color:#fff;
+  border:none;
+  border-radius:6px;
+  cursor:pointer;
+  display:none;
+  font-weight:700;
+}
+
+/* ===================================================================
+   RESPONSIVE DESIGN
+=================================================================== */
+@media (max-width: 768px) {
+  
+  .services-row,
+  .reviews,
+  .tech-tips-row {
+    flex-direction:column;
+    align-items:center;
+  }
+
+  .service-card,
+  .review,
+  .tip-box {
+    width:100%;
+    max-width:350px;
+  }
+}
