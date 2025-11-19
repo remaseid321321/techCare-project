@@ -1061,6 +1061,16 @@ background:var(--card-bg);
 .dark .title {
   color: #fff !important;
 }
-  .dark .service-item .meta {
-    color: #fff !important;
+  /* ===== Dark Mode: Make service boxes fully black ===== */
+
+.dark .service-item {
+  background: #000 !important;   
+  border-color: #444 !important;
+}
+
+
+.dark .service-item h3,
+.dark .service-item p,
+.dark .service-item .meta {
+  color: #fff !important;        
 }
