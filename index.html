@@ -4,8 +4,6 @@
   <meta charset="utf-8">
   <title>Home – TechCare</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <!-- CSS -->
   <link rel="stylesheet" href="styles.css">
 </head>
 
@@ -29,7 +27,7 @@
       <a href="provider-dashboard.html">Provider Dashboard</a>
     </div>
 
-    <!-- Theme Icons -->
+    <!-- Theme Toggle -->
     <div class="theme-toggle">
       <span id="lightIcon" class="theme-icon">🌞</span>
       <span id="darkIcon" class="theme-icon">🌙</span>
@@ -48,53 +46,73 @@
 
   <!-- Vision -->
   <section class="section">
-    <h2 class="center">Our Vision & Mission</h2>
-    <p class="center">
-      TechCare is dedicated to providing innovative technology solutions that empower <br>
-      businesses and individuals through reliable support and cutting-edge services.
-    </p>
+    <h2 class="center">our vision & Mission</h2>
+    <div style="text-align: center;">
+      <p>
+        techCare is dedicated to providing innovative technology solutions that empower <br>
+        business and individuals to achieve their full potential through reliable support <br>
+        and cutting-edge service
+      </p>
+    </div>
   </section>
+
 
   <!-- Services -->
   <section class="section">
     <h2 class="center">Our Services</h2>
+    
     <div class="services-row">
 
+      <!-- Service 1 -->
       <article class="service-card">
-        <div class="thumb"><img src="images/quick.jpg" alt="Software Installation"></div>
+        <div class="thumb"><img src="images/quick.jpg" alt="software installation"></div>
         <div class="pad">
-          <h3>Software Installation</h3>
-          <p class="small">Complete setup and optimization for your systems.</p>
+          <h3>software installation</h3>
+          <p class="small">complete software setup and configuration for your devices and systems.</p>
         </div>
         <div class="service-info-hover">
-          <div><strong>Software Installation</strong>
-            <p>Seamless installation, setup, and optimization.</p>
+          <div>
+            <strong>software installation</strong>
+            <p>
+              Seamless installation, setup, and optimization of software for all your devices and systems.
+              We ensure everything runs smoothly, securely, and is tailored to your specific needs.
+            </p>
           </div>
         </div>
       </article>
 
+      <!-- Service 2 -->
       <article class="service-card">
-        <div class="thumb"><img src="images/homeNetwork.jpg" alt="Data Recovery"></div>
+        <div class="thumb"><img src="images/homeNetwork.jpg" alt="data recovery"></div>
         <div class="pad">
-          <h3>Data Recovery</h3>
-          <p class="small">Professional recovery for all storage devices.</p>
+          <h3>data recovery</h3>
+          <p class="small">professional data recovery service for all types of storage devices</p>
         </div>
         <div class="service-info-hover">
-          <div><strong>Data Recovery</strong>
-            <p>Recover deleted or corrupted files safely.</p>
+          <div>
+            <strong>data recovery</strong>
+            <p>
+              Reliable data recovery for all types of storage devices — hard drives, SSDs, USBs,
+              memory cards, and more. We recover lost, deleted, or corrupted data with precision
+              and confidentiality.
+            </p>
           </div>
         </div>
       </article>
 
+      <!-- Service 3 -->
       <article class="service-card">
         <div class="thumb"><img src="images/deviceRepair.jpg" alt="Device Repair"></div>
         <div class="pad">
           <h3>Device Repair</h3>
-          <p class="small">Expert repair for smartphones, laptops, and tablets.</p>
+          <p class="small">expert repair service for smartphones, tablets, and laptops with genuine parts.</p>
         </div>
         <div class="service-info-hover">
-          <div><strong>Device Repair</strong>
-            <p>Fast and trusted repair service.</p>
+          <div>
+            <strong>Device Repair</strong>
+            <p>
+              expert repair service for smartphones, tablets, and laptops with genuine parts.
+            </p>
           </div>
         </div>
       </article>
@@ -102,48 +120,68 @@
     </div>
   </section>
 
-  <!-- Reviews -->
+
+  <!-- Customer Reviews -->
   <section class="section">
     <h2 class="center">Customer Reviews</h2>
     <div class="reviews">
+
       <div class="review">
         <div class="badge">★★★★★</div>
-        <p>"TechCare transformed our IT infrastructure."</p>
+        <p class="service-name">Data Recovery</p>
+        <p>"Tech Care transformed our IT infrastructure with minimal downtime.
+          Their team is responsive and technically excellent."</p>
         <p>- Noura</p>
       </div>
 
       <div class="review">
         <div class="badge">★★★★☆</div>
-        <p>"Outstanding cybersecurity service."</p>
+        <p class="service-name">Software Installation</p>
+        <p>"Outstanding cybersecurity service. They identified vulnerabilities we didn't even know existed and fixed them quickly."</p>
         <p>- Ghada</p>
       </div>
 
       <div class="review">
         <div class="badge">★★★★★</div>
-        <p>"Cloud migration was seamless and fast."</p>
+        <p class="service-name">Device Repair</p>
+        <p>"The cloud migration was seamless. Tech Care's expertise saved us both time and money while improving performance."</p>
         <p>- Sara</p>
       </div>
+
     </div>
   </section>
+
 
   <!-- Tech Tips -->
   <section class="section">
     <h2 class="center">Tech Tips</h2>
 
-    <div class="flex gap-16 tech-tips-row" style="flex-wrap: nowrap; justify-content:center; overflow-x:auto;">
+    <div class="flex gap-16 tech-tips-row" style="flex-wrap: nowrap; justify-content: center; overflow-x: auto;">
 
-      <div class="item min-220 tip-box">
-        <img src="images/update-icon.png" width="24">
-        <p class="small">Always update your software to stay secure.</p>
-      </div>
-      <div class="item min-220 tip-box">
-        <img src="images/backup-icon.png" width="24">
-        <p class="small">Back up your files regularly to avoid loss.</p>
+      <div class="item min-220" style="display: flex; align-items: flex-start; gap: 10px;">
+        <img src="images/update-icon.png" alt="Update Icon" width="24" height="24">
+        <p class="small">
+          Regularly update your software to protect <br>
+          against security vulnerabilities and <br>
+          ensure optimal performance.
+        </p>
       </div>
 
-      <div class="item min-220 tip-box">
-        <img src="images/security-icon.png" width="24">
-        <p class="small">Use strong passwords & enable two-factor authentication.</p>
+      <div class="item min-220" style="display: flex; align-items: flex-start; gap: 10px;">
+        <img src="images/backup-icon.png" alt="Backup Icon" width="24" height="24">
+        <p class="small">
+          Back up your data daily <br>
+          to cloud storage to prevent loss <br>
+          from hardware failures or accidental deletions.
+        </p>
+      </div>
+
+      <div class="item min-220" style="display: flex; align-items: flex-start; gap: 10px;">
+        <img src="images/security-icon.png" alt="Security Icon" width="24" height="24">
+        <p class="small">
+          Use strong, unique passwords for each account <br>
+          and enable two-factor authentication wherever possible.
+        </p>
       </div>
 
     </div>
@@ -151,21 +189,23 @@
 
 </main>
 
+
 <!-- Footer -->
 <footer class="site-footer">
   <div class="container foot-wrap">
     <div>© 2025 TechCare. All rights reserved.</div>
     <div>
-      Contact: support@techcare.com • +966-55-5555555  
+      Contact: support@techcare.com • +966-55-5555555
       <span id="clock"></span>
     </div>
   </div>
 </footer>
 
+
 <!-- Back to Top -->
 <button id="topBtn">Top ↑</button>
 
-<!-- JS -->
+<!-- JS File -->
 <script src="script.js"></script>
 
 </body>
