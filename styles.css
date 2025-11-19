@@ -724,54 +724,56 @@ img {
 }
 /* ================= DARK MODE FIX ================= */
 
-body.dark-mode {
-  background: #121212;
-  color: #f5f5f5;
+/* ===== Dark Mode ===== */
+
+.dark-mode {
+  background: #111;
+  color: #eee;
 }
 
-/* النصوص العامة */
-body.dark-mode h1,
-body.dark-mode h2,
-body.dark-mode h3,
-body.dark-mode p,
-body.dark-mode a,
-body.dark-mode .title,
-body.dark-mode .small,
-body.dark-mode .service-name {
-  color: #ffffff !important;
+/* Sections / cards */
+.dark-mode .section,
+.dark-mode .service-card,
+.dark-mode .review,
+.dark-mode .item {
+  background: #1b1b1b;
+  border-color: #555;
 }
 
-/* الكروت */
-body.dark-mode .section,
-body.dark-mode .service-card,
-body.dark-mode .review,
-body.dark-mode .item {
-  background: #1d1d1d;
-  border-color: #444;
+/* Texts */
+.dark-mode h2,
+.dark-mode h3,
+.dark-mode p,
+.dark-mode .small,
+.dark-mode .service-name {
+  color: #eee;
 }
 
-/* الهيدر */
-body.dark-mode header.site-header {
-  background: #1a1a1a;
-  border-bottom: 1px solid #333;
+/* Navigation */
+.dark-mode .site-nav a {
+  color: #c9d8ff;
 }
 
-/* الروابط */
-body.dark-mode .site-nav a {
-  color: #b3c7ff !important;
+.dark-mode .site-nav a:hover {
+  color: #fff;
 }
 
-/* الفوتر */
-body.dark-mode footer.site-footer {
-  background: #1a1a1a;
-  color: #ccc;
+/* Breadcrumbs */
+.dark-mode .breadcrumbs a {
+  color: #bbb;
 }
 
-/* الهوفر لبطاقات الخدمات */
-body.dark-mode .service-info-hover {
-  background: rgba(0,0,0,0.6);
+/* Footer */
+.dark-mode footer {
+  background: #1b1b1b;
+  color: #bbb;
 }
 
+/* Back-to-top button */
+.dark-mode #backToTop {
+  background: #6a5acd;
+  color: white;
+}
 /* ===================================================================
    BREADCRUMBS
 =================================================================== */
@@ -931,4 +933,48 @@ background:var(--card-bg);
     width:100%;
     max-width:350px;
   }
+  /* ===== Theme Switch (iPhone Style) ===== */
+.theme-toggle {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 9999;
+}
+
+.theme-toggle input {
+  display: none;
+}
+
+/* Switch body */
+.switch {
+  width: 52px;
+  height: 28px;
+  background: #ccc;
+  border-radius: 30px;
+  position: relative;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+/* Circle */
+.switch::after {
+  content: "";
+  width: 22px;
+  height: 22px;
+  background: white;
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  border-radius: 50%;
+  transition: 0.3s;
+}
+
+/* When activated */
+#themeSwitch:checked + .switch {
+  background: #6a5acd;
+}
+
+#themeSwitch:checked + .switch::after {
+  transform: translateX(24px);
+}
 }
