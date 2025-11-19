@@ -1061,16 +1061,25 @@ background:var(--card-bg);
 .dark .title {
   color: #fff !important;
 }
-  /* ===== Dark Mode: Make service boxes fully black ===== */
+  /* ===== Dark Mode: Full Black Service Boxes ===== */
 
+.dark .service-card,
 .dark .service-item {
-  background: #000 !important;   
-  border-color: #444 !important;
+    background: #000 !important;          /* يخلي الصندوق أسود بالكامل */
+    border: 1px solid #333 !important;    /* بوردر خفيف نفس الصورة */
+    box-shadow: 0 0 6px rgba(0,0,0,0.4);  /* يضيف لمسة ظل بسيطة مثل اللي ظاهر عندك */
 }
 
+.dark .service-card .pad,
+.dark .service-item .pad {
+    background: #000 !important;          /* يخلي منطقة النص أسود */
+}
 
+.dark .service-card h3,
+.dark .service-card p,
 .dark .service-item h3,
 .dark .service-item p,
 .dark .service-item .meta {
-  color: #fff !important;        
+    color: #fff !important;               /* نص أبيض وواضح */
 }
+
