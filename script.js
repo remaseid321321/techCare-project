@@ -1,57 +1,50 @@
-// ===================== Theme Toggle =====================
-const themeBtn = document.getElementById("themeToggle");
-const body = document.body;
+/* ================= THEME SWITCH ================= */
 
-// اقرأ الثيم من الذاكرة
-let savedTheme = localStorage.getItem("theme");
+const themeSwitch = document.getElementById("themeSwitch");
 
-if (savedTheme === "dark") {
-    body.classList.add("dark-mode");
-    themeBtn.textContent = "☀️";
-} else {
-    body.classList.remove("dark-mode");
-    themeBtn.textContent = "🌙";
+// Apply saved theme
+if (localStorage.getItem("theme") === "dark") {
+  document.body.classList.add("dark-mode");
+  themeSwitch.checked = true;
 }
 
-themeBtn.onclick = function () {
-    body.classList.toggle("dark-mode");
+// Toggle theme
+themeSwitch.addEventListener("change", () => {
+  if (themeSwitch.checked) {
+    document.body.classList.add("dark-mode");
+    localStorage.setItem("theme", "dark");
+  } else {
+    document.body.classList.remove("dark-mode");
+    localStorage.setItem("theme", "light");
+  }
+});
 
-    if (body.classList.contains("dark-mode")) {
-        themeBtn.textContent = "☀️";
-        localStorage.setItem("theme", "dark");
-    } else {
-        themeBtn.textContent = "🌙";
-        localStorage.setItem("theme", "light");
-    }
-};
 
-// ===================== Back to Top =====================
+/* ================= BACK TO TOP BUTTON ================= */
+
 const topBtn = document.getElementById("backToTop");
 
-window.onscroll = function () {
-    if (document.documentElement.scrollTop > 200) {
-        topBtn.style.display = "block";
-    } else {
-        topBtn.style.display = "none";
-    }
-};
+// Show button after scrolling
+window.addEventListener("scroll", () => {
+  if (window.scrollY > 400) {
+    topBtn.style.display = "block";
+  } else {
+    topBtn.style.display = "none";
+  }
+});
 
-topBtn.onclick = function () {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-};
+// Scroll to top
+topBtn.addEventListener("click", () => {
+  window.scrollTo({ top: 0, behavior: "smooth" });
+});
 
-/* ================================
-   Real-Time Clock in Footer
-   ================================ */
+
+/* ================= REAL-TIME CLOCK ================= */
 
 function updateClock() {
-    const clock = document.getElementById("clock");
-
-    const now = new Date();
-    const timeString = now.toLocaleTimeString();
-
-    clock.textContent = timeString;
+  const now = new Date();
+  document.getElementById("clock").textContent = now.toLocaleTimeString();
 }
 
 setInterval(updateClock, 1000);
-updateClock(); 
+updateClock();
