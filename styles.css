@@ -682,7 +682,7 @@ table.staff-table {
 }
 
 /* evaluate star */
-.rating .star {
+.star {
   font-size: 40px;   
   cursor: pointer;
   color: gold;
