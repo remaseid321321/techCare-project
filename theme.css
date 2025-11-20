@@ -174,3 +174,8 @@
     color: white !important;
     border: 1px solid #888 !important;
 }
+
+.dark-theme .reward-points {
+    color: #cdd9ff !important; 
+    font-weight: 600;
+}
