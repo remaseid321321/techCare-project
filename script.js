@@ -322,3 +322,59 @@ pointsEl.textContent = `Points: ${points} / ${max}`;
         tierEl.textContent = "(Gold)";
     }
 }
+/* ============================================================
+   REQUEST SERVICE FORM — SLIDES STYLE
+   (Used in request.html inside the shared script.js)
+============================================================ */
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    // نحاول الحصول على عناصر الفورم
+    var service = document.getElementById("service");
+    var name = document.getElementById("name");
+    var date = document.getElementById("date");
+    var desc = document.getElementById("desc");
+
+    var form = document.querySelector("form");
+
+    // إذا الصفحة ما فيها فورم — نخرج
+    if (!form) return;
+
+    form.addEventListener("submit", function (e) {
+
+        // Validate: service
+        if (service.value === "") {
+            alert("Please select a service.");
+            e.preventDefault();
+            return;
+        }
+
+        // Validate: name (letters only)
+        var namePattern = /^[A-Za-z ]+$/;
+
+        if (!namePattern.test(name.value)) {
+            alert("Name must contain letters only.");
+            e.preventDefault();
+            return;
+        }
+
+        // Validate: date
+        if (date.value === "") {
+            alert("Please enter a due date.");
+            e.preventDefault();
+            return;
+        }
+
+        // Description check
+        if (desc.value.length < 5) {
+            var confirmMsg = confirm("Description is too short. Submit anyway?");
+            if (!confirmMsg) {
+                e.preventDefault();
+                return;
+            }
+        }
+
+        alert("Your request has been submitted successfully!");
+    });
+
+});
