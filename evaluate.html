@@ -53,11 +53,17 @@
         <option>Backup Solutions</option>
       </select>
 
-      <label>Rating</label>
-      <div class="rating" style="color: gold; font-size: 1.8rem; letter-spacing: 4px;" >
-        ★ ★ ★ ★ ★
-      </div>
+<label>Rating</label>
+<div id="rate">
+  <span class="star">★</span>
+  <span class="star">★</span>
+  <span class="star">★</span>
+  <span class="star">★</span>
+  <span class="star">★</span>
+</div>
+<input type="hidden" id="ratingValue" value="0">
 
+      
       <label for="feedback">Feedback/Comment</label>
       <textarea id="feedback" placeholder="Write your feedback or comment..." required></textarea>
 
@@ -73,6 +79,39 @@
   </div>
 </footer>
 <script src="script.js"></script>
+<script>
+window.onload = function () {
 
+    var stars = document.getElementsByClassName("star");
+    var ratingValue = document.getElementById("ratingValue");
+
+    for (var i = 0; i < stars.length; i++) {
+
+        stars[i].onclick = function () {
+
+            var val = 0;
+
+            for (var j = 0; j < stars.length; j++) {
+                if (stars[j] === this) {
+                    val = j + 1;
+                }
+            }
+
+            ratingValue.value = val;
+
+            for (var k = 0; k < stars.length; k++) {
+
+                if (k < val) {
+                    stars[k].style.color = "gold";      
+                    stars[k].style.opacity = "1";
+                } else {
+                    stars[k].style.color = "gold";      
+                    stars[k].style.opacity = "0.4";     
+                }
+            }
+        };
+    }
+};
+</script>
 </body>
 </html>
