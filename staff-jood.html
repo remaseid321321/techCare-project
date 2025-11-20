@@ -5,8 +5,7 @@
   <title>Staff Profiles – TechCare</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" >
   <link rel="stylesheet" href="styles.css" >
-    <link rel="stylesheet" href="theme.css" >
-
+  <link rel="stylesheet" href="theme.css" >
 </head>
 <body>
 
@@ -17,7 +16,7 @@
       <div class="title">TechCare</div>
     </div>
 
-     <div class="site-nav">
+    <div class="site-nav">
       <a href="index.html">Home</a>
       <a href="services.html">Services</a>
       <a href="AboutUs.html">About Us</a>
@@ -48,12 +47,14 @@
       </thead>
       <tbody>
         <tr>
-      
           <td rowspan="3" style="text-align:center;">
             <img src="images/staff1.jpg" alt="Photo of Jood Alkhneem" class="profile-photo" >
           </td>
+
           <td class="name">Jood Alkhneen</td>
+
           <td rowspan="3">IT Infrastructure & Systems</td>
+
           <td rowspan="3">
             <ul class="nested">
               <li>Networking & System Administration</li>
@@ -63,6 +64,7 @@
               <li>Cybersecurity Awareness</li>
             </ul>
           </td>
+
           <td rowspan="3">
             <ul class="nested">
               <li>BSc in Information Technology – KSU</li>
@@ -71,27 +73,42 @@
             </ul>
           </td>
         </tr>
+
         <tr>
           <td><strong>Date of Birth:</strong> 2005-03-15</td>
         </tr>
+
         <tr>
-          <td style="text-align:left;"><strong>Email:</strong> <a href="mailto:jood@example.com">jood@example.com</a></td>
+          <td style="text-align:left;">
+            <strong>Email:</strong> 
+            <a href="mailto:jood@example.com">jood@example.com</a>
+          </td>
         </tr>
+
       </tbody>
     </table>
     
-    <br>
-    <hr>
-    <br>
+    <br><hr><br>
 
-<div class="reward-box">
-  <div class="reward-title">Staff Rewards <span class="reward-tier">(Bronze)</span></div>
-  <div class="reward-points">Points: 60 / 200</div>
-  <div class="reward-bar">
-    <div class="reward-fill" style="width:30%;"></div>
-  </div>
-  <div class="reward-next">Next level at 200 points</div>
-</div>
+    <!-- ================================
+         ⭐ REWARD SYSTEM (WITH DATA-KEY)
+         ================================ -->
+    <div class="reward-box" data-key="points-jood">
+
+      <div class="reward-title">
+        Staff Rewards <span class="reward-tier">(Bronze)</span>
+      </div>
+
+      <!-- يتم تعديله تلقائياً عبر JS -->
+      <div class="reward-points">Points: 0 / 200</div>
+
+      <div class="reward-bar">
+        <!-- بدون width — JS يحسبه -->
+        <div class="reward-fill"></div>
+      </div>
+
+      <div class="reward-next">Next level at 200 points</div>
+    </div>
     
   </section>
 </main>
@@ -102,6 +119,7 @@
     <div>Contact: support@techcare.com • +966-55-5555555</div>
   </div>
 </footer>
+
 <script src="script.js"></script>
 
 </body>
