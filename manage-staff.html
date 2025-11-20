@@ -5,9 +5,9 @@
   <title>Manage Team Members – TechCare</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="styles.css">
+  <script defer src="script.js"></script> <!-- مهم عشان النقاط -->
 </head>
 
-  
 <body>
   
 <header class="site-header">
@@ -16,7 +16,7 @@
       <img src="images/logo.png" alt="TechCare Logo" class="logo">
       <div class="title">TechCare </div>
     </div>
-     <div class="site-nav">
+    <div class="site-nav">
       <a href="index.html">Home</a>
       <a href="services.html">Services</a>
       <a href="AboutUs.html">About Us</a>
@@ -43,13 +43,55 @@
           <th>Photo</th>
           <th>Name</th>
           <th>Select</th>
+          <th>Points</th> <!-- NEW -->
+          <th>Add</th>   <!-- NEW -->
         </tr>
       </thead>
       <tbody>
-        <tr><td><img src="images/staff1.jpg" alt="Jood"></td><td>Jood Alkhneem</td><td><input type="checkbox" checked></td></tr>
-        <tr><td><img src="images/staff2.jpg" alt="Remas"></td><td>Remas Almutairi</td><td><input type="checkbox" checked></td></tr>
-        <tr><td><img src="images/staff3.jpg" alt="Lujain"></td><td>Lujain Almajhul</td><td><input type="checkbox" checked></td></tr>
-        <tr><td><img src="images/staff4.jpg" alt="Jwana"></td><td>Jwana Alothman</td><td><input type="checkbox" checked></td></tr>
+
+        <!-- JOOD -->
+        <tr>
+          <td><img src="images/staff1.jpg" alt="Jood"></td>
+          <td>Jood Alkhneem</td>
+          <td><input type="checkbox" checked></td>
+
+          <!-- عرض النقاط -->
+          <td id="points-jood">0</td>
+
+          <!-- إضافة النقاط -->
+          <td><button class="addPointsBtn" data-key="points-jood">+ Add</button></td>
+        </tr>
+
+        <!-- REMAS -->
+        <tr>
+          <td><img src="images/staff2.jpg" alt="Remas"></td>
+          <td>Remas Almutairi</td>
+          <td><input type="checkbox" checked></td>
+
+          <td id="points-remas">0</td>
+          <td><button class="addPointsBtn" data-key="points-remas">+ Add</button></td>
+        </tr>
+
+        <!-- LUJAIN -->
+        <tr>
+          <td><img src="images/staff3.jpg" alt="Lujain"></td>
+          <td>Lujain Almajhul</td>
+          <td><input type="checkbox" checked></td>
+
+          <td id="points-lujain">0</td>
+          <td><button class="addPointsBtn" data-key="points-lujain">+ Add</button></td>
+        </tr>
+
+        <!-- JWANA -->
+        <tr>
+          <td><img src="images/staff4.jpg" alt="Jwana"></td>
+          <td>Jwana Alothman</td>
+          <td><input type="checkbox" checked></td>
+
+          <td id="points-jwana">0</td>
+          <td><button class="addPointsBtn" data-key="points-jwana">+ Add</button></td>
+        </tr>
+
       </tbody>
     </table>
 
@@ -68,7 +110,7 @@
         <div class="photo-upload">
           <input type="file" id="photo">
         </div>
-        </div>
+      </div>
 
       <div>
         <label for="dob">Date of Birth</label>
@@ -94,7 +136,6 @@
         <label for="education">Education</label>
         <textarea id="education" placeholder="Enter educational background"></textarea>
       </div>
-
       <div class="full" style="text-align:right;">
         <input type="submit" value="Submit">
       </div>
@@ -105,7 +146,7 @@
 <footer class="site-footer">
   <div class="container foot-wrap">
     <div>© 2025 TechCare. All rights reserved.</div>
-   <div>Contact: support@techcare.com • +966-55-5555555</div>
+    <div>Contact: support@techcare.com • +966-55-5555555</div>
   </div>
 </footer>
 
