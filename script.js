@@ -169,3 +169,52 @@ function extractPrice(el) {
 function extractName(el) {
     return el.querySelector("h3").textContent.toLowerCase();
 }
+/* ============================================================
+   7) ABOUT PAGE — JOIN OUR STAFF FORM VALIDATION
+============================================================ */
+
+const staffForm = document.getElementById("joinForm");
+
+if (staffForm) {
+
+    staffForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        const name = document.getElementById("jn-name").value.trim();
+        const birth = document.getElementById("jn-dob").value;
+        const email = document.getElementById("jn-email").value.trim();
+        const exp = document.getElementById("jn-expertise").value.trim();
+        const skills = document.getElementById("jn-skills").value.trim();
+        const edu = document.getElementById("jn-edu").value.trim();
+        const msg = document.getElementById("jn-msg").value.trim();
+        const photo = document.getElementById("jn-photo").value;
+
+        // 1) No empty fields
+        if (!name  !birth  !email  !exp  !skills  !edu  !msg || !photo) {
+            alert("Please fill in all fields.");
+            return;
+        }
+
+        // 2) Name must NOT start with a number
+        if (/^[0-9]/.test(name)) {
+            alert("Name cannot start with a number.");
+            return;
+        }
+
+        // 3) Image file only
+        if (!photo.match(/\.(jpg|jpeg|png|gif)$/i)) {
+            alert("Please upload an image file (JPG, PNG, GIF).");
+            return;
+        }
+
+        // 4) Birth year must be before 2008
+        const year = new Date(birth).getFullYear();
+        if (year >= 2008) {
+            alert("Birth year must be before 2008.");
+            return;
+        }
+
+        // SUCCESS — English alert
+        alert("Application submitted successfully! Welcome " + name );
+    });
+}
