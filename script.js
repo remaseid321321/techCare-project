@@ -322,3 +322,36 @@ pointsEl.textContent = `Points: ${points} / ${max}`;
         tierEl.textContent = "(Gold)";
     }
 }
+
+// ==== تقييم الخدمة (المشترك) ====
+
+var evalForm = document.getElementById("evalForm");
+
+if (evalForm) {
+
+    evalForm.onsubmit = function (event) {
+        event.preventDefault(); 
+
+        var service = document.getElementById("service").value;
+        var rating = document.getElementById("ratingValue").value;
+        var comment = document.getElementById("feedback").value;
+
+        // التحقق من المتطلبات
+        if (service === "" || rating === "" || comment.trim() === "") {
+            alert("Please fill all fields.");
+            return;
+        }
+
+        rating = parseInt(rating);
+
+        // رسائل التقييم
+        if (rating === 1 || rating === 2) {
+            alert("We're sorry the service did not meet your expectations.");
+        } else {
+            alert("Thank you for your valuable feedback!");
+        }
+
+        // الرجوع للداشبورد مباشرة
+        window.location.href = "customer-dashboard.html";
+    };
+}
