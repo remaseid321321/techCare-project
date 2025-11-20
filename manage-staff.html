@@ -79,18 +79,23 @@
     <!-- ✨ NEW: Give Points to a staff member -->
     <h3>Add Points to Staff</h3>
 
-    <label for="staffPoints">Choose Staff</label>
-    <select id="staffPoints">
-      <option value="" disabled selected>Select staff</option>
-      <option value="jood">Jood Alkhneem</option>
-      <option value="remas">Remas Almutairi</option>
-      <option value="lujain">Lujain Almajhul</option>
-      <option value="jwana">Jwana Alothman</option>
-    </select>
+<label for="staffPoints">Choose Staff</label>
+<select id="staffPoints">
+    <option value="" disabled selected>Select staff</option>
+    <option value="points-jood">Jood Alkhneem</option>
+    <option value="points-remas">Remas Almutairi</option>
+    <option value="points-lujain">Lujain Almajhul</option>
+    <option value="points-jwana">Jwana Alothman</option>
+</select>
 
-    <button id="givePointsBtn" class="btn-black" style="margin-top:10px;">
-      ➕ Add Points
-    </button>
+<br><br>
+
+<label for="pointsInput">Points Amount</label>
+<input type="number" id="pointsInput" placeholder="Enter points" min="1" style="width:150px;">
+
+<br><br>
+
+<button id="addPointsBtn" class="btn-black">➕ Add Points</button>
 
     <br><br>
 
