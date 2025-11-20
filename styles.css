@@ -367,6 +367,32 @@ button:disabled {
   overflow: hidden;
   background: #fff;
 }
+.growth-images {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.growth-images > div {
+  flex: 1 1 300px;
+  text-align: center;
+}
+.flex {
+  display: flex;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.gap-16 {
+  gap: 16px;
+}
+
+.min-220 {
+  min-width: 220px;
+  flex: 1 1 300px;
+}
 
 /* ============================================================
    11) PROFILE TABLE
