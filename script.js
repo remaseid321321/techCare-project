@@ -221,42 +221,63 @@ if (staffForm) {
 /* ============================================================
    6) STAFF POINTS SYSTEM (Profile Page)
 ============================================================ */
-document.addEventListener("DOMContentLoaded", function () {
+/* ===============================
+   STAFF POINTS (Based on Slides)
+   =============================== */
 
-    const rewardBox = document.querySelector(".reward-box");
+var pointsEl = document.getElementById("pointsValue");
+var barEl = document.getElementById("pointsBar");
+var addBtn = document.getElementById("addPointsBtn");
+var staffKey = document.body.getAttribute("data-staff");  
+// "jood" – or any staff page
 
-    if (!rewardBox) return; // الصفحة ليست بروفايل
+// Load saved points
+var currentPoints = localStorage.getItem(staffKey + "_points");
 
-    const key = rewardBox.dataset.key; // مثل: "points-jood"
-    let points = localStorage.getItem(key);
+if (currentPoints === null) {
+    currentPoints = 0;
+} else {
+    currentPoints = parseInt(currentPoints);
+}
 
-    if (!points) {
-        points = 0; // أول مرة
-        localStorage.setItem(key, 0);
+// Show points when page loads
+pointsEl.innerHTML = currentPoints;
+
+// Update Progress Bar
+function updateBar() {
+    var percent = (currentPoints / 200) * 100;
+
+    if (percent > 100) {
+        percent = 100;
     }
 
-    points = parseInt(points);
-
-    // عناصر البروفايل
-    const pointsEl = rewardBox.querySelector(".reward-points");
-    const fillEl = rewardBox.querySelector(".reward-fill");
-    const tierEl = rewardBox.querySelector(".reward-tier");
-
-    // التحديث على الصفحة
-    updateRewardBox(points, pointsEl, fillEl, tierEl);
-});
-
-/* تحديث الصندوق */
-function updateRewardBox(points, pointsEl, fillEl, tierEl) {
-
-    const max = 200;
-    const percent = (points / max) * 100;
-
-    // التصحيح: تم استخدام علامات الاقتباس الخلفية (backticks) ... بدلاً من لا شيء
-    pointsEl.textContent = Points: ${points} / ${max};
-    fillEl.style.width = percent + "%";
-
-    if (points < 100) tierEl.textContent = "(Bronze)";
-    else if (points < 150) tierEl.textContent = "(Silver)";
-    else tierEl.textContent = "(Gold)";
+    barEl.style.width = percent + "%";
 }
+
+updateBar();
+
+// When user clicks "Add Points"
+addBtn.onclick = function () {
+
+    var add = prompt("Enter points to add:");
+
+    if (add === null) {
+        return;
+    }
+
+    if (isNaN(add)) {
+        alert("Please enter numbers only.");
+        return;
+    }
+
+    add = parseInt(add);
+
+    currentPoints = currentPoints + add;
+
+    localStorage.setItem(staffKey + "_points", currentPoints);
+
+    pointsEl.innerHTML = currentPoints;
+    updateBar();
+
+    alert("Points updated successfully!");
+};
