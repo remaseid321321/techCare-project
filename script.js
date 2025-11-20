@@ -233,7 +233,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const pointsInput = document.getElementById("pointsInput");
 
     // إذا العناصر غير موجودة يعني لسنا في صفحة manage staff
-    if (!addBtn  !selectStaff  !pointsInput) return;
+    if (!addBtn || !selectStaff || !pointsInput) return;
 
     addBtn.addEventListener("click", function () {
 
