@@ -5,9 +5,7 @@
   <title>Manage Team Members – TechCare</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="theme.css">
-
-  <script defer src="script.js"></script> <!-- مهم عشان النقاط -->
+  <link rel="stylesheet" href="theme.css">
 </head>
 
 <body>
@@ -18,7 +16,7 @@
       <img src="images/logo.png" alt="TechCare Logo" class="logo">
       <div class="title">TechCare </div>
     </div>
-    <div class="site-nav">
+     <div class="site-nav">
       <a href="index.html">Home</a>
       <a href="services.html">Services</a>
       <a href="AboutUs.html">About Us</a>
@@ -45,61 +43,57 @@
           <th>Photo</th>
           <th>Name</th>
           <th>Select</th>
-          <th>Points</th> <!-- NEW -->
-          <th>Add</th>   <!-- NEW -->
         </tr>
       </thead>
       <tbody>
-
-        <!-- JOOD -->
         <tr>
           <td><img src="images/staff1.jpg" alt="Jood"></td>
           <td>Jood Alkhneem</td>
           <td><input type="checkbox" checked></td>
-
-          <!-- عرض النقاط -->
-          <td id="points-jood">0</td>
-
-          <!-- إضافة النقاط -->
-          <td><button class="addPointsBtn" data-key="points-jood">+ Add</button></td>
         </tr>
 
-        <!-- REMAS -->
         <tr>
           <td><img src="images/staff2.jpg" alt="Remas"></td>
           <td>Remas Almutairi</td>
           <td><input type="checkbox" checked></td>
-
-          <td id="points-remas">0</td>
-          <td><button class="addPointsBtn" data-key="points-remas">+ Add</button></td>
         </tr>
 
-        <!-- LUJAIN -->
         <tr>
           <td><img src="images/staff3.jpg" alt="Lujain"></td>
           <td>Lujain Almajhul</td>
           <td><input type="checkbox" checked></td>
-
-          <td id="points-lujain">0</td>
-          <td><button class="addPointsBtn" data-key="points-lujain">+ Add</button></td>
         </tr>
 
-        <!-- JWANA -->
         <tr>
           <td><img src="images/staff4.jpg" alt="Jwana"></td>
           <td>Jwana Alothman</td>
           <td><input type="checkbox" checked></td>
-
-          <td id="points-jwana">0</td>
-          <td><button class="addPointsBtn" data-key="points-jwana">+ Add</button></td>
         </tr>
-
       </tbody>
     </table>
 
     <button class="btn-black">🗑 Delete Selected Staff</button>
 
     <br><br>
+
+    <!-- ✨ NEW: Give Points to a staff member -->
+    <h3>Add Points to Staff</h3>
+
+    <label for="staffPoints">Choose Staff</label>
+    <select id="staffPoints">
+      <option value="" disabled selected>Select staff</option>
+      <option value="jood">Jood Alkhneem</option>
+      <option value="remas">Remas Almutairi</option>
+      <option value="lujain">Lujain Almajhul</option>
+      <option value="jwana">Jwana Alothman</option>
+    </select>
+
+    <button id="givePointsBtn" class="btn-black" style="margin-top:10px;">
+      ➕ Add Points
+    </button>
+
+    <br><br>
+
     <h3>Add New Staff</h3>
     <form class="staff-form" action="manage-staff.html" method="post" enctype="multipart/form-data">
       <div>
@@ -138,6 +132,7 @@
         <label for="education">Education</label>
         <textarea id="education" placeholder="Enter educational background"></textarea>
       </div>
+
       <div class="full" style="text-align:right;">
         <input type="submit" value="Submit">
       </div>
@@ -151,6 +146,8 @@
     <div>Contact: support@techcare.com • +966-55-5555555</div>
   </div>
 </footer>
+
+<script src="script.js"></script>
 
 </body>
 </html>
