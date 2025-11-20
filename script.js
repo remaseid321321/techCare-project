@@ -327,54 +327,97 @@ pointsEl.textContent = `Points: ${points} / ${max}`;
    (Used in request.html inside the shared script.js)
 ============================================================ */
 
+/* ============================================================
+   Request a Service Page – Validation (Same as slides)
+============================================================ */
+
 document.addEventListener("DOMContentLoaded", function () {
 
-    // نحاول الحصول على عناصر الفورم
-    var service = document.getElementById("service");
-    var name = document.getElementById("name");
-    var date = document.getElementById("date");
-    var desc = document.getElementById("desc");
+    const form = document.querySelector("form");
+    if (!form) return;     // يعني مو في صفحة request
 
-    var form = document.querySelector("form");
+    const service = document.getElementById("service");
+    const name = document.getElementById("name");
+    const date = document.getElementById("date");
+    const desc = document.getElementById("desc");
 
-    // إذا الصفحة ما فيها فورم — نخرج
-    if (!form) return;
+    form.addEventListener("submit", function (event) {
 
-    form.addEventListener("submit", function (e) {
+        /* منع الإرسال */
+        event.preventDefault();
 
-        // Validate: service
+        /* ـــــــــــــ التحقق 1: اختيار الخدمة ـــــــــــــ */
         if (service.value === "") {
-            alert("Please select a service.");
-            e.preventDefault();
+            alert("❌ Please select a service.");
             return;
         }
 
-        // Validate: name (letters only)
-        var namePattern = /^[A-Za-z ]+$/;
+        /* ـــــــــــــ التحقق 2: الاسم ليس كامل أو فيه رموز ـــــــــــــ */
+        // السلايدات تستخدم RegEx مثل: /^[A-Za-z ]+$/
+        const fullNamePattern = /^[A-Za-z ]+$/;
 
-        if (!namePattern.test(name.value)) {
-            alert("Name must contain letters only.");
-            e.preventDefault();
+        if (!fullNamePattern.test(name.value) || name.value.trim().indexOf(" ") === -1) {
+            alert("❌ Enter full name without numbers or symbols.");
             return;
         }
 
-        // Validate: date
-        if (date.value === "") {
-            alert("Please enter a due date.");
-            e.preventDefault();
+        /* ـــــــــــــ التحقق 3: التاريخ قريب جدًا (قبل 3 أيام) ـــــــــــــ */
+        const today = new Date();
+        const selected = new Date(date.value);
+
+        // فرق الأيام
+        const diff = (selected - today) / (1000 * 60 * 60 * 24);
+
+        if (diff < 3) {
+            alert("❌ The due date is too soon.");
             return;
         }
 
-        // Description check
-        if (desc.value.length < 5) {
-            var confirmMsg = confirm("Description is too short. Submit anyway?");
-            if (!confirmMsg) {
-                e.preventDefault();
-                return;
-            }
+        /* ـــــــــــــ التحقق 4: الوصف أقل من 100 حرف ـــــــــــــ */
+        if (desc.value.trim().length < 100) {
+            alert("❌ Description must be at least 100 characters.");
+            return;
         }
 
-        alert("Your request has been submitted successfully!");
+        /* ============================================================
+           إذا كل شيء صحيح → سلايدات JS تقول نستخدم confirm()
+           (صفحة 28 في Introduction to JS)   [oai_citation:3‡Lecture9-ch21_Introduction to JS_.pdf](sediment://file_0000000085f071f5a7ca20b85e9fcc3e)
+        ============================================================= */
+        const userChoice = confirm(
+            "Your request is valid.\n\nDo you want to stay on the page?"
+        );
+
+        if (userChoice) {
+            /* ============================================================
+               البقاء في الصفحة → تخزين الطلب داخل LocalStorage
+               (مطابق لدرس LocalStorage)   [oai_citation:4‡Lecture10_LocalStorage_.pdf](sediment://file_00000000c81871f5a150cba055449bb4)
+            ============================================================= */
+            let list = localStorage.getItem("requests");
+
+            if (!list) list = " ";
+            list += "- " + service.value + " | " + name.value + " | " + date.value + "\n";
+
+            localStorage.setItem("requests", list);
+
+            alert("✔ Request saved. You can add more.");
+        } else {
+            /* الرجوع للداشبورد */
+            window.location.href = "customer-dashboard.html";
+        }
     });
+});
 
+/* ============================================================
+   عرض الطلبات داخل نفس الصفحة (عند البقاء)
+============================================================ */
+
+document.addEventListener("DOMContentLoaded", function () {
+    const box = document.getElementById("savedRequests");
+    if (!box) return;
+
+    const data = localStorage.getItem("requests");
+
+    if (data) {
+        box.innerText = data;
+    }
 });
