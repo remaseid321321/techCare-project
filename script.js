@@ -306,7 +306,7 @@ function updateRewardBox(points, pointsEl, fillEl, tierEl) {
     const percent = (points / max) * 100;
 
     // تحديث النص
-pointsEl.textContent = Points: ${points} / ${max};
+pointsEl.textContent = `Points: ${points} / ${max}`;
     // تحديث عرض الشريط
     fillEl.style.width = percent + "%";
 
