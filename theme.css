@@ -1,1 +1,162 @@
+/* ============================================================
+   DARK MODE — FULL THEME STYLES
+   يعمل بمجرد إضافة class="dark" على <body>
+============================================================ */
 
+/* ==== الصفحة كاملة ==== */
+.dark {
+    background: #111 !important;
+    color: #eee !important;
+}
+
+/* ==== الهيدر ==== */
+.dark .site-header {
+    background: #1a1a1a !important;
+    border-bottom: 1px solid #444 !important;
+}
+
+.dark .title {
+    color: #fff !important;
+}
+
+.dark .site-nav a {
+    color: #cdd9ff !important;
+}
+
+.dark .site-nav a:hover {
+    color: #fff !important;
+}
+
+/* ==== البريكرمب ==== */
+.dark .breadcrumbs a {
+    color: #ccc !important;
+}
+
+/* ==== الصناديق (sections + cards + boxes) ==== */
+.dark .section,
+.dark .service-card,
+.dark .review,
+.dark .item,
+.dark .team-card,
+.dark .profile-table,
+.dark .stats .stat-box,
+.dark .service-item,
+.dark .reward-box,
+.dark .staff-table,
+.dark table,
+.dark .stat-box,
+.dark .photo-upload {
+    background: #1b1b1b !important;
+    border-color: #555 !important;
+}
+
+.dark .pad,
+.dark td,
+.dark th {
+    color: #eee !important;
+}
+
+/* ==== التايبوغرافية ==== */
+.dark h1,
+.dark h2,
+.dark h3,
+.dark p,
+.dark li,
+.dark .small {
+    color: #eee !important;
+}
+
+.dark .meta {
+    color: #bbb !important;
+}
+
+/* ==== القوائم ==== */
+.dark ul.nested li {
+    color: #eee !important;
+}
+
+/* ==== الجداول ==== */
+.dark table th {
+    background: #2a2a2a !important;
+    color: #fff !important;
+}
+
+.dark table td {
+    background: #1b1b1b !important;
+    color: #eee !important;
+}
+
+/* ==== زر العودة لأعلى ==== */
+.dark #backToTop {
+    background: #6a5acd !important;
+    color: #fff !important;
+}
+
+/* ==== الفوتر ==== */
+.dark footer.site-footer {
+    background: #1b1b1b !important;
+    color: #ddd !important;
+    border-top-color: #444 !important;
+}
+
+/* ==== بطاقات الخدمات ==== */
+.dark .service-item {
+    background: #202020 !important;
+}
+
+/* ==== نص التقييم الذهبي ==== */
+.dark .rating {
+    color: gold !important;
+}
+
+/* ==== reward box ==== */
+.dark .reward-bar {
+    background: #333 !important;
+}
+
+.dark .reward-fill {
+    background: #6a5acd !important;
+}
+
+.dark .reward-title {
+    color: #fff !important;
+}
+
+.dark .reward-tier {
+    color: #ccc !important;
+}
+
+/* ==== أزرار ==== */
+.dark .btn-black {
+    background: #333 !important;
+    color: #fff !important;
+}
+
+.dark .dashboard-buttons a {
+    background: #222 !important;
+    color: #fff !important;
+}
+
+.dark .dashboard-buttons a:hover {
+    background: #6a5acd !important;
+}
+
+/* ==== نموذج رفع الصور ==== */
+.dark .photo-upload {
+    background: #222 !important;
+    border-color: #555 !important;
+}
+
+/* ==== قائمة البحث ==== */
+.dark .search-bar input {
+    background: #111 !important;
+    color: #eee !important;
+    border-color: #555 !important;
+}
+
+/* ==== القائمة المنسدلة ==== */
+.dark select {
+    background: #111 !important;
+    color: #eee !important;
+    border-color: #555 !important;
+}
