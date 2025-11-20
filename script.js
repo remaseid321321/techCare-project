@@ -252,7 +252,7 @@ function updateRewardBox(points, pointsEl, fillEl, tierEl) {
     const max = 200;
     const percent = (points / max) * 100;
 
-    pointsEl.textContent = 'Points: ${points} / ${max}';
+    pointsEl.textContent = '${points} / ${max}';
     fillEl.style.width = percent + "%";
 
     if (points < 100) tierEl.textContent = "(Bronze)";
