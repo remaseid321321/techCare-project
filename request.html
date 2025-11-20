@@ -4,13 +4,12 @@
   <meta charset="utf-8">
   <title>Request a Service – TechCare</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="styles.css">
-      <link rel="stylesheet" href="theme.css">
-
-
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="theme.css">
 </head>
+
 <body>
-   
+
 <header class="site-header">
   <div class="container header-flex">
     <div class="header-left">
@@ -33,11 +32,12 @@
   <a href="customer-dashboard.html">Customer Dashboard</a> › 
   <a href="request.html">Request a Service</a>
 </div>
-  
+
 <main class="container">
   <section class="section">
     <h2 class="center">Request a Service</h2>
-    <form action="request.html" method="post">
+
+    <form id="reqForm">
       <label for="service">Select Service</label>
       <select id="service" required>
         <option value="" disabled selected>Select a service</option>
@@ -59,10 +59,14 @@
       <input type="date" id="date" required>
 
       <label for="desc">Request Description</label>
-      <textarea id="desc" placeholder="Describe your request..."></textarea>
+      <textarea id="desc" placeholder="Describe your request..." required></textarea>
 
       <input type="submit" value="Submit Request">
     </form>
+
+    <!-- مكان عرض الطلبات -->
+    <div id="requestsBox"></div>
+
   </section>
 </main>
 
@@ -72,7 +76,100 @@
     <div>Contact: support@techcare.com • +966-55-5555555</div>
   </div>
 </footer>
-<script src="script.js"></script>
+
+
+<!-- =======================  SCRIPT بطريـقة السلايدات ====================== -->
+<script>
+
+// تحميل الطلبات من التخزين
+let requests = [];
+
+document.addEventListener("DOMContentLoaded", function() {
+
+    // ربط الفورم
+    const form = document.getElementById("reqForm");
+    const box = document.getElementById("requestsBox");
+
+    // عند الضغط على Submit
+    form.onsubmit = function(e){
+        e.preventDefault();
+
+        let service = document.getElementById("service").value;
+        let name = document.getElementById("name").value.trim();
+        let date = document.getElementById("date").value;
+        let desc = document.getElementById("desc").value.trim();
+
+        // === تحقق المتطلبات ===
+        if(service === ""){
+            alert("❌ Please select a service");
+            return;
+        }
+
+        // الاسم يجب يكون كامل بدون رموز أو أرقام
+        let nameRegex = /^[A-Za-z ]+$/;
+        if(!nameRegex.test(name)){
+            alert("❌ Name must be full and without numbers or symbols");
+            return;
+        }
+
+        // التاريخ لازم يكون قريب (مثل أسبوع)
+        let today = new Date();
+        let selectedDate = new Date(date);
+        let diff = (selectedDate - today) / (1000*60*60*24);
+
+        if(diff > 7){
+            alert("❌ Due date must be soon");
+            return;
+        }
+
+        // الوصف أقل من 100 حرف
+        if(desc.length < 100){
+            alert("❌ Description must be at least 100 characters");
+            return;
+        }
+
+        // === كل شيء صح ===
+        let conf = confirm("✔ Everything is valid!\nDo you want to stay on this page?");
+        
+        if(!conf){
+            // يرجع للداشبورد
+            window.location.href = "customer-dashboard.html";
+          return;
+        }
+
+        // يبقى في الصفحة → يعرض الطلبات
+        let req = {
+            service: service,
+            name: name,
+            date: date,
+            desc: desc
+        };
+
+        requests.push(req);
+        displayRequests();
+        form.reset();
+    };
+
+    // دالة عرض الطلبات
+    function displayRequests(){
+        let html = "<h3>Your Requests:</h3>";
+
+        requests.forEach(function(r, i){
+            html += `
+                <div class='req-item'>
+                    <strong>Service:</strong> ${r.service}<br>
+                    <strong>Name:</strong> ${r.name}<br>
+                    <strong>Due Date:</strong> ${r.date}<br>
+                    <strong>Description:</strong> ${r.desc}<br><br>
+                </div>
+            `;
+        });
+
+        box.innerHTML = html;
+    }
+
+});
+</script>
 
 </body>
 </html>
