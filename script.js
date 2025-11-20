@@ -1,69 +1,73 @@
 /* ============================================================
-   1) LOAD THEME (DARK/LIGHT) — يعمل في جميع الصفحات
+   1) LOAD THEME (DARK/LIGHT)
 ============================================================ */
 document.addEventListener("DOMContentLoaded", function () {
-    const savedTheme = localStorage.getItem("theme");
+    var savedTheme = localStorage.getItem("theme");
 
     if (savedTheme === "dark") {
         document.body.classList.add("dark");
 
-        const themeSwitch = document.getElementById("themeSwitch");
-        if (themeSwitch) themeSwitch.checked = true;
+        var themeSwitch = document.getElementById("themeSwitch");
+        if (themeSwitch) {
+            themeSwitch.checked = true;
+        }
     }
 });
 
 /* ============================================================
-   2) THEME TOGGLE — يعمل فقط في الصفحة الرئيسية
+   2) THEME TOGGLE (ONLY HOME)
 ============================================================ */
-const themeButton = document.getElementById("themeToggle");
+var themeButton = document.getElementById("themeToggle");
 
 if (themeButton) {
 
-    // إذا فيه ثيم محفوظ من قبل – طبّقيه
     if (localStorage.getItem("theme") === "dark") {
         document.body.classList.add("dark");
         themeButton.textContent = "☀️";
     }
 
-    // عند الضغط على الزر
-    themeButton.addEventListener("click", () => {
+    themeButton.onclick = function () {
 
         document.body.classList.toggle("dark");
 
         if (document.body.classList.contains("dark")) {
-            themeButton.textContent = "☀️"; 
+            themeButton.textContent = "☀️";
             localStorage.setItem("theme", "dark");
         } else {
             themeButton.textContent = "🌙";
             localStorage.setItem("theme", "light");
         }
-    });
+    };
 }
 
 /* ============================================================
-   3) BACK TO TOP BUTTON — الصفحة الرئيسية فقط
+   3) BACK TO TOP (ONLY HOME)
 ============================================================ */
-const topBtn = document.getElementById("backToTop");
+var topBtn = document.getElementById("backToTop");
 
 if (topBtn) {
-    window.addEventListener("scroll", () => {
-        if (window.scrollY > 400) topBtn.style.display = "block";
-        else topBtn.style.display = "none";
-    });
 
-    topBtn.addEventListener("click", () => {
+    window.onscroll = function () {
+        if (window.scrollY > 400) {
+            topBtn.style.display = "block";
+        } else {
+            topBtn.style.display = "none";
+        }
+    };
+
+    topBtn.onclick = function () {
         window.scrollTo({ top: 0, behavior: "smooth" });
-    });
+    };
 }
 
 /* ============================================================
-   4) REAL-TIME CLOCK — الصفحة الرئيسية فقط
+   4) CLOCK
 ============================================================ */
 function updateClock() {
-    const clockEl = document.getElementById("clock");
+    var clockEl = document.getElementById("clock");
     if (!clockEl) return;
 
-    const now = new Date();
+    var now = new Date();
     clockEl.textContent = now.toLocaleTimeString();
 }
 
@@ -71,76 +75,97 @@ setInterval(updateClock, 1000);
 updateClock();
 
 /* ============================================================
-   5) SERVICES PAGE — SEARCH + SORT
+   5) SERVICES PAGE — SEARCH + SORT + RANDOM
 ============================================================ */
 
-const searchInput = document.getElementById("search");
-const sortSelect = document.getElementById("sort");
-const servicesList = document.querySelector(".services-list");
+var searchInput = document.getElementById("search");
+var sortSelect = document.getElementById("sort");
+var servicesList = document.querySelector(".services-list");
 
 if (servicesList) {
 
-    const services = Array.from(document.querySelectorAll(".service-item"));
+    /* =============== 1) نجمع العناصر في Array =============== */
+    var services = document.querySelectorAll(".service-item");
+    var arr = [];
 
-    /* ---------- SEARCH ---------- */
-    if (searchInput) {
-        searchInput.addEventListener("input", function () {
-            const keyword = searchInput.value.toLowerCase();
-
-            services.forEach(service => {
-                const title = service.querySelector("h3").textContent.toLowerCase();
-                const desc = service.querySelector("p").textContent.toLowerCase();
-
-                service.style.display =
-                    (title.includes(keyword) || desc.includes(keyword))
-                        ? "block"
-                        : "none";
-            });
-        });
+    for (var i = 0; i < services.length; i++) {
+        arr.push(services[i]);
     }
 
-    /* ---------- SORT ---------- */
+    /* =============== 2) ترتيب عشوائي عند فتح الصفحة =============== */
+    arr.sort(function () {
+        return Math.random() - 0.5;
+    });
+
+    for (var i = 0; i < arr.length; i++) {
+        servicesList.appendChild(arr[i]);
+    }
+
+    /* =============== 3) البحث =============== */
+    if (searchInput) {
+        searchInput.oninput = function () {
+
+            var keyword = searchInput.value.toLowerCase();
+
+            for (var i = 0; i < arr.length; i++) {
+
+                var title = arr[i].querySelector("h3").textContent.toLowerCase();
+                var desc = arr[i].querySelector("p").textContent.toLowerCase();
+
+                if (title.indexOf(keyword) !== -1 || desc.indexOf(keyword) !== -1) {
+                    arr[i].style.display = "block";
+                } else {
+                    arr[i].style.display = "none";
+                }
+            }
+        };
+    }
+
+    /* =============== 4) الفرز (Sorting) =============== */
     if (sortSelect) {
-        sortSelect.addEventListener("change", function () {
 
-            let sortedItems = [...services];
+        sortSelect.onchange = function () {
 
-            switch (sortSelect.value) {
-
-                case "price-asc":
-                    sortedItems.sort((a, b) => extractPrice(a) - extractPrice(b));
-                    break;
-
-                case "price-desc":
-                    sortedItems.sort((a, b) => extractPrice(b) - extractPrice(a));
-                    break;
-
-                case "name-asc":
-                    sortedItems.sort((a, b) =>
-                        extractName(a).localeCompare(extractName(b))
-                    );
-                    break;
-
-                case "name-desc":sortedItems.sort((a, b) =>
-                        extractName(b).localeCompare(extractName(a))
-                    );
-                    break;
+            if (sortSelect.value === "price-asc") {
+                arr.sort(function (a, b) {
+                    return extractPrice(a) - extractPrice(b);
+                });
             }
 
-            /* إعادة الترتيب داخل الصفحة */
-            sortedItems.forEach(item => servicesList.appendChild(item));
-        });
+            else if (sortSelect.value === "price-desc") {
+                arr.sort(function (a, b) {
+                   return extractPrice(b) - extractPrice(a);
+                });
+            }
+
+            else if (sortSelect.value === "name-asc") {
+                arr.sort(function (a, b) {
+                    return extractName(a).localeCompare(extractName(b));
+                });
+            }
+
+            else if (sortSelect.value === "name-desc") {
+                arr.sort(function (a, b) {
+                    return extractName(b).localeCompare(extractName(a));
+                });
+            }
+
+            /* إعادة ترتيب الصفحة */
+            for (var i = 0; i < arr.length; i++) {
+                servicesList.appendChild(arr[i]);
+            }
+        };
     }
 }
 
 /* ============================================================
-   6) Helper Functions — Price & Name
+   6) Helper Functions
 ============================================================ */
 function extractPrice(el) {
-    const priceText = el.querySelector(".meta").textContent;
-    return parseInt(priceText.replace(/\D/g, ""));
+    var txt = el.querySelector(".meta").textContent;
+    return parseInt(txt.replace(/\D/g, ""));
 }
 
 function extractName(el) {
-    return el.querySelector("h3").textContent.trim().toLowerCase();
+    return el.querySelector("h3").textContent.toLowerCase();
 }
