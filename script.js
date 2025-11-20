@@ -259,6 +259,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // إضافة النقاط الجديدة
         const updated = current + amount;
+       if(updated > 200) {
+          updated=200;
+       }
 
         // تخزينها
         localStorage.setItem(key, updated);
