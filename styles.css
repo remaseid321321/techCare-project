@@ -680,3 +680,11 @@ table.staff-table {
 #backToTop:hover {
     background: #333;
 }
+
+/* evaluate star */
+.rating .star {
+  font-size: 40px;   
+  cursor: pointer;
+  color: gold;
+  letter-spacing: 8px;
+}
