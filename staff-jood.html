@@ -2,9 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Staff Profile – TechCare</title>
+  <title>Jood Alkhneem – Profile</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="theme.css">
 </head>
@@ -33,14 +32,11 @@
   <a href="AboutUs.html">About Us</a> › 
   <a href="staff-jood.html">Profile</a>
 </div>
-  
+
 <main class="container">
   <section class="section">
-    <h2>Jood Alkhneen – Profile</h2>
+    <h2>Jood Alkhneem – Profile</h2>
 
-    <!-- ============================== 
-         PROFILE INFORMATION TABLE
-    =============================== -->
     <table class="profile-table">
       <thead>
         <tr>
@@ -50,14 +46,13 @@
           <th>Education</th>
         </tr>
       </thead>
-
       <tbody>
         <tr>
           <td rowspan="3" style="text-align:center;">
-            <img src="images/staff1.jpg" class="profile-photo">
+            <img src="images/staff1.jpg" alt="Jood Alkhneem" class="profile-photo">
           </td>
 
-          <td class="name">Jood Alkhneen</td>
+          <td class="name">Jood Alkhneem</td>
 
           <td rowspan="3">
             IT Infrastructure & Systems
@@ -75,7 +70,7 @@
 
           <td rowspan="3">
             <ul class="nested">
-              <li>BSc in IT – KSU</li>
+              <li>BSc in Information Technology – KSU</li>
               <li>Certified Network Administrator (CNA)</li>
               <li>ITIL Foundation Certified</li>
             </ul>
@@ -87,16 +82,18 @@
         </tr>
 
         <tr>
-          <td><strong>Email:</strong> jood@example.com</td>
+          <td><strong>Email:</strong> <a href="mailto:jood@example.com">jood@example.com</a></td>
         </tr>
       </tbody>
     </table>
 
-    <br><hr><br>
+    <br>
+    <hr>
+    <br>
 
-    <!-- ============================== 
-         STAFF REWARDS (DYNAMIC)
-         مرتبط بـ localStorage
+    <!-- ============================
+         STAFF REWARDS BOX
+         IMPORTANT: data-key = points-jood
     =============================== -->
     <div class="reward-box" data-key="points-jood">
       <div class="reward-title">
@@ -106,7 +103,7 @@
       <div class="reward-points">Points: 0 / 200</div>
 
       <div class="reward-bar">
-        <div class="reward-fill" style="width: 0%;"></div>
+        <div class="reward-fill" style="width:0%;"></div>
       </div>
 
       <div class="reward-next">Next level at 200 points</div>
