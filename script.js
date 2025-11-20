@@ -218,3 +218,44 @@ if (staffForm) {
         alert("Application submitted successfully! Welcome " + name );
     });
 }
+/* ============================================================
+   6) STAFF POINTS SYSTEM (Profile Page)
+============================================================ */
+document.addEventListener("DOMContentLoaded", function () {
+
+    const rewardBox = document.querySelector(".reward-box");
+
+    if (!rewardBox) return; // الصفحة ليست بروفايل
+
+    const key = rewardBox.dataset.key; // مثل: "points-jood"
+    let points = localStorage.getItem(key);
+
+    if (!points) {
+        points = 0; // أول مرة
+        localStorage.setItem(key, 0);
+    }
+
+    points = parseInt(points);
+
+    // عناصر البروفايل
+    const pointsEl = rewardBox.querySelector(".reward-points");
+    const fillEl = rewardBox.querySelector(".reward-fill");
+    const tierEl = rewardBox.querySelector(".reward-tier");
+
+    // التحديث على الصفحة
+    updateRewardBox(points, pointsEl, fillEl, tierEl);
+});
+
+/* تحديث الصندوق */
+function updateRewardBox(points, pointsEl, fillEl, tierEl) {
+
+    const max = 200;
+    const percent = (points / max) * 100;
+
+    pointsEl.textContent = Points: ${points} / ${max};
+    fillEl.style.width = percent + "%";
+
+    if (points < 100) tierEl.textContent = "(Bronze)";
+    else if (points < 150) tierEl.textContent = "(Silver)";
+    else tierEl.textContent = "(Gold)";
+}
