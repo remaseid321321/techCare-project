@@ -1,50 +1,126 @@
 /* ============================================================
-   1) FILTER — Search Services in Real Time
+   1) LOAD THEME (DARK/LIGHT) — يعمل في جميع الصفحات
 ============================================================ */
-function setupSearch() {
-    const searchInput = document.getElementById("searchInput");
-    const serviceItems = document.querySelectorAll(".service-item");
+document.addEventListener("DOMContentLoaded", function () {
+    const savedTheme = localStorage.getItem("theme");
 
-    if (searchInput) {
-        searchInput.addEventListener("input", function () {
-            const query = searchInput.value.toLowerCase().trim();
+    if (savedTheme === "dark") {
+        document.body.classList.add("dark");
 
-            serviceItems.forEach(item => {
-                const name = item.querySelector("h3").textContent.toLowerCase();
-
-                item.style.display = name.includes(query)
-                    ? "block"
-                    : "none";
-            });
-        });
+        const themeSwitch = document.getElementById("themeSwitch");
+        if (themeSwitch) themeSwitch.checked = true;
     }
+});
+
+/* ============================================================
+   2) THEME TOGGLE — يعمل فقط في الصفحة الرئيسية
+============================================================ */
+// ===============================
+// Theme Toggle (Dark / Light)
+// ===============================
+
+// زر التبديل
+const themeButton = document.getElementById("themeToggle");
+
+// إذا فيه ثيم محفوظ من قبل – طبّقيه
+if (localStorage.getItem("theme") === "dark") {
+    document.body.classList.add("dark");
+    themeButton.textContent = "☀️";
+}
+
+// عند الضغط على الزر
+themeButton.addEventListener("click", () => {
+
+    document.body.classList.toggle("dark");
+
+    // إذا صار دارك
+    if (document.body.classList.contains("dark")) {
+        themeButton.textContent = "☀️";      // يطلع رمز الشمس
+        localStorage.setItem("theme", "dark");
+    } 
+    else {
+        themeButton.textContent = "🌙";       // يطلع رمز القمر
+        localStorage.setItem("theme", "light");
+    }
+});
+
+/* ============================================================
+   3) BACK TO TOP BUTTON — (الصفحة الرئيسية فقط)
+============================================================ */
+const topBtn = document.getElementById("backToTop");
+
+if (topBtn) {
+    window.addEventListener("scroll", () => {
+        if (window.scrollY > 400) topBtn.style.display = "block";
+        else topBtn.style.display = "none";
+    });
+
+    topBtn.addEventListener("click", () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    });
 }
 
 /* ============================================================
-   2) SORT — Sort Services by Price or Name
+   4) REAL-TIME CLOCK — (الصفحة الرئيسية فقط)
 ============================================================ */
-function setupSort() {
-    const sortSelect = document.getElementById("sortSelect");
-    const servicesList = document.querySelector(".services-list");
+function updateClock() {
+    const clockEl = document.getElementById("clock");
+    if (!clockEl) return;
 
-    if (sortSelect && servicesList) {
+    const now = new Date();
+    clockEl.textContent = now.toLocaleTimeString();
+}
+
+setInterval(updateClock, 1000);
+updateClock();
+
+/* ============================================================
+   5) SERVICES PAGE — SEARCH + SORT  (يشتغل فقط عند وجود العناصر)
+============================================================ */
+
+const searchInput = document.getElementById("search");
+const sortSelect = document.getElementById("sort");
+const servicesList = document.querySelector(".services-list");
+
+if (servicesList) {
+
+    const services = Array.from(document.querySelectorAll(".service-item"));
+
+    /* ---------- SEARCH ---------- */
+    if (searchInput) {
+        searchInput.addEventListener("input", function () {
+            const keyword = searchInput.value.toLowerCase();
+
+            services.forEach(service => {
+                const title = service.querySelector("h3").textContent.toLowerCase();
+                const desc = service.querySelector("p").textContent.toLowerCase();
+
+                service.style.display =
+                    (title.includes(keyword) || desc.includes(keyword))
+                        ? "block"
+                        : "none";
+            });
+        });
+    }
+
+    /* ---------- SORT ---------- */
+    if (sortSelect) {
         sortSelect.addEventListener("change", function () {
-            const items = Array.from(servicesList.querySelectorAll(".service-item"));
-            const selected = sortSelect.value;
-            let sortedItems = [...items];
 
-            switch (selected) {
-                case "low-high":
+            let sortedItems = [...services];
+
+            switch (sortSelect.value) {
+
+                case "price-asc":
                     sortedItems.sort((a, b) => extractPrice(a) - extractPrice(b));
                     break;
 
-                case "high-low":
+                case "price-desc":
                     sortedItems.sort((a, b) => extractPrice(b) - extractPrice(a));
                     break;
 
                 case "name-asc":
-                    sortedItems.sort((a, b) =>
-                        extractName(a).localeCompare(extractName(b))
+                    sortedItems.sort((a, b) =>extractName(a).localeCompare(extractName(b))
                     );
                     break;
 
@@ -56,13 +132,13 @@ function setupSort() {
             }
 
             /* إعادة ترتيب العناصر داخل الصفحة */
-            sortedItems.forEach(item => servicesList.appendChild(item));
+                                    sortedItems.forEach(item => servicesList.appendChild(item));
         });
     }
 }
 
 /* ============================================================
-   3) Helper Functions — Price & Name
+   6) Helper Functions — Price & Name
 ============================================================ */
 function extractPrice(el) {
     const priceText = el.querySelector(".meta").textContent;
@@ -72,11 +148,3 @@ function extractPrice(el) {
 function extractName(el) {
     return el.querySelector("h3").textContent.trim().toLowerCase();
 }
-
-/* ============================================================
-   4) DARK MODE — ONLY THIS CODE (remove everything else)
-============================================================ */
-
-document.getElementById("themeToggle").onclick = function () {
-    document.body.classList.toggle("dark");
-};
