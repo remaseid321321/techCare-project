@@ -681,10 +681,4 @@ table.staff-table {
     background: #333;
 }
 
-/* evaluate star */
-#rate .star {
-  font-size: 40px;   
-  cursor: pointer;
-  color: gold;
-  letter-spacing: 8px;
-}
+
