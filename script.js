@@ -252,7 +252,8 @@ function updateRewardBox(points, pointsEl, fillEl, tierEl) {
     const max = 200;
     const percent = (points / max) * 100;
 
-    pointsEl.textContent ="Points:" ${points} "/" ${max};
+    // التصحيح: تم استخدام علامات الاقتباس الخلفية (backticks) ... بدلاً من لا شيء
+    pointsEl.textContent = Points: ${points} / ${max};
     fillEl.style.width = percent + "%";
 
     if (points < 100) tierEl.textContent = "(Bronze)";
