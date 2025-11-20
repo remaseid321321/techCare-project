@@ -15,37 +15,33 @@ document.addEventListener("DOMContentLoaded", function () {
 /* ============================================================
    2) THEME TOGGLE — يعمل فقط في الصفحة الرئيسية
 ============================================================ */
-// ===============================
-// Theme Toggle (Dark / Light)
-// ===============================
-
-// زر التبديل
 const themeButton = document.getElementById("themeToggle");
 
-// إذا فيه ثيم محفوظ من قبل – طبّقيه
-if (localStorage.getItem("theme") === "dark") {
-    document.body.classList.add("dark");
-    themeButton.textContent = "☀️";
+if (themeButton) {
+
+    // إذا فيه ثيم محفوظ من قبل – طبّقيه
+    if (localStorage.getItem("theme") === "dark") {
+        document.body.classList.add("dark");
+        themeButton.textContent = "☀️";
+    }
+
+    // عند الضغط على الزر
+    themeButton.addEventListener("click", () => {
+
+        document.body.classList.toggle("dark");
+
+        if (document.body.classList.contains("dark")) {
+            themeButton.textContent = "☀️"; 
+            localStorage.setItem("theme", "dark");
+        } else {
+            themeButton.textContent = "🌙";
+            localStorage.setItem("theme", "light");
+        }
+    });
 }
 
-// عند الضغط على الزر
-themeButton.addEventListener("click", () => {
-
-    document.body.classList.toggle("dark");
-
-    // إذا صار دارك
-    if (document.body.classList.contains("dark")) {
-        themeButton.textContent = "☀️";      // يطلع رمز الشمس
-        localStorage.setItem("theme", "dark");
-    } 
-    else {
-        themeButton.textContent = "🌙";       // يطلع رمز القمر
-        localStorage.setItem("theme", "light");
-    }
-});
-
 /* ============================================================
-   3) BACK TO TOP BUTTON — (الصفحة الرئيسية فقط)
+   3) BACK TO TOP BUTTON — الصفحة الرئيسية فقط
 ============================================================ */
 const topBtn = document.getElementById("backToTop");
 
@@ -61,7 +57,7 @@ if (topBtn) {
 }
 
 /* ============================================================
-   4) REAL-TIME CLOCK — (الصفحة الرئيسية فقط)
+   4) REAL-TIME CLOCK — الصفحة الرئيسية فقط
 ============================================================ */
 function updateClock() {
     const clockEl = document.getElementById("clock");
@@ -75,7 +71,7 @@ setInterval(updateClock, 1000);
 updateClock();
 
 /* ============================================================
-   5) SERVICES PAGE — SEARCH + SORT  (يشتغل فقط عند وجود العناصر)
+   5) SERVICES PAGE — SEARCH + SORT
 ============================================================ */
 
 const searchInput = document.getElementById("search");
@@ -120,19 +116,19 @@ if (servicesList) {
                     break;
 
                 case "name-asc":
-                    sortedItems.sort((a, b) =>extractName(a).localeCompare(extractName(b))
+                    sortedItems.sort((a, b) =>
+                        extractName(a).localeCompare(extractName(b))
                     );
                     break;
 
-                case "name-desc":
-                    sortedItems.sort((a, b) =>
+                case "name-desc":sortedItems.sort((a, b) =>
                         extractName(b).localeCompare(extractName(a))
                     );
                     break;
             }
 
-            /* إعادة ترتيب العناصر داخل الصفحة */
-                                    sortedItems.forEach(item => servicesList.appendChild(item));
+            /* إعادة الترتيب داخل الصفحة */
+            sortedItems.forEach(item => servicesList.appendChild(item));
         });
     }
 }
