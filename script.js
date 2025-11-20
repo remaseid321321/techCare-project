@@ -281,3 +281,36 @@ addBtn.onclick = function () {
 
     alert("Points updated successfully!");
 };
+/* ============================================================
+   STAFF POINTS — Add points from Manage Staff
+============================================================ */
+
+const addBtn = document.getElementById("addPointsBtn");
+
+if (addBtn) {
+    addBtn.addEventListener("click", function () {
+
+        const staffKey = document.getElementById("staffSelect").value;
+        const amount = parseInt(document.getElementById("pointsInput").value);
+
+        if (!staffKey) {
+            alert("Please choose a staff member.");
+            return;
+        }
+
+        if (isNaN(amount) || amount <= 0) {
+            alert("Please enter a valid number.");
+            return;
+        }
+
+        let oldPoints = localStorage.getItem(staffKey);
+
+        if (!oldPoints) oldPoints = 0;
+
+        const newPoints = parseInt(oldPoints) + amount;
+
+        localStorage.setItem(staffKey, newPoints);
+
+        alert("Points updated successfully!");
+    });
+}
