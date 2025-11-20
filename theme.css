@@ -160,3 +160,17 @@
     color: #eee !important;
     border-color: #555 !important;
 }
+
+.dark a {
+    color: #cdd9ff !important;
+}
+
+.dark a:hover {
+    color: white !important;
+}
+
+.dark input[type="submit"] {
+    background: #6a5acd !important;
+    color: white !important;
+    border: 1px solid #888 !important;
+}
