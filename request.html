@@ -112,15 +112,14 @@ document.addEventListener("DOMContentLoaded", function() {
             return;
         }
 
-        // التاريخ لازم يكون قريب (مثل أسبوع)
-        let today = new Date();
-        let selectedDate = new Date(date);
-        let diff = (selectedDate - today) / (1000*60*60*24);
+      let chosen = new Date(date.value);
+let today = new Date();
+let diff = (chosen - today) / (1000 * 60 * 60 * 24);
 
-        if(diff > 7){
-            alert("❌ Due date must be soon");
-            return;
-        }
+if (diff < 7) {
+    alert("Due date is too soon!");
+    return;
+}
 
         // الوصف أقل من 100 حرف
         if(desc.length < 100){
