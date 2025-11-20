@@ -190,7 +190,7 @@ if (staffForm) {
         const photo = document.getElementById("jn-photo").value;
 
         // 1) No empty fields
-        if (!name  !birth  !email  !exp  !skills  !edu  !msg || !photo) {
+        if (!name || !birth || !email || !exp || !skills || !edu || !msg || !photo) {
             alert("Please fill in all fields.");
             return;
         }
