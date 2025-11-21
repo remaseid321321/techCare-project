@@ -370,3 +370,106 @@ window.onload = function () {
     };
 
 };
+
+// =============================
+//  ADD NEW SERVICE PAGE LOGIC
+// =============================
+
+window.onload = function () {
+
+    // نتحقق إذا الصفحة صفحة إضافة خدمة (عن طريق وجود الحقول)
+    var addForm = document.getElementById("addServiceForm");
+
+    if (addForm) {
+
+        addForm.onsubmit = function (e) {
+
+            var name = document.getElementById("name").value.trim();
+            var price = document.getElementById("price").value.trim();
+            var desc = document.getElementById("desc").value.trim();
+
+            // 1) التحقق من الحقول الفارغة
+            if (name === ""  price === ""  desc === "") {
+                alert("Please fill all fields.");
+                e.preventDefault();
+                return;
+            }
+
+            // 2) الاسم يبدأ برقم (غير مسموح)
+            if (!isNaN(name.charAt(0))) {
+                alert("Service name cannot start with a number.");
+                e.preventDefault();
+                return;
+            }
+
+            // 3) السعر لازم يكون رقم
+            if (isNaN(price)) {
+                alert("Price must be a number.");
+                e.preventDefault();
+                return;
+            }
+
+            // ========= حفظ الخدمة في localStorage =========
+
+            var oldServices = localStorage.getItem("services");
+
+            if (oldServices === null) {
+                oldServices = [];   
+            } else {
+                oldServices = JSON.parse(oldServices); 
+            }
+
+            // نصنع object
+            var newService = {
+                serviceName: name,
+                servicePrice: price,
+                serviceDesc: desc
+            };
+
+            // نضيفه للأراي
+            oldServices.push(newService);
+
+            // نرجّعه لتخزين محلي
+            localStorage.setItem("services", JSON.stringify(oldServices));
+
+            // رسالة باسم الخدمة
+            alert("Service added: " + name);
+
+            // تفريغ الفورم
+            addForm.reset();
+
+            // منع إعادة تحميل الصفحة
+            e.preventDefault();
+        };
+    }
+
+    // =============================
+    //  PROVIDER DASHBOARD PAGE LOGIC
+    // =============================
+
+    var tableBody = document.querySelector("tbody");
+
+    // شرط التأكد أننا لسنا في add-service
+    if (tableBody && !document.getElementById("addServiceForm")) {
+
+        var saved = localStorage.getItem("services");
+
+        if (saved !== null) {
+
+            var servicesArray = JSON.parse(saved);
+
+            for (var i = 0; i < servicesArray.length; i++) {
+
+                var row = document.createElement("tr");
+
+                row.innerHTML =
+                    "<td>" + servicesArray[i].serviceName + "</td>" +
+                    "<td>" + servicesArray[i].servicePrice + " SR</td>" +
+                    "<td>Active</td>" +
+                    "<td style='text-align:right;'><a href='#' class='action-btn'>Edit</a> <a href='#' class='action-btn'>Delete</a></td>";
+
+                tableBody.appendChild(row);
+            }
+        }
+    }
+};
