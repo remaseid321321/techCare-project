@@ -4,18 +4,18 @@
   <meta charset="utf-8">
   <title>Provider Dashboard – TechCare</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-  
+
 <header class="site-header">
   <div class="container header-flex">
     <div class="header-left">
       <img src="images/logo.png" alt="TechCare Logo" class="logo">
-      <div class="title">TechCare </div>
+      <div class="title">TechCare</div>
     </div>
-     <div class="site-nav">
+    <div class="site-nav">
       <a href="index.html">Home</a>
       <a href="services.html">Services</a>
       <a href="AboutUs.html">About Us</a>
@@ -27,9 +27,9 @@
 
 <div class="container breadcrumbs">
   <a href="index.html">Home</a> › 
-  <a href="provider-dashboard.html">Provider Dashboard</a> 
+  <a href="provider-dashboard.html">Provider Dashboard</a>
 </div>
-  
+
 <main class="container">
   <section class="section">
     <h2 class="center">Provider Dashboard</h2>
@@ -61,18 +61,11 @@
           <th style="text-align:right;">Action</th>
         </tr>
       </thead>
-      <tbody>
-        <tr><td>Device Repair</td><td>90 SR</td><td>Active</td><td><a href="#" class="action-btn">Edit</a> <a href="#" class="action-btn">Delete</a></td></tr>
-        <tr><td>Software Installation</td><td>200 SR</td><td>Active</td><td><a href="#" class="action-btn">Edit</a> <a href="#" class="action-btn">Delete</a></td></tr>
-        <tr><td>Network Setup</td><td>99 SR</td><td>Active</td><td><a href="#" class="action-btn">Edit</a> <a href="#" class="action-btn">Delete</a></td></tr>
-        <tr><td>Data Recovery</td><td>150 SR</td><td>Active</td><td><a href="#" class="action-btn">Edit</a> <a href="#" class="action-btn">Delete</a></td></tr>
-        <tr><td>System Upgrade</td><td>130 SR</td><td>Pending</td><td><a href="#" class="action-btn">Edit</a> <a href="#" class="action-btn">Delete</a></td></tr>
-        <tr><td>Cloud Migration</td><td>199 SR</td><td>Active</td><td><a href="#" class="action-btn">Edit</a> <a href="#" class="action-btn">Delete</a></td></tr>
-        <tr><td>System Optimization</td><td>240 SR</td><td>Active</td><td><a href="#" class="action-btn">Edit</a> <a href="#" class="action-btn">Delete</a></td></tr>
-        <tr><td>Security Audit</td><td>250 SR</td><td>Active</td><td><a href="#" class="action-btn">Edit</a> <a href="#" class="action-btn">Delete</a></td></tr>
-        <tr><td>Virus Removal</td><td>299 SR</td><td>Active</td><td><a href="#" class="action-btn">Edit</a> <a href="#" class="action-btn">Delete</a></td></tr>
-        <tr><td>Backup Solution</td><td>70 SR</td><td>Active</td><td><a href="#" class="action-btn">Edit</a> <a href="#" class="action-btn">Delete</a></td></tr>
+
+      <!-- IMPORTANT: tbody must be empty, JS fills it -->
+      <tbody id="serviceTableBody">
       </tbody>
+
     </table>
 
     <div class="dashboard-buttons">
@@ -89,6 +82,8 @@
     <div>Contact: support@techcare.com • +966-55-5555555</div>
   </div>
 </footer>
+
+<script src="script.js"></script>
 
 </body>
 </html>
