@@ -546,7 +546,6 @@ if (window.location.pathname.includes("manage-staff.html")) {
     };
 
     // ===== 4) ADD NEW STAFF MEMBER =====
-    var staffForm = document.querySelector(".staff-form");
 
     staffForm.onsubmit = function (e) {
         e.preventDefault();
