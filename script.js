@@ -574,7 +574,7 @@ if (window.location.pathname.includes("manage-staff.html")) {
 
         alert("New staff member added!");
 
-        staffForm.reset();
+        currentStaff.reset();
         loadStaff();
     };
 
