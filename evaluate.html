@@ -5,12 +5,11 @@
   <title>Service Evaluation – TechCare</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="theme.css">
-
-
+  <link rel="stylesheet" href="theme.css">
 </head>
+
 <body>
-  
+
 <header class="site-header">
   <div class="container header-flex">
     <div class="header-left">
@@ -18,27 +17,28 @@
       <div class="title">TechCare</div>
     </div>
 
-   <div class="site-nav">
+    <div class="site-nav">
       <a href="index.html">Home</a>
       <a href="services.html">Services</a>
       <a href="AboutUs.html">About Us</a>
       <a href="customer-dashboard.html">Customer Dashboard</a>
       <a href="provider-dashboard.html">Provider Dashboard</a>
     </div>
-    </div>
+  </div>
 </header>
 
 <div class="container breadcrumbs">
   <a href="index.html">Home</a> › 
   <a href="customer-dashboard.html">Customer Dashboard</a> › 
   <a href="evaluate.html">Service Evaluation</a>
-  
 </div>
+
 <main class="container">
   <section class="section">
     <h2 class="center">Service Evaluation</h2>
 
     <form id="evalForm">
+
       <label for="service">Select Service</label>
       <select id="service" required>
         <option value="" disabled selected>Select a service</option>
@@ -53,17 +53,16 @@
         <option>Backup Solutions</option>
       </select>
 
-<label>Rating</label>
-<div class="rating">
-  <span class="star" style="font-size:40px; color:gold; ">★</span>
-  <span class="star" style="font-size:40px; color:gold; ">★</span>
-  <span class="star" style="font-size:40px; color:gold;  ">★</span>
-  <span class="star" style="font-size:40px; color:gold;  ">★</span>
-  <span class="star" style="font-size:40px; color:gold; ">★</span>
-</div>
-<input type="hidden" id="ratingValue" value="0">
+      <label>Rating</label>
+      <div class="rating">
+        <span class="star" style="font-size:40px; color:gold;">★</span>
+        <span class="star" style="font-size:40px; color:gold;">★</span>
+        <span class="star" style="font-size:40px; color:gold;">★</span>
+        <span class="star" style="font-size:40px; color:gold;">★</span>
+        <span class="star" style="font-size:40px; color:gold;">★</span>
+      </div>
+      <input type="hidden" id="ratingValue" value="0">
 
-      
       <label for="feedback">Feedback/Comment</label>
       <textarea id="feedback" placeholder="Write your feedback or comment..." required></textarea>
 
@@ -78,9 +77,18 @@
     <div>Contact: support@techcare.com • +966-55-5555555</div>
   </div>
 </footer>
+
 <script src="script.js"></script>
+
+<!-- =======================
+     EMBEDDED STAR + EVAL JS
+=========================== -->
 <script>
+// =============================
+//  STAR RATING (Slides Style)
+// =============================
 document.addEventListener("DOMContentLoaded", function () {
+
     var stars = document.getElementsByClassName("star");
     var ratingValue = document.getElementById("ratingValue");
 
@@ -101,16 +109,59 @@ document.addEventListener("DOMContentLoaded", function () {
             for (var k = 0; k < stars.length; k++) {
 
                 if (k < val) {
-                    stars[k].style.color = "gold";      
+                    stars[k].style.color = "gold";
                     stars[k].style.opacity = "1";
                 } else {
-                    stars[k].style.color = "gold";      
-                    stars[k].style.opacity = "0.4";     
+                    stars[k].style.color = "gold";
+                    stars[k].style.opacity = "0.4";
                 }
             }
         };
     }
+});
+
+// =============================
+//  EVALUATION FORM VALIDATION
+// =============================
+window.onload = function () {
+
+    var evalForm = document.getElementById("evalForm");
+
+    if (evalForm == null) return;
+
+    evalForm.onsubmit = function (e) {
+
+        e.preventDefault(); 
+
+        var service = document.getElementById("service").value;
+        var rate = document.getElementById("ratingValue").value;
+        var feedback = document.getElementById("feedback").value.trim();
+
+        if (service === "") {
+            alert("Please select a service.");
+            return;
+        }
+
+        if (rate === "" || rate === "0") {
+            alert("Please choose a rating.");
+            return;
+        }
+
+        if (feedback === "") {
+            alert("Please write a comment.");
+            return;
+        }
+
+        if (rate == 1 || rate == 2) {
+            alert("We're sorry for the inconvenience. Thank you for your feedback.");
+        } else {
+            alert("Thank you for your positive evaluation!");
+        }
+
+        window.location.href = "customer-dashboard.html";
+    };
 };
 </script>
+
 </body>
 </html>
