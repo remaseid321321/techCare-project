@@ -389,7 +389,7 @@ window.onload = function () {
             var desc = document.getElementById("desc").value.trim();
 
             // 1) التحقق من الحقول الفارغة
-            if (name === ""  price === ""  desc === "") {
+            if (name === "" || price === "" || desc === "") {
                 alert("Please fill all fields.");
                 e.preventDefault();
                 return;
