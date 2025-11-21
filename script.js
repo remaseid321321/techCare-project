@@ -476,3 +476,106 @@ if (window.location.pathname.includes("provider-dashboard.html")) {
     }
 }
 };
+
+// =============================================
+//  MANAGE STAFF PAGE LOGIC  (for manage-staff.html only)
+// =============================================
+
+if (window.location.pathname.includes("manage-staff.html")) {
+
+    // ===== 1) STAFF ARRAY (Array of Objects) =====
+    var staffMembers = [
+        { name: "Jood Alkhneem", photo: "images/staff1.jpg" },
+        { name: "Remas Almutairi", photo: "images/staff2.jpg" },
+        { name: "Lujain Almajhul", photo: "images/staff3.jpg" },
+        { name: "Jwana Alothman", photo: "images/staff4.jpg" }
+    ];
+
+    // ===== 2) PRINT STAFF IN TABLE WITH CHECKBOXES =====
+    function loadStaff() {
+
+        var tbody = document.querySelector(".staff-table tbody");
+        if (!tbody) return;
+
+        tbody.innerHTML = "";
+
+        for (var i = 0; i < staffMembers.length; i++) {
+            var row = document.createElement("tr");
+
+            row.innerHTML =
+                "<td><img src='" + staffMembers[i].photo + "'></td>" +
+                "<td>" + staffMembers[i].name + "</td>" +
+                "<td><input type='checkbox' class='staffCheck' data-index='" + i + "'></td>";
+
+            tbody.appendChild(row);
+        }
+    }
+
+    loadStaff();
+
+    // ===== 3) DELETE SELECTED STAFF =====
+    var deleteBtn = document.querySelector(".btn-black");
+
+    deleteBtn.onclick = function () {
+
+        var checks = document.querySelectorAll(".staffCheck");
+        var selected = [];
+
+        for (var i = 0; i < checks.length; i++) {
+            if (checks[i].checked) {
+                selected.push(i);
+            }
+        }
+
+        // لا يوجد عضو محدد
+        if (selected.length === 0) {
+            alert("Please select at least one offer");
+            return;
+        }
+
+        // تأكيد الحذف
+        var ok = confirm("Are you sure you want to delete selected members?");
+        if (!ok) return;
+
+        // حذف من array (من النهاية للأول)
+        for (var j = selected.length - 1; j >= 0; j--) {
+            staffMembers.splice(selected[j], 1);
+        }
+
+        loadStaff();
+    };
+
+    // ===== 4) ADD NEW STAFF MEMBER =====
+    var staffForm = document.querySelector(".staff-form");
+
+    staffForm.onsubmit = function (e) {
+        e.preventDefault();
+
+        var name = document.getElementById("staff-name").value.trim();
+        var photo = document.getElementById("photo").value;
+        var dob = document.getElementById("dob").value.trim();
+        var email = document.getElementById("email").value.trim();
+        var expertise = document.getElementById("expertise").value.trim();
+        var skills = document.getElementById("skills").value.trim();
+        var education = document.getElementById("education").value.trim();
+
+        // التحقق من الحقول الفارغة
+        if (name === "" || photo === "" || dob === "" || email === "" || expertise === "" || skills === "" || education === "") {
+
+            alert("Please fill all required fields.");
+            return;
+        }
+
+        // إضافة العضو الجديد إلى Array of Objects
+        staffMembers.push({
+            name: name,
+            photo: "images/default.jpg" // لأن السلايد ما طلب رفع فعلي للملفات
+        });
+
+        alert("New staff member added!");
+
+        staffForm.reset();
+        loadStaff();
+    };
+
+}
