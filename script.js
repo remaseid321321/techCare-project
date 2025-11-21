@@ -478,3 +478,4 @@ if (window.location.pathname.includes("provider-dashboard.html")) {
         }
     }
 }
+};
