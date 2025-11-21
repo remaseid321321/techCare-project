@@ -323,35 +323,50 @@ pointsEl.textContent = `Points: ${points} / ${max}`;
     }
 }
 
-// ==== تقييم الخدمة (المشترك) ====
+/* =====================================
+   Evaluation Form Validation (Slides Style)
+===================================== */
 
-var evalForm = document.getElementById("evalForm");
+window.onload = function () {
 
-if (evalForm) {
+    var evalForm = document.getElementById("evalForm");
 
-    evalForm.onsubmit = function (event) {
-        event.preventDefault(); 
+    if (evalForm == null) return;  // الصفحة ليست evaluation
 
+    evalForm.onsubmit = function (e) {
+
+        e.preventDefault(); // نفس أسلوب السلايدات — منع الإرسال
+
+        // تجميع القيم
         var service = document.getElementById("service").value;
-        var rating = document.getElementById("ratingValue").value;
-        var comment = document.getElementById("feedback").value;
+        var rate = document.getElementById("ratingValue").value;
+        var feedback = document.getElementById("feedback").value.trim();
 
-        // التحقق من المتطلبات
-        if (service === "" || rating === "" || comment.trim() === "") {
-            alert("Please fill all fields.");
+        // التحقق (مثل السلايدات)
+        if (service === "") {
+            alert("Please select a service.");
             return;
         }
 
-        rating = parseInt(rating);
-
-        // رسائل التقييم
-        if (rating === 1 || rating === 2) {
-            alert("We're sorry the service did not meet your expectations.");
-        } else {
-            alert("Thank you for your valuable feedback!");
+        if (rate === "" || rate === "0") {
+            alert("Please choose a rating.");
+            return;
         }
 
-        // الرجوع للداشبورد مباشرة
+        if (feedback === "") {
+            alert("Please write a comment.");
+            return;
+        }
+
+        // الرسالة حسب التقييم (حسب طلبك)
+        if (rate == 1 || rate == 2) {
+            alert("We're sorry for the inconvenience. Thank you for your feedback.");
+        } else {
+            alert("Thank you for your positive evaluation!");
+        }
+
+        // الانتقال للداشبورد (مثل السلايدات)
         window.location.href = "customer-dashboard.html";
     };
-}
+
+};
