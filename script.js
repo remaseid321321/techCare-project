@@ -443,10 +443,7 @@ window.onload = function () {
         };
     }
 
-    // =============================
-    //  PROVIDER DASHBOARD PAGE LOGIC
-    // =============================
-
+   
    // =============================
 //  PROVIDER DASHBOARD PAGE LOGIC
 // =============================
