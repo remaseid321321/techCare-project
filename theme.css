@@ -190,3 +190,8 @@
     background-color: #333 !important;
     color: #fff !important;
 }
+
+.number {
+    color: #fff !important;
+    font-weight: bold;
+}
