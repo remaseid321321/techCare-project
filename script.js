@@ -447,15 +447,20 @@ window.onload = function () {
     //  PROVIDER DASHBOARD PAGE LOGIC
     // =============================
 
+   // =============================
+//  PROVIDER DASHBOARD PAGE LOGIC
+// =============================
+
+// نتأكد أننا في صفحة البروفايدر فقط
+if (window.location.pathname.includes("provider-dashboard.html")) {
+
     var tableBody = document.querySelector("tbody");
 
-    // شرط التأكد أننا لسنا في add-service
-    if (tableBody && !document.getElementById("addServiceForm")) {
+    if (tableBody) {
 
         var saved = localStorage.getItem("services");
 
         if (saved !== null) {
-
             var servicesArray = JSON.parse(saved);
 
             for (var i = 0; i < servicesArray.length; i++) {
@@ -472,4 +477,4 @@ window.onload = function () {
             }
         }
     }
-};
+}
