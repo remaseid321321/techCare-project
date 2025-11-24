@@ -78,55 +78,54 @@
 
 <script>
 
-var requests = [];
+let requests = [];
 
-var form = document.getElementById("reqForm");
-var serviceInput = document.getElementById("service");
-var nameInput = document.getElementById("name");
-var dateInput = document.getElementById("date");
-var descInput = document.getElementById("desc");
+document.addEventListener("DOMContentLoaded", function() {
 
-if (form) {
+    var form = document.getElementById("reqForm");
+    var box = document.getElementById("requestsBox");
 
-    form.onsubmit = function () {
+    form.onsubmit = function(e){
+        e.preventDefault();
 
-        var service = serviceInput.value;
-        var name = nameInput.value;
-        var date = dateInput.value;
-        var desc = descInput.value;
+        let service = document.getElementById("service").value;
+        let name = document.getElementById("name").value.trim();
+        let date = document.getElementById("date").value;
+        let desc = document.getElementById("desc").value.trim();
 
-        if (service === "") {
-            alert("Please select a service");
-            return false;
+        if(service === ""){
+            alert("❌ Please select a service");
+            return;
         }
 
-        var nameRegex = /^[A-Za-z ]+$/;
-        if (!nameRegex.test(name)) {
-            alert("Name must be full and without numbers or symbols");
-            return false;
+        let nameRegex = /^[A-Za-z ]+$/;
+        if(!nameRegex.test(name)){
+            alert("❌ Name must be full and without numbers or symbols");
+            return;
         }
 
-        var chosen = new Date(date);
-        var today = new Date();
-        var diff = (chosen - today) / (1000 * 60 * 60 * 24);
+      let chosen = new Date(date.value);
+let today = new Date();
+let diff = (chosen - today) / (1000 * 60 * 60 * 24);
 
-        if (diff < 7) {
-            alert("Due date is too soon!");
-            return false;
+if (diff < 7) {
+    alert("Due date is too soon!");
+    return;
+}
+
+        if(desc.length < 100){
+            alert("❌ Description must be at least 100 characters");
+            return;
         }
 
-        if (desc.length < 100) {
-            alert("Description must be at least 100 characters");
-            return false;
-        }
-
-        var conf = confirm("Everything is valid!\nDo you want to stay on this page?");
-        if (!conf) {
+        let conf = confirm("✔ Everything is valid!\nDo you want to stay on this page?");
+        
+        if(!conf){
             window.location.href = "customer-dashboard.html";
-            return false;
+          return;
         }
 
-        var req = {
+        let req = {
             service: service,
             name: name,
             date: date,
@@ -135,31 +134,29 @@ if (form) {
 
         requests.push(req);
         displayRequests();
-
-        serviceInput.value = "";
-        nameInput.value = "";
-        dateInput.value = "";
-        descInput.value = "";
-
-        return false;
+        form.reset();
     };
-}
 
-function displayRequests() {
-    var html = "<h3>Your Requests:</h3>";
+    function displayRequests(){
+        let html = "<h3>Your Requests:</h3>";
 
-    for (var i = 0; i < requests.length; i++) {
-        html += "<div class='req-item'>" +
-            "<strong>Service:</strong> " + requests[i].service + "<br>" +
-            "<strong>Name:</strong> " + requests[i].name + "<br>" +
-            "<strong>Due Date:</strong> " + requests[i].date + "<br>" +
-            "<strong>Description:</strong> " + requests[i].desc + "<br><br>" +
-        "</div>";
+        requests.forEach(function(r, i){
+            html += `
+                <div class='req-item'>
+                    <strong>Service:</strong> ${r.service}<br>
+                    <strong>Name:</strong> ${r.name}<br>
+                    <strong>Due Date:</strong> ${r.date}<br>
+                    <strong>Description:</strong> ${r.desc}<br><br>
+                </div>
+            `;
+        });
+
+        box.innerHTML = html;
     }
 
-    box.innerHTML = html;
-}
+});
 </script>
+
 <script src="script.js"></script>
 
 </body>
