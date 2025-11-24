@@ -92,7 +92,6 @@ var servicesList = document.querySelector(".services-list");
 
 if (servicesList) {
 
-    /* =============== 1) نجمع العناصر في Array =============== */
     var services = document.querySelectorAll(".service-item");
     var arr = [];
 
@@ -100,7 +99,6 @@ if (servicesList) {
         arr.push(services[i]);
     }
 
-    /* =============== 2) ترتيب عشوائي عند فتح الصفحة =============== */
     arr.sort(function () {
         return Math.random() - 0.5;
     });
@@ -109,7 +107,6 @@ if (servicesList) {
         servicesList.appendChild(arr[i]);
     }
 
-    /* =============== 3) البحث =============== */
     if (searchInput) {
         searchInput.oninput = function () {
 
@@ -129,7 +126,6 @@ if (servicesList) {
         };
     }
 
-    /* =============== 4) الفرز (Sorting) =============== */
     if (sortSelect) {
 
         sortSelect.onchange = function () {
@@ -158,7 +154,6 @@ if (servicesList) {
                 });
             }
 
-            /* إعادة ترتيب الصفحة */
             for (var i = 0; i < arr.length; i++) {
                 servicesList.appendChild(arr[i]);
             }
@@ -177,7 +172,6 @@ function extractPrice(el) {
 function extractName(el) {
     return el.querySelector("h3").textContent.toLowerCase();
 }
-
 /* ============================================================
    7) ABOUT PAGE — JOIN OUR STAFF FORM VALIDATION
 ============================================================ */
@@ -197,41 +191,38 @@ if (staffForm) {
         var msg    = document.getElementById("jn-msg").value.trim();
         var photo  = document.getElementById("jn-photo").value;
 
-        // 1) No empty fields
         if (!name || !birth || !email || !exp || !skills || !edu || !msg || !photo) {
             alert("Please fill in all fields.");
             return false; 
         }
 
-        // 2) Name cannot start with a number
         if (/^[0-9]/.test(name)) {
             alert("Name cannot start with a number.");
             return false;
         }
 
-        // 3) Only image allowed
         if (!photo.match(/\.(jpg|jpeg|png|gif)$/i)) {
             alert("Please upload a valid image file.");
             return false;
         }
 
-        // 4) Birth year before 2008
         var year = new Date(birth).getFullYear();
         if (year >= 2008) {
             alert("Birth year must be before 2008.");
             return false;
         }
 
-        // SUCCESS
         alert("Application submitted successfully! Welcome " + name + "!");
         return true; 
     };
 }
+
+
 /* ============================================================
    STAFF POINTS SYSTEM — Add Points (Manage Staff Page)
 ============================================================ */
 
-window.onload = function () {
+window.addEventListener("load", function () {
 
     var addBtn = document.getElementById("addPointsBtn");
     var selectStaff = document.getElementById("staffPoints");
@@ -277,16 +268,15 @@ window.onload = function () {
         pointsInput.value = "";
         selectStaff.value = "";
     };
-};
+});
+
 
 
 /* ============================================================
    STAFF POINTS SYSTEM — Display Points (Staff Profile Page)
 ============================================================ */
 
-
-
-window.onload = function () {
+window.addEventListener("load", function () {
 
     var rewardBox = document.querySelector(".reward-box");
     if (!rewardBox) return; 
@@ -303,41 +293,18 @@ window.onload = function () {
     var tierEl   = rewardBox.querySelector(".reward-tier");
 
     updateRewardBox(points, pointsEl, fillEl, tierEl);
-};
-
-
-/* ============================================================
-   FUNCTION: Update reward UI
-============================================================ */
-function updateRewardBox(points, pointsEl, fillEl, tierEl) {
-
-    const max = 200;
-    const percent = (points / max) * 100;
-
-pointsEl.textContent = `Points: ${points} / ${max}`;
-   
-    fillEl.style.width = percent + "%";
-
-    if (points < 100) {
-        tierEl.textContent = "(Bronze)";
-    } else if (points < 150) {
-        tierEl.textContent = "(Silver)";
-    } else {
-        tierEl.textContent = "(Gold)";
-    }
-}
-
+});
 /* =====================================
    Evaluation Form Validation (Slides Style)
 ===================================== */
 
-window.onload = function () {
+window.addEventListener("load", function () {
 
     var evalForm = document.getElementById("evalForm");
 
     if (evalForm == null) return;  
 
-    evalForm.onsubmit = function (e) {
+    evalForm.onsubmit = function () {
 
         var service = document.getElementById("service").value;
         var rate = document.getElementById("ratingValue").value;
@@ -367,13 +334,12 @@ window.onload = function () {
         window.location.href = "customer-dashboard.html";
     };
 
-};
-
+});
 // =============================
 //  ADD NEW SERVICE PAGE LOGIC
 // =============================
 
-window.onload = function () {
+window.addEventListener("load", function () {
 
     var addForm = document.getElementById("addServiceForm");
 
@@ -399,8 +365,6 @@ window.onload = function () {
                 alert("Price must be a number.");
                 return false;
             }
-
-            // ========= حفظ الخدمة في localStorage =========
 
             var oldServices = localStorage.getItem("services");
 
@@ -429,133 +393,139 @@ window.onload = function () {
             e.preventDefault();
         };
     }
-
-   
-   // =============================
+});
+// =============================
 //  PROVIDER DASHBOARD PAGE LOGIC
 // =============================
 
-// نتأكد أننا في صفحة البروفايدر فقط
-if (window.location.pathname.includes("provider-dashboard.html")) {
+window.addEventListener("load", function () {
 
-    var tableBody = document.querySelector("tbody");
+    if (window.location.pathname.includes("provider-dashboard.html")) {
 
-    if (tableBody) {
+        var tableBody = document.querySelector("tbody");
 
-        var saved = localStorage.getItem("services");
+        if (tableBody) {
 
-        if (saved !== null) {
-            var servicesArray = JSON.parse(saved);
+            var saved = localStorage.getItem("services");
 
-            for (var i = 0; i < servicesArray.length; i++) {
+            if (saved !== null) {
 
-                var row = document.createElement("tr");
+                var servicesArray = JSON.parse(saved);
 
-                row.innerHTML =
-                    "<td>" + servicesArray[i].serviceName + "</td>" +
-                    "<td>" + servicesArray[i].servicePrice + " SR</td>" +
-                    "<td>Active</td>" +
-                    "<td style='text-align:right;'><a href='#' class='action-btn'>Edit</a> <a href='#' class='action-btn'>Delete</a></td>";
+                for (var i = 0; i < servicesArray.length; i++) {
 
-                tableBody.appendChild(row);
+                    var row = document.createElement("tr");
+
+                    row.innerHTML =
+                        "<td>" + servicesArray[i].serviceName + "</td>" +
+                        "<td>" + servicesArray[i].servicePrice + " SR</td>" +
+                        "<td>Active</td>" +
+                        "<td style='text-align:right;'><a href='#' class='action-btn'>Edit</a> <a href='#' class='action-btn'>Delete</a></td>";
+
+                    tableBody.appendChild(row);
+                }
             }
         }
     }
-}
-};
 
+});
 // =============================================
 //  MANAGE STAFF PAGE LOGIC  (for manage-staff.html only)
 // =============================================
 
-if (window.location.pathname.includes("manage-staff.html")) {
+window.addEventListener("load", function () {
 
-    // ===== 1) STAFF ARRAY (Array of Objects) =====
-    var staffMembers = [
-        { name: "Jood Alkhneen", photo: "images/staff1.jpg" },
-        { name: "Remas Almutairi", photo: "images/staff2.jpg" },
-        { name: "Lujain Almajyul", photo: "images/staff3.jpg" },
-        { name: "Jwana Alothman", photo: "images/staff4.jpg" }
-    ];
+    if (window.location.pathname.includes("manage-staff.html")) {
 
-    // ===== 2) PRINT STAFF IN TABLE WITH CHECKBOXES =====
-    function loadStaff() {
+        // ===== 1) STAFF ARRAY (Array of Objects) =====
+        var staffMembers = [
+            { name: "Jood Alkhneen", photo: "images/staff1.jpg" },
+            { name: "Remas Almutairi", photo: "images/staff2.jpg" },
+            { name: "Lujain Almajyul", photo: "images/staff3.jpg" },
+            { name: "Jwana Alothman", photo: "images/staff4.jpg" }
+        ];
 
-        var tbody = document.querySelector(".staff-table tbody");
-        if (!tbody) return;
+        // ===== 2) PRINT STAFF IN TABLE WITH CHECKBOXES =====
+        function loadStaff() {
 
-        tbody.innerHTML = "";
+            var tbody = document.querySelector(".staff-table tbody");
+            if (!tbody) return;
 
-        for (var i = 0; i < staffMembers.length; i++) {
-            var row = document.createElement("tr");
+            tbody.innerHTML = "";
 
-            row.innerHTML =
-                "<td><img src='" + staffMembers[i].photo + "'></td>" +
-                "<td>" + staffMembers[i].name + "</td>" +
-                "<td><input type='checkbox' class='staffCheck' data-index='" + i + "'></td>";
+            for (var i = 0; i < staffMembers.length; i++) {
 
-            tbody.appendChild(row);
-        }
-    }
+                var row = document.createElement("tr");
 
-    loadStaff();
+                row.innerHTML =
+                    "<td><img src='" + staffMembers[i].photo + "'></td>" +
+                    "<td>" + staffMembers[i].name + "</td>" +
+                    "<td><input type='checkbox' class='staffCheck' data-index='" + i + "'></td>";
 
-    // ===== 3) DELETE SELECTED STAFF =====
-    var deleteBtn = document.querySelector(".btn-black");
-
-    deleteBtn.onclick = function () {
-
-        var checks = document.querySelectorAll(".staffCheck");
-        var selected = [];
-
-        for (var i = 0; i < checks.length; i++) {
-            if (checks[i].checked) {
-                selected.push(i);
+                tbody.appendChild(row);
             }
         }
 
-        if (selected.length === 0) {
-            alert("Please select at least one offer");
-            return;
-        }
-
-        var ok = confirm("Are you sure you want to delete selected members?");
-        if (!ok) return;
-
-        for (var j = selected.length - 1; j >= 0; j--) {
-            staffMembers.splice(selected[j], 1);
-        }
-
         loadStaff();
-    };
 
-    // ===== 4) ADD NEW STAFF MEMBER =====
+        // ===== 3) DELETE SELECTED STAFF =====
+        var deleteBtn = document.querySelector(".btn-black");
 
-   var currentStaff= document.querySelector(".staff-form");
-    currentStaff.onsubmit = function (e) {
+        deleteBtn.onclick = function () {
 
-        var name = document.getElementById("staff-name").value.trim();
-        var photo = document.getElementById("photo").value;
-        var dob = document.getElementById("dob").value.trim();
-        var email = document.getElementById("email").value.trim();
-        var expertise = document.getElementById("expertise").value.trim();
-        var skills = document.getElementById("skills").value.trim();
-        var education = document.getElementById("education").value.trim();
+            var checks = document.querySelectorAll(".staffCheck");
+            var selected = [];
 
-        if (name === "" || photo === "" || dob === "" || email === "" || expertise === "" || skills === "" || education === "") {
+            for (var i = 0; i < checks.length; i++) {
+                if (checks[i].checked) {
+                    selected.push(i);
+                }
+            }
 
-            alert("Please fill all required fields.");
-            return false;
-        }
+            if (selected.length === 0) {
+                alert("Please select at least one offer");
+                return;
+            }
 
-        staffMembers.push({
-            name: name,
-            photo: "images/default.jpg" // افتراضية 
-        });
+            var ok = confirm("Are you sure you want to delete selected members?");
+            if (!ok) return;
 
-        alert("New staff member added!");
+            for (var j = selected.length - 1; j >= 0; j--) {
+                staffMembers.splice(selected[j], 1);
+            }
 
-        loadStaff();
-    };
+            loadStaff();
+        };
 
-}
+        // ===== 4) ADD NEW STAFF MEMBER =====
+        var currentStaff = document.querySelector(".staff-form");
+
+        currentStaff.onsubmit = function () {
+
+            var name = document.getElementById("staff-name").value.trim();
+            var photo = document.getElementById("photo").value;
+            var dob = document.getElementById("dob").value.trim();
+            var email = document.getElementById("email").value.trim();
+            var expertise = document.getElementById("expertise").value.trim();
+            var skills = document.getElementById("skills").value.trim();
+            var education = document.getElementById("education").value.trim();
+
+            if (name === "" || photo === "" || dob === "" || email === "" ||
+                expertise === "" || skills === "" || education === "") {
+
+                alert("Please fill all required fields.");
+                return false;
+            }
+
+            staffMembers.push({
+                name: name,
+                photo: "images/default.jpg"
+            });
+
+            alert("New staff member added!");
+            loadStaff();
+        };
+
+    }
+
+});
