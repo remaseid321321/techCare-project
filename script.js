@@ -31,13 +31,13 @@ var topBtn = document.getElementById("backToTop");
 
 if (topBtn) {
 
-    window.onscroll = function () {
+    window.addEventListener("scroll", function () {
         if (window.scrollY > 400) {
             topBtn.style.display = "block";
         } else {
             topBtn.style.display = "none";
         }
-    };
+    });
 
     topBtn.onclick = function () {
         window.scrollTo({ top: 0, behavior: "smooth" });
@@ -62,13 +62,14 @@ updateClock();
    5) SERVICES PAGE — SEARCH + SORT + RANDOM
 ============================================================ */
 
-var searchInput = document.getElementById("search");
-var sortSelect = document.getElementById("sort");
-var servicesList = document.querySelector(".services-list");
+document.addEventListener("DOMContentLoaded", function () {
 
-if (servicesList) {
+    var searchInput  = document.getElementById("search");
+    var sortSelect   = document.getElementById("sort");
+    var servicesList = document.querySelector(".services-list");
 
-    /* =============== 1) نجمع العناصر في Array =============== */
+    if (!servicesList) return;
+
     var services = document.querySelectorAll(".service-item");
     var arr = [];
 
@@ -76,7 +77,6 @@ if (servicesList) {
         arr.push(services[i]);
     }
 
-    /* =============== 2) ترتيب عشوائي عند فتح الصفحة =============== */
     arr.sort(function () {
         return Math.random() - 0.5;
     });
@@ -85,16 +85,14 @@ if (servicesList) {
         servicesList.appendChild(arr[i]);
     }
 
-    /* =============== 3) البحث =============== */
     if (searchInput) {
         searchInput.oninput = function () {
-
             var keyword = searchInput.value.toLowerCase();
 
             for (var i = 0; i < arr.length; i++) {
 
                 var title = arr[i].querySelector("h3").textContent.toLowerCase();
-                var desc = arr[i].querySelector("p").textContent.toLowerCase();
+                var desc  = arr[i].querySelector("p").textContent.toLowerCase();
 
                 if (title.indexOf(keyword) !== -1 || desc.indexOf(keyword) !== -1) {
                     arr[i].style.display = "block";
@@ -105,7 +103,6 @@ if (servicesList) {
         };
     }
 
-    /* =============== 4) الفرز (Sorting) =============== */
     if (sortSelect) {
 
         sortSelect.onchange = function () {
@@ -118,7 +115,7 @@ if (servicesList) {
 
             else if (sortSelect.value === "price-desc") {
                 arr.sort(function (a, b) {
-                   return extractPrice(b) - extractPrice(a);
+                    return extractPrice(b) - extractPrice(a);
                 });
             }
 
@@ -134,13 +131,13 @@ if (servicesList) {
                 });
             }
 
-            /* إعادة ترتيب الصفحة */
             for (var i = 0; i < arr.length; i++) {
                 servicesList.appendChild(arr[i]);
             }
         };
     }
-}
+
+});
 
 /* ============================================================
    6) Helper Functions
@@ -157,67 +154,66 @@ function extractName(el) {
    7) ABOUT PAGE — JOIN OUR STAFF FORM VALIDATION
 ============================================================ */
 
-var staffForm = document.getElementById("joinForm");
+document.addEventListener("DOMContentLoaded", function () {
 
-if (staffForm) {
+    var staffForm = document.getElementById("joinForm");
+
+    if (!staffForm) return;
 
     staffForm.addEventListener("submit", function (e) {
 
-        var name = document.getElementById("jn-name").value.trim();
-        var birth = document.getElementById("jn-dob").value;
-        var email = document.getElementById("jn-email").value.trim();
-        var exp = document.getElementById("jn-expertise").value.trim();
+        var name   = document.getElementById("jn-name").value.trim();
+        var birth  = document.getElementById("jn-dob").value;
+        var email  = document.getElementById("jn-email").value.trim();
+        var exp    = document.getElementById("jn-expertise").value.trim();
         var skills = document.getElementById("jn-skills").value.trim();
-        var edu = document.getElementById("jn-edu").value.trim();
-        var msg = document.getElementById("jn-msg").value.trim();
-        var photo = document.getElementById("jn-photo").value;
+        var edu    = document.getElementById("jn-edu").value.trim();
+        var msg    = document.getElementById("jn-msg").value.trim();
+        var photo  = document.getElementById("jn-photo").value;
 
-        // 1) No empty fields
         if (!name || !birth || !email || !exp || !skills || !edu || !msg || !photo) {
             alert("Please fill in all fields.");
-            return false;
+            e.preventDefault();
+            return;
         }
 
-        // 2) Name must NOT start with a number
         if (/^[0-9]/.test(name)) {
             alert("Name cannot start with a number.");
-            return false;
+            e.preventDefault();
+            return;
         }
 
-        // 3) Image file only
         if (!photo.match(/\.(jpg|jpeg|png|gif)$/i)) {
-            alert("Please upload an image file (JPG, PNG, GIF).");
-            return false;
+            alert("Please upload an image file.");
+            e.preventDefault();
+            return;
         }
 
-        // 4) Birth year must be before 2008
-        const year = new Date(birth).getFullYear();
+        var year = new Date(birth).getFullYear();
         if (year >= 2008) {
             alert("Birth year must be before 2008.");
-            return false;
+            e.preventDefault();
+            return;
         }
-       
-        alert("Application submitted successfully! Welcome " + name );
-    });
-}
 
+        alert("Application submitted successfully! Welcome " + name);
+    });
+});
 /* ============================================================
    STAFF POINTS SYSTEM — Add Points (Manage Staff Page)
 ============================================================ */
 
-// يتحقق إذا صفحة manage-staff
 document.addEventListener("DOMContentLoaded", function () {
 
-    var addBtn = document.getElementById("addPointsBtn");
+    var addBtn      = document.getElementById("addPointsBtn");
     var selectStaff = document.getElementById("staffPoints");
     var pointsInput = document.getElementById("pointsInput");
 
-    // إذا العناصر غير موجودة يعني لسنا في صفحة manage staff
     if (!addBtn || !selectStaff || !pointsInput) return;
 
     addBtn.addEventListener("click", function () {
 
-        var key = selectStaff.value;        // مثل: points-jood
+        var key    = selectStaff.value;
         var amount = parseInt(pointsInput.value);
 
         if (!key) {
@@ -230,56 +226,43 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
 
-        // جلب النقاط السابقة
         var current = localStorage.getItem(key);
-
         if (!current) current = 0;
 
         current = parseInt(current);
 
-        // إضافة النقاط الجديدة
         var updated = current + amount;
-       if(updated > 200) {
-          updated=200;
-       }
+        if (updated > 200) updated = 200;
 
-        // تخزينها
         localStorage.setItem(key, updated);
 
         alert("Points added successfully!");
 
-        // تفريغ الخانات
         pointsInput.value = "";
         selectStaff.value = "";
     });
 });
-
-
 /* ============================================================
    STAFF POINTS SYSTEM — Display Points (Staff Profile Page)
 ============================================================ */
 
 document.addEventListener("DOMContentLoaded", function () {
 
-    const rewardBox = document.querySelector(".reward-box");
-    if (!rewardBox) return; // يعني مو صفحة بروفايل
+    var rewardBox = document.querySelector(".reward-box");
+    if (!rewardBox) return;
 
-    var key = rewardBox.dataset.key; // points-jood
+    var key = rewardBox.dataset.key;
 
     var points = localStorage.getItem(key);
     if (!points) points = 0;
-
     points = parseInt(points);
 
-    // عناصر داخل صندوق المكافآت
     var pointsEl = rewardBox.querySelector(".reward-points");
-    var fillEl = rewardBox.querySelector(".reward-fill");
-    var tierEl = rewardBox.querySelector(".reward-tier");
+    var fillEl   = rewardBox.querySelector(".reward-fill");
+    var tierEl   = rewardBox.querySelector(".reward-tier");
 
     updateRewardBox(points, pointsEl, fillEl, tierEl);
 });
-
-
 /* ============================================================
    FUNCTION: Update reward UI
 ============================================================ */
@@ -288,41 +271,37 @@ function updateRewardBox(points, pointsEl, fillEl, tierEl) {
     var max = 200;
     var percent = (points / max) * 100;
 
-    // تحديث النص
-pointsEl.textContent = `Points: ${points} / ${max}`;
-    // تحديث عرض الشريط
-    fillEl.style.width = percent + "%";
+    pointsEl.textContent = `Points: ${points} / ${max}`;
+    fillEl.style.width   = percent + "%";
 
-    // تحديد المستوى
     if (points < 100) {
         tierEl.textContent = "(Bronze)";
-    } else if (points < 150) {
+    } 
+    else if (points < 150) {
         tierEl.textContent = "(Silver)";
-    } else {
+    } 
+    else {
         tierEl.textContent = "(Gold)";
     }
 }
-
 /* =====================================
    Evaluation Form Validation (Slides Style)
 ===================================== */
 
-window.onload = function () {
+document.addEventListener("DOMContentLoaded", function () {
 
     var evalForm = document.getElementById("evalForm");
 
-    if (evalForm == null) return;  // الصفحة ليست evaluation
+    if (!evalForm) return;
 
     evalForm.onsubmit = function (e) {
 
         e.preventDefault();
 
-        // تجميع القيم
-        var service = document.getElementById("service").value;
-        var rate = document.getElementById("ratingValue").value;
+        var service  = document.getElementById("service").value;
+        var rate     = document.getElementById("ratingValue").value;
         var feedback = document.getElementById("feedback").value.trim();
 
-        // التحقق (مثل السلايدات)
         if (service === "") {
             alert("Please select a service.");
             return;
@@ -338,130 +317,108 @@ window.onload = function () {
             return;
         }
 
-        // الرسالة حسب التقييم (حسب طلبك)
         if (rate == 1 || rate == 2) {
             alert("We're sorry for the inconvenience. Thank you for your feedback.");
         } else {
             alert("Thank you for your positive evaluation!");
         }
 
-        // الانتقال للداشبورد (مثل السلايدات)
         window.location.href = "customer-dashboard.html";
     };
-
-};
-
+});
 // =============================
 //  ADD NEW SERVICE PAGE LOGIC
 // =============================
 
-window.onload = function () {
+document.addEventListener("DOMContentLoaded", function () {
 
-    // نتحقق إذا الصفحة صفحة إضافة خدمة (عن طريق وجود الحقول)
     var addForm = document.getElementById("addServiceForm");
+    if (!addForm) return;
 
-    if (addForm) {
+    addForm.onsubmit = function (e) {
 
-        addForm.onsubmit = function (e) {
+        e.preventDefault();
 
-            var name = document.getElementById("name").value.trim();
-            var price = document.getElementById("price").value.trim();
-            var desc = document.getElementById("desc").value.trim();
+        var name = document.getElementById("name").value.trim();
+        var price = document.getElementById("price").value.trim();
+        var desc = document.getElementById("desc").value.trim();
 
-            // 1) التحقق من الحقول الفارغة
-            if (name === "" || price === "" || desc === "") {
-                alert("Please fill all fields.");
-                e.preventDefault();
-                return;
-            }
+        if (name === "" || price === "" || desc === "") {
+            alert("Please fill all fields.");
+            return;
+        }
 
-            // 2) الاسم يبدأ برقم (غير مسموح)
-            if (!isNaN(name.charAt(0))) {
-                alert("Service name cannot start with a number.");
-                e.preventDefault();
-                return;
-            }
+        if (!isNaN(name.charAt(0))) {
+            alert("Service name cannot start with a number.");
+            return;
+        }
 
-            // 3) السعر لازم يكون رقم
-            if (isNaN(price)) {
-                alert("Price must be a number.");
-                e.preventDefault();
-                return;
-            }
+        if (isNaN(price)) {
+            alert("Price must be a number.");
+            return;
+        }
 
-            // ========= حفظ الخدمة في localStorage =========
+        var oldServices = localStorage.getItem("services");
 
-            var oldServices = localStorage.getItem("services");
+        if (oldServices === null) {
+            oldServices = [];  
+        } else {
+            oldServices = JSON.parse(oldServices);
+        }
 
-            if (oldServices === null) {
-                oldServices = [];   
-            } else {
-                oldServices = JSON.parse(oldServices); 
-            }
-
-            // نصنع object
-            var newService = {
-                serviceName: name,
-                servicePrice: price,
-                serviceDesc: desc
-            };
-
-            // نضيفه للأراي
-            oldServices.push(newService);
-
-            // نرجّعه لتخزين محلي
-            localStorage.setItem("services", JSON.stringify(oldServices));
-
-            // رسالة باسم الخدمة
-            alert("Service added: " + name);
-
-            // تفريغ الفورم
-            addForm.reset();
-
-            // منع إعادة تحميل الصفحة
-            e.preventDefault();
+        var newService = {
+            serviceName: name,
+            servicePrice: price,
+            serviceDesc: desc
         };
-    }
 
-   
-   // =============================
+        oldServices.push(newService);
+
+        localStorage.setItem("services", JSON.stringify(oldServices));
+
+        alert("Service added: " + name);
+
+document.getElementById("name").value = "";
+document.getElementById("price").value = "";
+document.getElementById("desc").value = "";    };
+});
+// =============================
 //  PROVIDER DASHBOARD PAGE LOGIC
 // =============================
 
-// نتأكد أننا في صفحة البروفايدر فقط
-if (window.location.pathname.includes("provider-dashboard.html")) {
+document.addEventListener("DOMContentLoaded", function () {
+
+    if (!window.location.pathname.includes("provider-dashboard.html")) return;
 
     var tableBody = document.querySelector("tbody");
+    if (!tableBody) return;
 
-    if (tableBody) {
+    var saved = localStorage.getItem("services");
 
-        var saved = localStorage.getItem("services");
+    if (saved !== null) {
+        var servicesArray = JSON.parse(saved);
 
-        if (saved !== null) {
-            var servicesArray = JSON.parse(saved);
+        for (var i = 0; i < servicesArray.length; i++) {
 
-            for (var i = 0; i < servicesArray.length; i++) {
+            var row = document.createElement("tr");
 
-                var row = document.createElement("tr");
+            row.innerHTML =
+                "<td>" + servicesArray[i].serviceName + "</td>" +
+                "<td>" + servicesArray[i].servicePrice + " SR</td>" +
+                "<td>Active</td>" +
+                "<td style='text-align:right;'><a href='#' class='action-btn'>Edit</a> <a href='#' class='action-btn'>Delete</a></td>";
 
-                row.innerHTML =
-                    "<td>" + servicesArray[i].serviceName + "</td>" +
-                    "<td>" + servicesArray[i].servicePrice + " SR</td>" +
-                    "<td>Active</td>" +
-                    "<td style='text-align:right;'><a href='#' class='action-btn'>Edit</a> <a href='#' class='action-btn'>Delete</a></td>";
-
-                tableBody.appendChild(row);
-            }
+            tableBody.appendChild(row);
         }
     }
-}
-};
-
+});
 // =============================================
-//  MANAGE STAFF PAGE LOGIC  (for manage-staff.html only)
+//  MANAGE STAFF PAGE LOGIC (for manage-staff.html only)
 // =============================================
 
-if (window.location.pathname.includes("manage-staff.html")) {
+document.addEventListener("DOMContentLoaded", function () {
+
+    if (!window.location.pathname.includes("manage-staff.html")) return;
 
     // ===== 1) STAFF ARRAY (Array of Objects) =====
     var staffMembers = [
@@ -480,6 +437,7 @@ if (window.location.pathname.includes("manage-staff.html")) {
         tbody.innerHTML = "";
 
         for (var i = 0; i < staffMembers.length; i++) {
+
             var row = document.createElement("tr");
 
             row.innerHTML =
@@ -496,73 +454,75 @@ if (window.location.pathname.includes("manage-staff.html")) {
     // ===== 3) DELETE SELECTED STAFF =====
     var deleteBtn = document.querySelector(".btn-black");
 
-    deleteBtn.onclick = function () {
+    if (deleteBtn) {
 
-        var checks = document.querySelectorAll(".staffCheck");
-        var selected = [];
+        deleteBtn.onclick = function () {
 
-        for (var i = 0; i < checks.length; i++) {
-            if (checks[i].checked) {
-                selected.push(i);
+            var checks = document.querySelectorAll(".staffCheck");
+            var selected = [];
+
+            for (var i = 0; i < checks.length; i++) {
+                if (checks[i].checked) {
+                    selected.push(i);
+                }
             }
-        }
 
-        // لا يوجد عضو محدد
-        if (selected.length === 0) {
-            alert("Please select at least one offer");
-            return;
-        }
+            if (selected.length === 0) {
+                alert("Please select at least one offer");
+                return;
+            }
 
-        // تأكيد الحذف
-        var ok = confirm("Are you sure you want to delete selected members?");
-        if (!ok) return;
+            var ok = confirm("Are you sure you want to delete selected members?");
+            if (!ok) return;
 
-        // حذف من array (من النهاية للأول)
-        for (var j = selected.length - 1; j >= 0; j--) {
-            staffMembers.splice(selected[j], 1);
-        }
+            for (var j = selected.length - 1; j >= 0; j--) {
+                staffMembers.splice(selected[j], 1);
+            }
 
-        loadStaff();
-    };
+            loadStaff();
+        };
+    }
 
     // ===== 4) ADD NEW STAFF MEMBER =====
 
-   var currentStaff= document.querySelector(".staff-form");
-    currentStaff.onsubmit = function (e) {
-        e.preventDefault();
+    var currentStaff = document.querySelector(".staff-form");
 
-        var name = document.getElementById("staff-name").value.trim();
-        var photo = document.getElementById("photo").value;
-        var dob = document.getElementById("dob").value.trim();
-        var email = document.getElementById("email").value.trim();
-        var expertise = document.getElementById("expertise").value.trim();
-        var skills = document.getElementById("skills").value.trim();
-        var education = document.getElementById("education").value.trim();
+    if (currentStaff) {
 
-        // التحقق من الحقول الفارغة
-        if (name === "" || photo === "" || dob === "" || email === "" || expertise === "" || skills === "" || education === "") {
+        currentStaff.onsubmit = function (e) {
 
-            alert("Please fill all required fields.");
-            return;
-        }
+            e.preventDefault();
 
-        // إضافة العضو الجديد إلى Array of Objects
-        staffMembers.push({
-            name: name,
-            photo: "images/default.jpg" 
-        });
+            var name = document.getElementById("staff-name").value.trim();
+            var photo = document.getElementById("photo").value;
+            var dob = document.getElementById("dob").value.trim();
+            var email = document.getElementById("email").value.trim();
+            var expertise = document.getElementById("expertise").value.trim();
+            var skills = document.getElementById("skills").value.trim();
+            var education = document.getElementById("education").value.trim();
 
-        alert("New staff member added!");
+            if (name === "" || photo === "" || dob === "" || email === "" || expertise === "" || skills === "" || education === "") {
+                alert("Please fill all required fields.");
+                return;
+            }
 
-document.getElementById("staff-name").value = "";
-document.getElementById("photo").value = "";
-document.getElementById("dob").value = "";
-document.getElementById("email").value = "";
-document.getElementById("expertise").value = "";
-document.getElementById("skills").value = "";
-document.getElementById("education").value = "";
-       
-       loadStaff();
-    };
+            staffMembers.push({
+                name: name,
+                photo: "images/default.jpg"
+            });
 
-}
+            alert("New staff member added!");
+
+            document.getElementById("staff-name").value = "";
+            document.getElementById("photo").value = "";
+            document.getElementById("dob").value = "";
+            document.getElementById("email").value = "";
+            document.getElementById("expertise").value = "";
+            document.getElementById("skills").value = "";
+            document.getElementById("education").value = "";
+
+            loadStaff();
+        };
+    }
+
+});
