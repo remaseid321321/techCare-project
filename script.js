@@ -289,16 +289,15 @@ window.onload = function () {
 window.onload = function () {
 
     var rewardBox = document.querySelector(".reward-box");
-    if (!rewardBox) return; // يعني مو صفحة بروفايل
+    if (!rewardBox) return; 
 
-    var key = rewardBox.dataset.key; // مثل: points-jood
+    var key = rewardBox.dataset.key; 
 
     var points = localStorage.getItem(key);
     if (!points) points = 0;
 
     points = parseInt(points);
 
-    // عناصر داخل صندوق المكافآت
     var pointsEl = rewardBox.querySelector(".reward-points");
     var fillEl   = rewardBox.querySelector(".reward-fill");
     var tierEl   = rewardBox.querySelector(".reward-tier");
@@ -315,12 +314,10 @@ function updateRewardBox(points, pointsEl, fillEl, tierEl) {
     const max = 200;
     const percent = (points / max) * 100;
 
-    // تحديث النص
 pointsEl.textContent = `Points: ${points} / ${max}`;
-    // تحديث عرض الشريط
+   
     fillEl.style.width = percent + "%";
 
-    // تحديد المستوى
     if (points < 100) {
         tierEl.textContent = "(Bronze)";
     } else if (points < 150) {
@@ -338,41 +335,35 @@ window.onload = function () {
 
     var evalForm = document.getElementById("evalForm");
 
-    if (evalForm == null) return;  // الصفحة ليست evaluation
+    if (evalForm == null) return;  
 
     evalForm.onsubmit = function (e) {
 
-        e.preventDefault(); // نفس أسلوب السلايدات — منع الإرسال
-
-        // تجميع القيم
         var service = document.getElementById("service").value;
         var rate = document.getElementById("ratingValue").value;
         var feedback = document.getElementById("feedback").value.trim();
 
-        // التحقق (مثل السلايدات)
         if (service === "") {
             alert("Please select a service.");
-            return;
+            return false;
         }
 
         if (rate === "" || rate === "0") {
             alert("Please choose a rating.");
-            return;
+            return false;
         }
 
         if (feedback === "") {
             alert("Please write a comment.");
-            return;
+            return false;
         }
 
-        // الرسالة حسب التقييم (حسب طلبك)
         if (rate == 1 || rate == 2) {
             alert("We're sorry for the inconvenience. Thank you for your feedback.");
         } else {
             alert("Thank you for your positive evaluation!");
         }
 
-        // الانتقال للداشبورد (مثل السلايدات)
         window.location.href = "customer-dashboard.html";
     };
 
@@ -384,7 +375,6 @@ window.onload = function () {
 
 window.onload = function () {
 
-    // نتحقق إذا الصفحة صفحة إضافة خدمة (عن طريق وجود الحقول)
     var addForm = document.getElementById("addServiceForm");
 
     if (addForm) {
@@ -395,25 +385,19 @@ window.onload = function () {
             var price = document.getElementById("price").value.trim();
             var desc = document.getElementById("desc").value.trim();
 
-            // 1) التحقق من الحقول الفارغة
             if (name === "" || price === "" || desc === "") {
                 alert("Please fill all fields.");
-                e.preventDefault();
-                return;
+                return false;
             }
 
-            // 2) الاسم يبدأ برقم (غير مسموح)
             if (!isNaN(name.charAt(0))) {
                 alert("Service name cannot start with a number.");
-                e.preventDefault();
-                return;
+                return false;
             }
 
-            // 3) السعر لازم يكون رقم
             if (isNaN(price)) {
                 alert("Price must be a number.");
-                e.preventDefault();
-                return;
+                return false;
             }
 
             // ========= حفظ الخدمة في localStorage =========
@@ -426,26 +410,22 @@ window.onload = function () {
                 oldServices = JSON.parse(oldServices); 
             }
 
-            // نصنع object
             var newService = {
                 serviceName: name,
                 servicePrice: price,
                 serviceDesc: desc
             };
 
-            // نضيفه للأراي
             oldServices.push(newService);
 
-            // نرجّعه لتخزين محلي
             localStorage.setItem("services", JSON.stringify(oldServices));
 
-            // رسالة باسم الخدمة
             alert("Service added: " + name);
 
-            // تفريغ الفورم
-            addForm.reset();
+            addForm.name.value = "";
+            addForm.price.value = "";
+            addForm.desc.value = ""; 
 
-            // منع إعادة تحميل الصفحة
             e.preventDefault();
         };
     }
@@ -534,17 +514,14 @@ if (window.location.pathname.includes("manage-staff.html")) {
             }
         }
 
-        // لا يوجد عضو محدد
         if (selected.length === 0) {
             alert("Please select at least one offer");
             return;
         }
 
-        // تأكيد الحذف
         var ok = confirm("Are you sure you want to delete selected members?");
         if (!ok) return;
 
-        // حذف من array (من النهاية للأول)
         for (var j = selected.length - 1; j >= 0; j--) {
             staffMembers.splice(selected[j], 1);
         }
@@ -556,7 +533,6 @@ if (window.location.pathname.includes("manage-staff.html")) {
 
    var currentStaff= document.querySelector(".staff-form");
     currentStaff.onsubmit = function (e) {
-        e.preventDefault();
 
         var name = document.getElementById("staff-name").value.trim();
         var photo = document.getElementById("photo").value;
@@ -566,22 +542,19 @@ if (window.location.pathname.includes("manage-staff.html")) {
         var skills = document.getElementById("skills").value.trim();
         var education = document.getElementById("education").value.trim();
 
-        // التحقق من الحقول الفارغة
         if (name === "" || photo === "" || dob === "" || email === "" || expertise === "" || skills === "" || education === "") {
 
             alert("Please fill all required fields.");
-            return;
+            return false;
         }
 
-        // إضافة العضو الجديد إلى Array of Objects
         staffMembers.push({
             name: name,
-            photo: "images/default.jpg" // لأن السلايد ما طلب رفع فعلي للملفات
+            photo: "images/default.jpg" // افتراضية 
         });
 
         alert("New staff member added!");
 
-        currentStaff.reset();
         loadStaff();
     };
 
