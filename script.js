@@ -243,26 +243,23 @@ if (staffForm) {
     };
 }
 /* ============================================================
-   6) STAFF POINTS SYSTEM (Profile Page)
-============================================================ */
-/* ============================================================
    STAFF POINTS SYSTEM — Add Points (Manage Staff Page)
 ============================================================ */
 
-// يتحقق إذا صفحة manage-staff
-document.addEventListener("DOMContentLoaded", function () {
+window.onload = function () {
 
-    const addBtn = document.getElementById("addPointsBtn");
-    const selectStaff = document.getElementById("staffPoints");
-    const pointsInput = document.getElementById("pointsInput");
+    var addBtn = document.getElementById("addPointsBtn");
+    var selectStaff = document.getElementById("staffPoints");
+    var pointsInput = document.getElementById("pointsInput");
 
-    // إذا العناصر غير موجودة يعني لسنا في صفحة manage staff
-    if (!addBtn || !selectStaff || !pointsInput) return;
+    if (!addBtn || !selectStaff || !pointsInput) {
+        return;
+    }
+   
+    addBtn.onclick = function () {
 
-    addBtn.addEventListener("click", function () {
-
-        const key = selectStaff.value;        // مثل: points-jood
-        const amount = parseInt(pointsInput.value);
+        var key = selectStaff.value;      
+        var amount = parseInt(pointsInput.value);
 
         if (!key) {
             alert("Please select a staff member.");
@@ -274,54 +271,55 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
 
-        // جلب النقاط السابقة
-        let current = localStorage.getItem(key);
+        var current = localStorage.getItem(key);
 
-        if (!current) current = 0;
+        if (!current) {
+            current = 0;
+        }
 
         current = parseInt(current);
 
-        // إضافة النقاط الجديدة
-        const updated = current + amount;
-       if(updated > 200) {
-          updated=200;
-       }
+        var updated = current + amount;
 
-        // تخزينها
+        if (updated > 200) {
+            updated = 200;
+        }
+
         localStorage.setItem(key, updated);
 
         alert("Points added successfully!");
 
-        // تفريغ الخانات
         pointsInput.value = "";
         selectStaff.value = "";
-    });
-});
+    };
+};
 
 
 /* ============================================================
    STAFF POINTS SYSTEM — Display Points (Staff Profile Page)
 ============================================================ */
 
-document.addEventListener("DOMContentLoaded", function () {
 
-    const rewardBox = document.querySelector(".reward-box");
+
+window.onload = function () {
+
+    var rewardBox = document.querySelector(".reward-box");
     if (!rewardBox) return; // يعني مو صفحة بروفايل
 
-    const key = rewardBox.dataset.key; // points-jood
+    var key = rewardBox.dataset.key; // مثل: points-jood
 
-    let points = localStorage.getItem(key);
+    var points = localStorage.getItem(key);
     if (!points) points = 0;
 
     points = parseInt(points);
 
     // عناصر داخل صندوق المكافآت
-    const pointsEl = rewardBox.querySelector(".reward-points");
-    const fillEl = rewardBox.querySelector(".reward-fill");
-    const tierEl = rewardBox.querySelector(".reward-tier");
+    var pointsEl = rewardBox.querySelector(".reward-points");
+    var fillEl   = rewardBox.querySelector(".reward-fill");
+    var tierEl   = rewardBox.querySelector(".reward-tier");
 
     updateRewardBox(points, pointsEl, fillEl, tierEl);
-});
+};
 
 
 /* ============================================================
