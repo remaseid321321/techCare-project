@@ -87,12 +87,12 @@ updateClock();
 ============================================================ */
 
 var searchInput = document.getElementById("search");
-var sortSelect  = document.getElementById("sort");
+var sortSelect = document.getElementById("sort");
 var servicesList = document.querySelector(".services-list");
 
 if (servicesList) {
 
-    /* =============== 1) نجمع العناصر في Array  =============== */
+    /* =============== 1) نجمع العناصر في Array =============== */
     var services = document.querySelectorAll(".service-item");
     var arr = [];
 
@@ -100,28 +100,27 @@ if (servicesList) {
         arr.push(services[i]);
     }
 
-    /* =============== 2) ترتيب عشوائي عند تحميل الصفحة =============== */
+    /* =============== 2) ترتيب عشوائي عند فتح الصفحة =============== */
     arr.sort(function () {
-        return Math.random() - 0.5;  // نفس شرح السلايد (Math.random)
+        return Math.random() - 0.5;
     });
 
     for (var i = 0; i < arr.length; i++) {
-        servicesList.appendChild(arr[i]); 
+        servicesList.appendChild(arr[i]);
     }
 
-    /* =============== 3) البحث Searching  =============== */
+    /* =============== 3) البحث =============== */
     if (searchInput) {
-
         searchInput.oninput = function () {
 
-            var word = searchInput.value.toLowerCase();
+            var keyword = searchInput.value.toLowerCase();
 
             for (var i = 0; i < arr.length; i++) {
 
                 var title = arr[i].querySelector("h3").textContent.toLowerCase();
-                var desc  = arr[i].querySelector("p").textContent.toLowerCase();
+                var desc = arr[i].querySelector("p").textContent.toLowerCase();
 
-                if (title.indexOf(word) !== -1 || desc.indexOf(word) !== -1) {
+                if (title.indexOf(keyword) !== -1 || desc.indexOf(keyword) !== -1) {
                     arr[i].style.display = "block";
                 } else {
                     arr[i].style.display = "none";
@@ -130,49 +129,36 @@ if (servicesList) {
         };
     }
 
-    /* =============== 4) الفرز Sorting  =============== */
+    /* =============== 4) الفرز (Sorting) =============== */
     if (sortSelect) {
 
         sortSelect.onchange = function () {
 
             if (sortSelect.value === "price-asc") {
-
                 arr.sort(function (a, b) {
                     return extractPrice(a) - extractPrice(b);
                 });
             }
 
             else if (sortSelect.value === "price-desc") {
-
                 arr.sort(function (a, b) {
-                    return extractPrice(b) - extractPrice(a);
+                   return extractPrice(b) - extractPrice(a);
                 });
             }
 
             else if (sortSelect.value === "name-asc") {
-
                 arr.sort(function (a, b) {
-                    var nA = extractName(a);
-                    var nB = extractName(b);
-
-                    if (nA > nB) return 1;
-                    if (nA < nB) return -1;
-                    return 0;
+                    return extractName(a).localeCompare(extractName(b));
                 });
             }
 
             else if (sortSelect.value === "name-desc") {
-
                 arr.sort(function (a, b) {
-                    var nA = extractName(a);
-                    var nB = extractName(b);
-
-                    if (nA < nB) return 1;
-                    if (nA > nB) return -1;
-                    return 0;
+                    return extractName(b).localeCompare(extractName(a));
                 });
             }
 
+            /* إعادة ترتيب الصفحة */
             for (var i = 0; i < arr.length; i++) {
                 servicesList.appendChild(arr[i]);
             }
@@ -181,18 +167,17 @@ if (servicesList) {
 }
 
 /* ============================================================
-   6) Helper Functions — (SLIDES VERSION)
+   6) Helper Functions
 ============================================================ */
-
 function extractPrice(el) {
     var txt = el.querySelector(".meta").textContent;
-    txt = txt.replace(/\D/g, "");  // يحذف أي شيء غير رقم
-    return parseInt(txt);
+    return parseInt(txt.replace(/\D/g, ""));
 }
 
 function extractName(el) {
     return el.querySelector("h3").textContent.toLowerCase();
 }
+
 /* ============================================================
    7) ABOUT PAGE — JOIN OUR STAFF FORM VALIDATION
 ============================================================ */
