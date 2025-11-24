@@ -80,14 +80,15 @@
 <script src="script.js"></script>
 
 <script>
-
-window.onload = function () {
+document.addEventListener("DOMContentLoaded", function () {
 
     var stars = document.getElementsByClassName("star");
     var ratingValue = document.getElementById("ratingValue");
 
     for (var i = 0; i < stars.length; i++) {
+
         stars[i].onclick = function () {
+
             var val = 0;
 
             for (var j = 0; j < stars.length; j++) {
@@ -99,6 +100,7 @@ window.onload = function () {
             ratingValue.value = val;
 
             for (var k = 0; k < stars.length; k++) {
+
                 if (k < val) {
                     stars[k].style.color = "gold";
                     stars[k].style.opacity = "1";
@@ -109,45 +111,49 @@ window.onload = function () {
             }
         };
     }
+});
+
+// =============================
+//  EVALUATION FORM VALIDATION
+// =============================
+window.onload = function () {
 
     var evalForm = document.getElementById("evalForm");
 
-    if (evalForm != null) {
+    if (evalForm == null) return;
 
-        evalForm.onsubmit = function () {
+    evalForm.onsubmit = function (e) {
 
-            var service = document.getElementById("service").value;
-            var rate = document.getElementById("ratingValue").value;
-            var feedback = document.getElementById("feedback").value;
+        e.preventDefault(); 
 
-            if (service === "") {
-                alert("Please select a service.");
-                return false;
-            }
+        var service = document.getElementById("service").value;
+        var rate = document.getElementById("ratingValue").value;
+        var feedback = document.getElementById("feedback").value.trim();
 
-            if (rate === "" || rate === "0") {
-                alert("Please choose a rating.");
-                return false;
-            }
+        if (service === "") {
+            alert("Please select a service.");
+            return;
+        }
 
-            if (feedback.trim() === "") {
-                alert("Please write a comment.");
-                return false;
-            }
+        if (rate === "" || rate === "0") {
+            alert("Please choose a rating.");
+            return;
+        }
 
-            if (rate == 1 || rate == 2) {
-                alert("We're sorry for the inconvenience. Thank you for your feedback.");
-            } else {
-                alert("Thank you for your positive evaluation!");
-            }
+        if (feedback === "") {
+            alert("Please write a comment.");
+            return;
+        }
 
-            window.location.href = "customer-dashboard.html";
+        if (rate == 1 || rate == 2) {
+            alert("We're sorry for the inconvenience. Thank you for your feedback.");
+        } else {
+            alert("Thank you for your positive evaluation!");
+        }
 
-            return false;
-        };
-    }
+        window.location.href = "customer-dashboard.html";
+    };
 };
-
 </script>
 
 </body>
