@@ -146,18 +146,18 @@ if (form) {
 }
 
 function displayRequests() {
-    document.write("<h3>Your Requests:</h3>");
+    var html = "<h3>Your Requests:</h3>";
 
     for (var i = 0; i < requests.length; i++) {
-      
-        document.write("<hr>");
-        document.write("<div class='req-item'>");
-        document.write("<strong>Service:</strong> " + requests[i].service + "<br>");
-        document.write("<strong>Name:</strong> " + requests[i].name + "<br>");
-        document.write("<strong>Due Date:</strong> " + requests[i].date + "<br>");
-        document.write("<strong>Description:</strong> " + requests[i].desc + "<br><br>");
-        document.write("</div>");
+        html += "<div class='req-item'>" +
+            "<strong>Service:</strong> " + requests[i].service + "<br>" +
+            "<strong>Name:</strong> " + requests[i].name + "<br>" +
+            "<strong>Due Date:</strong> " + requests[i].date + "<br>" +
+            "<strong>Description:</strong> " + requests[i].desc + "<br><br>" +
+        "</div>";
     }
+
+    box.innerHTML = html;
 }
 </script>
 <script src="script.js"></script>
