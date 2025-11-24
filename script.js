@@ -47,6 +47,9 @@ if (themeButton) {
         }
     };
 }
+
+/* ============================================================
+      3) BACK TO TOP (ONLY HOME)
 ============================================================ */
 var topBtn = document.getElementById("backToTop");
 
