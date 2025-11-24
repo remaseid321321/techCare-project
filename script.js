@@ -1,18 +1,26 @@
 /* ============================================================
    1) LOAD THEME (DARK/LIGHT)
 ============================================================ */
-document.addEventListener("DOMContentLoaded", function () {
-    var savedTheme = localStorage.getItem("theme");
+var body = document.getElementById("bodyTag");
+var btn  = document.getElementById("themeToggle");
 
-    if (savedTheme === "dark") {
-        document.body.classList.add("dark");
+if (localStorage.getItem("theme") === "dark") {
+    body.className = "dark";
+    btn.innerHTML = "☀️";
+}
 
-        var themeSwitch = document.getElementById("themeSwitch");
-        if (themeSwitch) {
-            themeSwitch.checked = true;
-        }
+btn.onclick = function () {
+
+    if (body.className === "dark") {
+        body.className = "";   
+        btn.innerHTML = "🌙";
+        localStorage.setItem("theme", "light");
+    } else {
+        body.className = "dark";
+        btn.innerHTML = "☀️";
+        localStorage.setItem("theme", "dark");
     }
-});
+};
 
 /* ============================================================
    2) THEME TOGGLE (ONLY HOME)
