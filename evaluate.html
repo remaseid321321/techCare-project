@@ -79,22 +79,15 @@
 
 <script src="script.js"></script>
 
-<!-- =======================
-     EMBEDDED STAR + EVAL JS
-=========================== -->
 <script>
-// =============================
-//  STAR RATING (Slides Style)
-// =============================
-document.addEventListener("DOMContentLoaded", function () {
+
+window.onload = function () {
 
     var stars = document.getElementsByClassName("star");
     var ratingValue = document.getElementById("ratingValue");
 
     for (var i = 0; i < stars.length; i++) {
-
         stars[i].onclick = function () {
-
             var val = 0;
 
             for (var j = 0; j < stars.length; j++) {
@@ -106,7 +99,6 @@ document.addEventListener("DOMContentLoaded", function () {
             ratingValue.value = val;
 
             for (var k = 0; k < stars.length; k++) {
-
                 if (k < val) {
                     stars[k].style.color = "gold";
                     stars[k].style.opacity = "1";
@@ -117,49 +109,45 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         };
     }
-});
-
-// =============================
-//  EVALUATION FORM VALIDATION
-// =============================
-window.onload = function () {
 
     var evalForm = document.getElementById("evalForm");
 
-    if (evalForm == null) return;
+    if (evalForm != null) {
 
-    evalForm.onsubmit = function (e) {
+        evalForm.onsubmit = function () {
 
-        e.preventDefault(); 
+            var service = document.getElementById("service").value;
+            var rate = document.getElementById("ratingValue").value;
+            var feedback = document.getElementById("feedback").value;
 
-        var service = document.getElementById("service").value;
-        var rate = document.getElementById("ratingValue").value;
-        var feedback = document.getElementById("feedback").value.trim();
+            if (service === "") {
+                alert("Please select a service.");
+                return false;
+            }
 
-        if (service === "") {
-            alert("Please select a service.");
-            return;
-        }
+            if (rate === "" || rate === "0") {
+                alert("Please choose a rating.");
+                return false;
+            }
 
-        if (rate === "" || rate === "0") {
-            alert("Please choose a rating.");
-            return;
-        }
+            if (feedback.trim() === "") {
+                alert("Please write a comment.");
+                return false;
+            }
 
-        if (feedback === "") {
-            alert("Please write a comment.");
-            return;
-        }
+            if (rate == 1 || rate == 2) {
+                alert("We're sorry for the inconvenience. Thank you for your feedback.");
+            } else {
+                alert("Thank you for your positive evaluation!");
+            }
 
-        if (rate == 1 || rate == 2) {
-            alert("We're sorry for the inconvenience. Thank you for your feedback.");
-        } else {
-            alert("Thank you for your positive evaluation!");
-        }
+            window.location.href = "customer-dashboard.html";
 
-        window.location.href = "customer-dashboard.html";
-    };
+            return false;
+        };
+    }
 };
+
 </script>
 
 </body>
