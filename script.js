@@ -83,7 +83,7 @@ setInterval(updateClock, 1000);
 updateClock();
 
 /* ============================================================
-   SERVICES PAGE (RANDOM + SEARCH + SORT) — SLIDES VERSION
+   SERVICES PAGE (RANDOM + SEARCH + SORT) 
 ============================================================ */
 
 var searchInput = document.getElementById("search");
@@ -197,50 +197,50 @@ function extractName(el) {
    7) ABOUT PAGE — JOIN OUR STAFF FORM VALIDATION
 ============================================================ */
 
-const staffForm = document.getElementById("joinForm");
+var staffForm = document.getElementById("joinForm");
 
 if (staffForm) {
 
-    staffForm.addEventListener("submit", function (e) {
-        e.preventDefault();
+    staffForm.onsubmit = function () {
 
-        const name = document.getElementById("jn-name").value.trim();
-        const birth = document.getElementById("jn-dob").value;
-        const email = document.getElementById("jn-email").value.trim();
-        const exp = document.getElementById("jn-expertise").value.trim();
-        const skills = document.getElementById("jn-skills").value.trim();
-        const edu = document.getElementById("jn-edu").value.trim();
-        const msg = document.getElementById("jn-msg").value.trim();
-        const photo = document.getElementById("jn-photo").value;
+        var name   = document.getElementById("jn-name").value.trim();
+        var birth  = document.getElementById("jn-dob").value;
+        var email  = document.getElementById("jn-email").value.trim();
+        var exp    = document.getElementById("jn-expertise").value.trim();
+        var skills = document.getElementById("jn-skills").value.trim();
+        var edu    = document.getElementById("jn-edu").value.trim();
+        var msg    = document.getElementById("jn-msg").value.trim();
+        var photo  = document.getElementById("jn-photo").value;
 
         // 1) No empty fields
         if (!name || !birth || !email || !exp || !skills || !edu || !msg || !photo) {
             alert("Please fill in all fields.");
-            return;
+            return false; 
         }
 
-        // 2) Name must NOT start with a number
+        // 2) Name cannot start with a number
         if (/^[0-9]/.test(name)) {
             alert("Name cannot start with a number.");
-            return;
+            return false;
         }
 
-        // 3) Image file only
+        // 3) Only image allowed
         if (!photo.match(/\.(jpg|jpeg|png|gif)$/i)) {
-            alert("Please upload an image file (JPG, PNG, GIF).");
-            return;
+            alert("Please upload a valid image file.");
+            return false;
         }
 
-        // 4) Birth year must be before 2008
-        const year = new Date(birth).getFullYear();
+        // 4) Birth year before 2008
+        var year = new Date(birth).getFullYear();
         if (year >= 2008) {
             alert("Birth year must be before 2008.");
-            return;
+            return false;
         }
 
-        // SUCCESS — English alert
-        alert("Application submitted successfully! Welcome " + name );
-    });
+        // SUCCESS
+        alert("Application submitted successfully! Welcome " + name + "!");
+        return true; 
+    };
 }
 /* ============================================================
    6) STAFF POINTS SYSTEM (Profile Page)
