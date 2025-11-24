@@ -1,27 +1,30 @@
+
 /* ============================================================
    1) LOAD THEME (DARK/LIGHT)
 ============================================================ */
 var body = document.getElementById("bodyTag");
 var btn  = document.getElementById("themeToggle");
 
-if (localStorage.getItem("theme") === "dark") {
-    body.className = "dark";
-    btn.innerHTML = "☀️";
-}
+if (btn) {  
 
-btn.onclick = function () {
-
-    if (body.className === "dark") {
-        body.className = "";   
-        btn.innerHTML = "🌙";
-        localStorage.setItem("theme", "light");
-    } else {
+    if (localStorage.getItem("theme") === "dark") {
         body.className = "dark";
         btn.innerHTML = "☀️";
-        localStorage.setItem("theme", "dark");
     }
-};
 
+    btn.onclick = function () {
+
+        if (body.className === "dark") {
+            body.className = "";   
+            btn.innerHTML = "🌙";
+            localStorage.setItem("theme", "light");
+        } else {
+            body.className = "dark";
+            btn.innerHTML = "☀️";
+            localStorage.setItem("theme", "dark");
+        }
+    };
+}
 
 
 /* ============================================================
