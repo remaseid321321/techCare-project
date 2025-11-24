@@ -30,26 +30,23 @@ var themeButton = document.getElementById("themeToggle");
 if (themeButton) {
 
     if (localStorage.getItem("theme") === "dark") {
-        document.body.classList.add("dark");
+        document.body.className = "dark";
         themeButton.textContent = "☀️";
     }
 
     themeButton.onclick = function () {
 
-        document.body.classList.toggle("dark");
-
-        if (document.body.classList.contains("dark")) {
-            themeButton.textContent = "☀️";
-            localStorage.setItem("theme", "dark");
-        } else {
+        if (document.body.className === "dark") {
+            document.body.className = "";
             themeButton.textContent = "🌙";
             localStorage.setItem("theme", "light");
+        } else {
+            document.body.className = "dark";
+            themeButton.textContent = "☀️";
+            localStorage.setItem("theme", "dark");
         }
     };
 }
-
-/* ============================================================
-   3) BACK TO TOP (ONLY HOME)
 ============================================================ */
 var topBtn = document.getElementById("backToTop");
 
