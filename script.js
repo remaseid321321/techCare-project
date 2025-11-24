@@ -472,9 +472,9 @@ if (window.location.pathname.includes("manage-staff.html")) {
 
     // ===== 1) STAFF ARRAY (Array of Objects) =====
     var staffMembers = [
-        { name: "Jood Alkhneem", photo: "images/staff1.jpg" },
+        { name: "Jood Alkhneen", photo: "images/staff1.jpg" },
         { name: "Remas Almutairi", photo: "images/staff2.jpg" },
-        { name: "Lujain Almajhul", photo: "images/staff3.jpg" },
+        { name: "Lujain Almajyul", photo: "images/staff3.jpg" },
         { name: "Jwana Alothman", photo: "images/staff4.jpg" }
     ];
 
