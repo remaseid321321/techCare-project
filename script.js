@@ -534,9 +534,8 @@ document.addEventListener("DOMContentLoaded", function () {
         };
     }
 
-});
 -----------------------------------------
-   var services = localStorage.getItem("services");
+var services = localStorage.getItem("services");
 
 if (services === null) {
     services = [];
