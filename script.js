@@ -22,31 +22,7 @@ btn.onclick = function () {
     }
 };
 
-/* ============================================================
-   2) THEME TOGGLE (ONLY HOME)
-============================================================ */
-var themeButton = document.getElementById("themeToggle");
 
-if (themeButton) {
-
-    if (localStorage.getItem("theme") === "dark") {
-        document.body.className = "dark";
-        themeButton.textContent = "☀️";
-    }
-
-    themeButton.onclick = function () {
-
-        if (document.body.className === "dark") {
-            document.body.className = "";
-            themeButton.textContent = "🌙";
-            localStorage.setItem("theme", "light");
-        } else {
-            document.body.className = "dark";
-            themeButton.textContent = "☀️";
-            localStorage.setItem("theme", "dark");
-        }
-    };
-}
 
 /* ============================================================
       3) BACK TO TOP (ONLY HOME)
