@@ -756,3 +756,13 @@ table.staff-table {
         color: var(--white); 
     }
 }
+#vision-video-bg,
+    #video-overlay {
+        display: none;
+    }
+    
+    #vision-section { 
+        background-color: var(--brand); 
+        color: var(--white); 
+    }
+}
