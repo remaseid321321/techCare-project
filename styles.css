@@ -760,3 +760,24 @@ table.staff-table {
         color: var(--white); 
     }
 }
+#vision-section {
+    position: relative; 
+    
+    overflow: hidden; 
+    min-height: 400px; 
+    padding: 60px 0;
+    color: var(--white);
+    background-color: var(--brand);
+    border: none; 
+    margin: 0;
+}
+#vision-video-bg {
+    position: absolute; 
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); 
+    min-width: 100%;
+    min-height: 100%;
+    z-index: 1; 
+    object-fit: cover; 
+}
