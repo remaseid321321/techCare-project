@@ -209,47 +209,57 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 /* ============================================================
-   STAFF POINTS SYSTEM — Add Points (Manage Staff Page)
+   STAFF POINTS SYSTEM — FUNCTION (Add Points)
+============================================================ */
+
+function addStaffPoints() {
+
+    var selectStaff = document.getElementById("staffPoints");
+    var pointsInput = document.getElementById("pointsInput");
+
+    var key    = selectStaff.value;
+    var amount = parseInt(pointsInput.value);
+
+    if (!key) {
+        alert("Please select a staff member.");
+        return false;
+    }
+
+    if (!amount || amount <= 0) {
+        alert("Please enter a valid number of points.");
+        return false;
+    }
+
+    var current = localStorage.getItem(key);
+    if (!current) current = 0;
+
+    current = parseInt(current);
+
+    var updated = current + amount;
+    if (updated > 200) updated = 200;
+
+    localStorage.setItem(key, updated);
+
+    alert("Points added successfully!");
+
+    pointsInput.value = "";
+    selectStaff.value = "";
+
+    return true;
+}
+
+/* ============================================================
+   STAFF POINTS SYSTEM — EVENT LISTENER
 ============================================================ */
 
 document.addEventListener("DOMContentLoaded", function () {
 
-    var addBtn      = document.getElementById("addPointsBtn");
-    var selectStaff = document.getElementById("staffPoints");
-    var pointsInput = document.getElementById("pointsInput");
+    var addBtn = document.getElementById("addPointsBtn");
 
-    if (!addBtn || !selectStaff || !pointsInput) return;
+    if (addBtn) {
+        addBtn.addEventListener("click", addStaffPoints);
+    }
 
-    addBtn.addEventListener("click", function () {
-
-        var key    = selectStaff.value;
-        var amount = parseInt(pointsInput.value);
-
-        if (!key) {
-            alert("Please select a staff member.");
-            return;
-        }
-
-        if (!amount || amount <= 0) {
-            alert("Please enter a valid number of points.");
-            return;
-        }
-
-        var current = localStorage.getItem(key);
-        if (!current) current = 0;
-
-        current = parseInt(current);
-
-        var updated = current + amount;
-        if (updated > 200) updated = 200;
-
-        localStorage.setItem(key, updated);
-
-        alert("Points added successfully!");
-
-        pointsInput.value = "";
-        selectStaff.value = "";
-    });
 });
 /* ============================================================
    STAFF POINTS SYSTEM — Display Points (Staff Profile Page)
@@ -294,7 +304,7 @@ function updateRewardBox(points, pointsEl, fillEl, tierEl) {
     }
 }
 /* =====================================
-   Evaluation Form Validation (Slides Style)
+   Evaluation Form Validation 
 ===================================== */
 
 document.addEventListener("DOMContentLoaded", function () {
