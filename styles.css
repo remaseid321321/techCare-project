@@ -703,3 +703,87 @@ table.staff-table {
     transform: translateY(-5px); 
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1); 
 }
+/* ============================================================
+   [NEW] 18) VISION SECTION - ISOLATED VIDEO/IMAGE BACKGROUND
+   ------------------------------------------------------------ 
+   هذا الكود مُصمم ليعمل بشكل مطلق داخل حدوده فقط (position: relative)
+============================================================ */
+
+/* 1. الحاوية الرئيسية (Section) */
+#vision-section {
+    /* **الأهم:** هذه الخاصية تضمن أن الفيديو المطلق يبقى داخل هذا القسم فقط */
+    position: relative; 
+    overflow: hidden; 
+    
+    min-height: 400px; 
+    padding: 60px 0;
+    
+    /* الخلفية الاحتياطية (FallBack) ولون النص */
+    color: var(--white);
+    background-color: var(--brand); 
+    
+    /* إلغاء الستايلات القديمة لضمان النظافة */
+    border: none; 
+    margin: 0;
+}
+
+/* 2. تنسيق الفيديو (MP4) أو الصورة (GIF) ليملأ الخلفية */
+#vision-video-bg {
+    /* **الأهم:** يجعله مطلقاً داخل الحاوية النسبية (#vision-section) */
+    position: absolute; 
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); 
+    
+    /* يضمن ملء الحاوية بالكامل */
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: cover; 
+    
+    /* وضعه في الطبقة الخلفية (الخلفية) */
+    z-index: 1; 
+}
+
+/* 3. طبقة التغطية الشفافة (Overlay) لضمان وضوح النص */
+#video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* خلفية داكنة شفافة */
+    background: rgba(0, 0, 0, 0.4); 
+    /* وضعه بين الفيديو والنص */
+    z-index: 2; 
+}
+
+/* 4. تنسيق محتوى النص ليكون في المقدمة */
+#vision-content {
+    /* جعله نسبياً وضمن طبقة أمامية */
+    position: relative; 
+    z-index: 3; 
+    
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 30px;
+}
+
+/* ============================================================
+   [NEW] 19) RESPONSIVE DESIGN - VISION SECTION FALLBACK
+============================================================ */
+@media (max-width: 768px) {
+    /* إخفاء الخلفية المتحركة على الأجهزة الصغيرة لتحسين الأداء */
+    #vision-video-bg,
+    #video-overlay {
+        display: none;
+    }
+    
+    /* التأكد من تطبيق الخلفية الثابتة واللون الأبيض للنص */
+    #vision-section { 
+        background-color: var(--brand); /* الخلفية الزرقاء الداكنة */
+        color: var(--white); /* النص الأبيض */
+        /* لا حاجة لـ position: relative; هنا */
+    }
+}
