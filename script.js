@@ -421,6 +421,96 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 });
+// edit and delete btn
+document.addEventListener("DOMContentLoaded", function () {
+
+    if (!window.location.pathname.includes("provider-dashboard.html")) return;
+
+    var tableBody = document.getElementById("serviceTableBody");
+
+    function loadServices() {
+        tableBody.innerHTML = "";
+
+        var saved = localStorage.getItem("services");
+        if (!saved) return;
+
+        var arr = JSON.parse(saved);
+
+        for (var i = 0; i < arr.length; i++) {
+
+            var row = document.createElement("tr");
+
+            row.innerHTML =
+                "<td>" + arr[i].serviceName + "</td>" +
+                "<td>" + arr[i].servicePrice + " SR</td>" +
+                "<td>Active</td>" +
+                "<td style='text-align:right;'>" +
+                "<a href='#' class='editBtn' data-i='" + i + "'>Edit</a> " +
+                "<a href='#' class='deleteBtn' data-i='" + i + "'>Delete</a>" +
+                "</td>";
+
+            tableBody.appendChild(row);
+        }
+
+        attachEvents();
+    }
+
+    loadServices();
+
+
+    function attachEvents() {
+
+        // DELETE
+        document.querySelectorAll(".deleteBtn").forEach(function (btn) {
+
+            btn.onclick = function () {
+                var index = this.dataset.i;
+
+                var ok = confirm("Are you sure you want to delete this service?");
+                if (!ok) return;
+
+                var arr = JSON.parse(localStorage.getItem("services"));
+                arr.splice(index, 1);
+
+                localStorage.setItem("services", JSON.stringify(arr));
+
+                loadServices();
+            };
+        });
+
+        // EDIT
+        document.querySelectorAll(".editBtn").forEach(function (btn) {
+
+            btn.onclick = function () {
+                var index = this.dataset.i;
+
+                var arr = JSON.parse(localStorage.getItem("services"));
+                var item = arr[index];
+
+                var newName = prompt("Enter new service name:", item.serviceName);
+                if (!newName) return;
+
+                var newPrice = prompt("Enter new price:", item.servicePrice);
+                if (!newPrice || isNaN(newPrice)) {
+                    alert("Price must be a number.");
+                    return;
+                }
+
+                var newDesc = prompt("Enter new description:", item.serviceDesc);
+                if (!newDesc) return;
+
+                arr[index].serviceName = newName.trim();
+                arr[index].servicePrice = newPrice.trim();
+                arr[index].serviceDesc = newDesc.trim();
+
+                localStorage.setItem("services", JSON.stringify(arr));
+
+                loadServices();
+            };
+        });
+    }
+
+});
 // =============================================
 //  MANAGE STAFF PAGE LOGIC (for manage-staff.html only)
 // =============================================
