@@ -787,3 +787,20 @@ table.staff-table {
         /* لا حاجة لـ position: relative; هنا */
     }
 }
+main.container {
+    position: relative; /* مهم جداً */
+    z-index: 10;       /* رقم عالي يضمن أنه فوق الفيديو (z-index: 1) */
+}
+
+#vision-section {
+    position: relative; 
+    overflow: hidden; 
+    min-height: 400px; 
+    padding: 60px 0;
+    color: var(--white);
+    background-color: var(--brand);
+    
+    /* إلغاء أي تنسيقات قديمة قد تتسبب في مشاكل التخطيط */
+    border: none !important; /* نلغي أي حدود ورثها */
+    margin: 0 !important;   /* نلغي أي هوامش ورثها */
+}
