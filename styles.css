@@ -703,13 +703,17 @@ table.staff-table {
     transform: translateY(-5px); 
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1); 
 }
+/* ============================================================
+   VISION SECTION - Video Background & Overlay
+============================================================ */
+
 #vision-section {
     position: relative; 
     overflow: hidden; 
     min-height: 400px; 
-    padding: 60px 0; 
-    color: var(--white); 
-    background-color: var(--brand);
+    padding: 60px 0;
+    color: var(--white);
+    background-color: var(--brand); 
     border: none; 
     margin: 0;
 }
@@ -718,7 +722,7 @@ table.staff-table {
     position: absolute; 
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%); 
     min-width: 100%;
     min-height: 100%;
     width: auto;
@@ -751,18 +755,8 @@ table.staff-table {
         display: none;
     }
     
-    #hero-vision-section {
+    #vision-section { 
         background-color: var(--brand); 
         color: var(--white); 
     }
-}
-#vision-video-bg,
-    #video-overlay {
-        display: none;
-    }
-    
-    #vision-section { 
-        background-color: var(--brand); 
-        color: var(--white); 
-    }
 }
