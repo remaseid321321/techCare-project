@@ -115,15 +115,14 @@ document.addEventListener("DOMContentLoaded", function() {
             return;
         }
 
-        let chosen = new Date(date);
-        let today  = new Date();
+        let chosen = new Date(date.value);
+let today = new Date();
+let diff = (chosen - today) / (1000 * 60 * 60 * 24);
 
-        let diff = (chosen - today) / (1000 * 60 * 60 * 24);
-
-        if (diff < 7) {
-            alert("Due date is too soon. Please choose a date at least 7 days later.");
-            return;
-        }
+if (diff < 7) {
+    alert("Due date is too soon!");
+    return;
+}
 
         if (desc.length < 100) {
             alert("Request description must be at least 100 characters.");
