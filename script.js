@@ -361,11 +361,28 @@ document.addEventListener("DOMContentLoaded", function () {
         var name = document.getElementById("name").value.trim();
         var price = document.getElementById("price").value.trim();
         var desc = document.getElementById("desc").value.trim();
+        var photo = document.getElementById("photo").value;
 
-        if (name === "" || price === "" || desc === "") {
-            alert("Please fill all fields.");
-            return;
-        }
+
+        if (name === "") {
+        alert("Please enter the service name.");
+        return;
+    }
+
+    if (price === "") {
+        alert("Please enter the service price.");
+        return;
+    }
+
+    if (desc === "") {
+        alert("Please enter the service description.");
+        return;
+    }
+
+    if (photo === "") {
+        alert("Please upload a file.");
+        return;
+    }
 
         if (!isNaN(name.charAt(0))) {
             alert("Service name cannot start with a number.");
