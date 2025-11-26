@@ -115,12 +115,15 @@ document.addEventListener("DOMContentLoaded", function() {
             return;
         }
 
-        let chosen = new Date(date.value);
+        let chosen = new Date(date);
 let today = new Date();
+
+today.setHours(0,0,0,0);
+
 let diff = (chosen - today) / (1000 * 60 * 60 * 24);
 
 if (diff < 7) {
-    alert("Due date is too soon!");
+    alert("Due date must be at least 7 days from today!");
     return;
 }
 
