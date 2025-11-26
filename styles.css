@@ -681,4 +681,9 @@ table.staff-table {
     background: #333;
 }
 
-
+.service-card .thumb img {
+    transition: transform 0.3s ease;
+}
+.service-card:hover .thumb img {
+    transform: scale(1.05); /* تكبير طفيف عند الـ Hover */
+}
