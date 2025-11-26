@@ -685,5 +685,14 @@ table.staff-table {
     transition: transform 0.3s ease;
 }
 .service-card:hover .thumb img {
-    transform: scale(1.05); /* تكبير طفيف عند الـ Hover */
+    transform: scale(1.05); 
+}
+
+@media (max-width: 500px) {
+    .staff-form {
+        grid-template-columns: 1fr; 
+    }
+    .staff-form .full {
+        grid-column: span 1; 
+    }
 }
