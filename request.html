@@ -89,40 +89,53 @@ document.addEventListener("DOMContentLoaded", function() {
         e.preventDefault();
 
         let service = document.getElementById("service").value;
-        let name = document.getElementById("name").value.trim();
-        let date = document.getElementById("date").value;
-        let desc = document.getElementById("desc").value.trim();
+        let name    = document.getElementById("name").value.trim();
+        let date    = document.getElementById("date").value;
+        let desc    = document.getElementById("desc").value.trim();
 
         if(service === ""){
-            alert("❌ Please select a service");
+            alert("Please select a service.");
             return;
         }
 
         let nameRegex = /^[A-Za-z ]+$/;
-        if(!nameRegex.test(name)){
-            alert("❌ Name must be full and without numbers or symbols");
+
+        if (!nameRegex.test(name)) {
+            alert("Name must contain letters only and cannot have numbers or symbols.");
             return;
         }
 
-      let chosen = new Date(date.value);
-let today = new Date();
-let diff = (chosen - today) / (1000 * 60 * 60 * 24);
-
-if (diff < 7) {
-    alert("Due date is too soon!");
-    return;
-}
-
-        if(desc.length < 100){
-            alert("❌ Description must be at least 100 characters");
+        if (name.split(" ").length < 2) {
+            alert("Please enter your full name (first + last).");
             return;
         }
 
-        let conf = confirm("✔ Everything is valid!\nDo you want to stay on this page?");
-        
-        if(!conf){
+        if (!date) {
+            alert("Please select a due date.");
+            return;
+        }
+
+        let chosen = new Date(date);
+        let today  = new Date();
+
+        let diff = (chosen - today) / (1000 * 60 * 60 * 24);
+
+        if (diff < 7) {
+            alert("Due date is too soon. Please choose a date at least 7 days later.");
+            return;
+        }
+
+        if (desc.length < 100) {
+            alert("Request description must be at least 100 characters.");
+            return;
+        }
+        let conf = confirm(
+            "Your request is valid.\nDo you want to stay on this page and add more requests?"
+        );
+
+        if (!conf) {
             window.location.href = "customer-dashboard.html";
-          return;
+            return;
         }
 
         let req = {
@@ -134,19 +147,22 @@ if (diff < 7) {
 
         requests.push(req);
         displayRequests();
-        form.reset();
-    };
+document.getElementById("service").value = "";
+document.getElementById("name").value = "";
+document.getElementById("date").value = "";
+document.getElementById("desc").value = "";    };
 
     function displayRequests(){
-        let html = "<h3>Your Requests:</h3>";
+        let html = "<h3>Your Requests While Staying Here:</h3>";
 
-        requests.forEach(function(r, i){
+        requests.forEach(function(r){
             html += `
                 <div class='req-item'>
                     <strong>Service:</strong> ${r.service}<br>
                     <strong>Name:</strong> ${r.name}<br>
                     <strong>Due Date:</strong> ${r.date}<br>
-                    <strong>Description:</strong> ${r.desc}<br><br>
+                    <strong>Description:</strong> ${r.desc}<br>
+                    <hr>
                 </div>
             `;
         });
