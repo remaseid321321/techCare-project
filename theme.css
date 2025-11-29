@@ -1,15 +1,10 @@
-/* ============================================================
-   DARK MODE — FULL THEME STYLES
-   يعمل بمجرد إضافة class="dark" على <body>
-============================================================ */
-
-/* ==== الصفحة كاملة ==== */
+   /* DARK MODE — full page */
 .dark {
     background: #111 !important;
     color: #eee !important;
 }
 
-/* ==== الهيدر ==== */
+/* HEADER */
 .dark .site-header {
     background: #1a1a1a !important;
     border-bottom: 1px solid #444 !important;
@@ -27,12 +22,12 @@
     color: #fff !important;
 }
 
-/* ==== البريكرمب ==== */
+/* BREADCRUMBS */
 .dark .breadcrumbs a {
     color: #ccc !important;
 }
 
-/* ==== الصناديق (sections + cards + boxes) ==== */
+/* sections + cards + boxes */
 .dark .section,
 .dark .service-card,
 .dark .review,
@@ -56,7 +51,7 @@
     color: #eee !important;
 }
 
-/* ==== التايبوغرافية ==== */
+/* TEXT  */
 .dark h1,
 .dark h2,
 .dark h3,
@@ -70,12 +65,12 @@
     color: #bbb !important;
 }
 
-/* ==== القوائم ==== */
+/* LIST */
 .dark ul.nested li {
     color: #eee !important;
 }
 
-/* ==== الجداول ==== */
+/* TABLE */
 .dark table th {
     background: #2a2a2a !important;
     color: #fff !important;
@@ -86,30 +81,30 @@
     color: #eee !important;
 }
 
-/* ==== زر العودة لأعلى ==== */
+/* BACK TO TOP BUTTEN */
 .dark #backToTop {
     background: #cdd9ff !important;
     color: black !important;
 }
 
-/* ==== الفوتر ==== */
+/* FOOTER */
 .dark footer.site-footer {
     background: #1b1b1b !important;
     color: #ddd !important;
     border-top-color: #444 !important;
 }
 
-/* ==== بطاقات الخدمات ==== */
+/* CARD */
 .dark .service-item {
     background: #202020 !important;
 }
 
-/* ==== نص التقييم الذهبي ==== */
+/* RATE */
 .dark .rating {
     color: gold !important;
 }
 
-/* ==== reward box ==== */
+/* reward box  */
 .dark .reward-bar {
     background: #333 !important;
 }
@@ -126,7 +121,7 @@
     color: #ccc !important;
 }
 
-/* ==== أزرار ==== */
+/* BUTTONS */
 .dark .btn-black {
     background: #333 !important;
     color: #fff !important;
@@ -141,20 +136,21 @@
     background: #6a5acd !important;
 }
 
-/* ==== نموذج رفع الصور ==== */
+
+
+
+
 .dark .photo-upload {
     background: #222 !important;
     border-color: #555 !important;
 }
 
-/* ==== قائمة البحث ==== */
 .dark .search-bar input {
     background: #111 !important;
     color: #eee !important;
     border-color: #555 !important;
 }
 
-/* ==== القائمة المنسدلة ==== */
 .dark select {
     background: #111 !important;
     color: #eee !important;
