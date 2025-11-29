@@ -416,6 +416,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 document.getElementById("name").value = "";
 document.getElementById("price").value = "";
+document.getElementById("photo").value = "";
 document.getElementById("desc").value = "";    };
 });
 // =============================
@@ -631,6 +632,16 @@ document.addEventListener("DOMContentLoaded", function () {
                 alert("Please fill all required fields.");
                 return;
             }
+        var nameRegex = /^[A-Za-z ]+$/;
+        if (!nameRegex.test(name)) {
+            alert("Name must contain letters only.");
+            return;
+        }
+        var allowedE = /\.(jpg|jpeg|png)$/i;
+        if (!allowedE.test(photo)) {
+            alert("Please upload a valid image file (JPG, JPEG, PNG).");
+            return;
+        }
 
             staffMembers.push({
                 name: name,
