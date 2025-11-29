@@ -786,3 +786,9 @@ main.container {
     border: none !important; 
     margin: 0 !important;   
 }
+
+.tips, .tip, .tip-box, .tip-item {
+    height: auto !important;
+    padding: 20px !important;
+    margin: 20px 0 !important;
+}
