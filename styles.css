@@ -1,6 +1,4 @@
-/* ============================================================
-   0) ROOT VARIABLES — Colors (Light Mode)
-============================================================ */
+   /* ROOT VARIABLES — Colors (Light Mode) */
 :root {
   --brand: #002147;
   --dark: #222;
@@ -14,9 +12,8 @@
   --card-bg: #fff;
 }
 
-/* ============================================================
-   1) GLOBAL BASE
-============================================================ */
+   /* GLOBAL BASE */
+
 * { box-sizing: border-box; }
 
 html, body {
@@ -38,9 +35,7 @@ img {
   margin: 0 auto;
 }
 
-/* ============================================================
-   2) HEADER + NAVIGATION
-============================================================ */
+   /* HEADER + NAVIGATION */
 
 .header-flex {
   display: flex;
@@ -101,9 +96,7 @@ img {
   }
 }
 
-/* ============================================================
-   3) BREADCRUMBS
-============================================================ */
+   /* BREADCRUMBS */
 
 .breadcrumbs {
   margin-top: 1rem;
@@ -119,9 +112,7 @@ img {
   color: #6a5acd;
 }
 
-/* ============================================================
-   4) FOOTER
-============================================================ */
+   /* FOOTER */
 
 footer.site-footer {
   margin-top: 40px;
@@ -138,9 +129,8 @@ footer .foot-wrap {
   gap: 16px;
   flex-wrap: wrap;
 }
-/* ============================================================
-   5) SECTIONS + CARDS
-============================================================ */
+
+   /* SECTIONS + CARDS */
 
 .section {
   background: var(--card-bg);
@@ -187,7 +177,6 @@ footer .foot-wrap {
   color: #fff;
   padding: 16px;
   opacity: 0;
-  transition: .25s;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -198,9 +187,7 @@ footer .foot-wrap {
   opacity: 1;
 }
 
-/* ============================================================
-   6) REVIEWS
-============================================================ */
+   /* REVIEWS */
 
 .reviews {
   display: flex;
@@ -223,9 +210,7 @@ footer .foot-wrap {
   margin-bottom: 8px;
 }
 
-/* ============================================================
-   7) TECH TIPS
-============================================================ */
+   /* TECH TIPS */
 
 .tech-tips-row {
   display: flex;
@@ -239,9 +224,7 @@ footer .foot-wrap {
   padding: 16px;
 }
 
-/* ============================================================
-   8) FORMS (Generic)
-============================================================ */
+   /* FORMS */
 
 form {
   display: flex;
@@ -266,7 +249,6 @@ select {
 
 textarea {
   min-height: 110px;
-  resize: vertical;
 }
 
 button,
@@ -277,7 +259,6 @@ input[type="submit"] {
   border-radius: 6px;
   padding: 10px 14px;
   font-weight: 700;
-  cursor: pointer;
 }
 
 button.secondary {
@@ -286,11 +267,9 @@ button.secondary {
 
 button:disabled {
   opacity: .6;
-  cursor: not-allowed;
 }
-/* ============================================================
-   9) SERVICES PAGE — SEARCH + SORT
-============================================================ */
+
+   /* SERVICES PAGE — SEARCH + SORT */
 
 .top-bar {
   display: flex;
@@ -325,7 +304,7 @@ button:disabled {
 }
 
 .service-item {
-    flex: 1 1 calc(33.333% - 20px);
+width: 30%; 
 }
 
 .service-item {
@@ -349,9 +328,7 @@ button:disabled {
   color: var(--dark);
 }
 
-/* ============================================================
-   10) ABOUT PAGE – TEAM CARDS
-============================================================ */
+   /* ABOUT PAGE */
 
 .team-strip {
   display: flex;
@@ -394,9 +371,7 @@ button:disabled {
   flex: 1 1 300px;
 }
 
-/* ============================================================
-   11) PROFILE TABLE
-============================================================ */
+   /* PROFILE TABLE */
 
 .profile-table {
   width: 100%;
@@ -443,9 +418,7 @@ ul.nested li {
   margin-bottom: 6px;
 }
 
-/* ============================================================
-   12) STAFF REWARD BOX
-============================================================ */
+   /* STAFF REWARD BOX */
 
 .reward-box {
   border: 1px solid var(--border);
@@ -494,9 +467,7 @@ ul.nested li {
   color: var(--muted);
 }
 
-/* ============================================================
-   13) PROVIDER DASHBOARD
-============================================================ */
+   /* PROVIDER DASHBOARD */
 
 .stats {
   display: flex;
@@ -532,9 +503,7 @@ ul.nested li {
   color: var(--brand);
 }
 
-/* ============================================================
-   14) TABLES (USED IN MANY PAGES)
-============================================================ */
+   /* TABLES for many pages */
 
 table {
   width: 100%;
@@ -565,9 +534,7 @@ td:last-child, th:last-child { text-align: right; }
   margin-left: 10px;
 }
 
-/* ============================================================
-   15) MANAGE STAFF PAGE
-============================================================ */
+   /* MANAGE STAFF PAGE */
 
 table.staff-table {
   margin-bottom: 16px;
@@ -615,9 +582,7 @@ table.staff-table {
   height: 120px;
 }
 
-/* ============================================================
-   16) DASHBOARD BUTTONS
-============================================================ */
+   /* DASHBOARD BUTTONS */
 
 .dashboard-buttons {
   display: flex;
@@ -639,9 +604,7 @@ table.staff-table {
   background: var(--brand);
 }
 
-/* ============================================================
-   17) RESPONSIVE DESIGN
-============================================================ */
+   /* RESPONSIVE DESIGN */
 
 @media (max-width: 768px) {
 
@@ -660,7 +623,7 @@ table.staff-table {
   }
 
 }
-/* Back to Top — centered & sticky when scrolling */
+/* Back to Top  */
 #backToTop {
     position: fixed;
     top: 20px;
@@ -672,7 +635,6 @@ table.staff-table {
     padding: 10px 18px;
     border-radius: 8px;
     font-size: 20px;
-    cursor: pointer;
     display: none; 
     z-index: 9999;
 }
@@ -681,9 +643,7 @@ table.staff-table {
     background: #333;
 }
 
-.service-card .thumb img {
-    transition: transform 0.3s ease;
-}
+
 .service-card:hover .thumb img {
     transform: scale(1.05); 
 }
@@ -696,72 +656,51 @@ table.staff-table {
         grid-column: span 1; 
     }
 }
-.service-card {
-    transition: transform 0.3s, box-shadow 0.3s;
-}
+
 .service-card:hover {
-    transform: translateY(-5px); 
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1); 
 }
-/* ============================================================
-   [NEW] 18) VISION SECTION - ISOLATED VIDEO/IMAGE BACKGROUND
-   ------------------------------------------------------------ 
-   هذا الكود مُصمم ليعمل بشكل مطلق داخل حدوده فقط (position: relative)
-============================================================ */
+    /* VISION SECTION - ISOLATED VIDEO/IMAGE BACKGROUND */
 
-/* 1. الحاوية الرئيسية (Section) */
 #vision-section {
-    /* **الأهم:** هذه الخاصية تضمن أن الفيديو المطلق يبقى داخل هذا القسم فقط */
     position: relative; 
     overflow: hidden; 
     
     min-height: 400px; 
     padding: 60px 0;
     
-    /* الخلفية الاحتياطية (FallBack) ولون النص */
     color: var(--white);
     background-color: var(--brand); 
     
-    /* إلغاء الستايلات القديمة لضمان النظافة */
     border: none; 
     margin: 0;
 }
 
-/* 2. تنسيق الفيديو (MP4) أو الصورة (GIF) ليملأ الخلفية */
 #vision-video-bg {
-    /* **الأهم:** يجعله مطلقاً داخل الحاوية النسبية (#vision-section) */
     position: absolute; 
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%); 
     
-    /* يضمن ملء الحاوية بالكامل */
     min-width: 100%;
     min-height: 100%;
     width: auto;
     height: auto;
     object-fit: cover; 
-    
-    /* وضعه في الطبقة الخلفية (الخلفية) */
-    z-index: 1; 
+   z-index: 1; 
 }
 
-/* 3. طبقة التغطية الشفافة (Overlay) لضمان وضوح النص */
 #video-overlay {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    /* خلفية داكنة شفافة */
     background: rgba(0, 0, 0, 0.4); 
-    /* وضعه بين الفيديو والنص */
     z-index: 2; 
 }
 
-/* 4. تنسيق محتوى النص ليكون في المقدمة */
 #vision-content {
-    /* جعله نسبياً وضمن طبقة أمامية */
     position: relative; 
     z-index: 3; 
     
@@ -770,26 +709,21 @@ table.staff-table {
     padding: 30px;
 }
 
-/* ============================================================
-   [NEW] 19) RESPONSIVE DESIGN - VISION SECTION FALLBACK
-============================================================ */
+   /* RESPONSIVE DESIGN */
 @media (max-width: 768px) {
-    /* إخفاء الخلفية المتحركة على الأجهزة الصغيرة لتحسين الأداء */
     #vision-video-bg,
     #video-overlay {
         display: none;
     }
     
-    /* التأكد من تطبيق الخلفية الثابتة واللون الأبيض للنص */
     #vision-section { 
-        background-color: var(--brand); /* الخلفية الزرقاء الداكنة */
-        color: var(--white); /* النص الأبيض */
-        /* لا حاجة لـ position: relative; هنا */
+        background-color: var(--brand); 
+        color: var(--white);
     }
 }
 main.container {
-    position: relative; /* مهم جداً */
-    z-index: 10;       /* رقم عالي يضمن أنه فوق الفيديو (z-index: 1) */
+    position: relative; 
+    z-index: 10;       
 }
 
 #vision-section {
@@ -799,8 +733,6 @@ main.container {
     padding: 60px 0;
     color: var(--white);
     background-color: var(--brand);
-    
-    /* إلغاء أي تنسيقات قديمة قد تتسبب في مشاكل التخطيط */
-    border: none !important; /* نلغي أي حدود ورثها */
-    margin: 0 !important;   /* نلغي أي هوامش ورثها */
+    border: none !important; 
+    margin: 0 !important;   
 }
