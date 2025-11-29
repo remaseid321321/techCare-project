@@ -1,7 +1,6 @@
 
-/* ============================================================
-   1) LOAD THEME (DARK/LIGHT)
-============================================================ */
+   // LOAD THEME (DARK/LIGHT) 
+
 document.addEventListener("DOMContentLoaded", function () {
 
     var body = document.getElementById("bodyTag");
@@ -33,9 +32,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
-/* ============================================================
-   3) BACK TO TOP (ONLY HOME)
-============================================================ */
+   // BACK TO TOP 
 var topBtn = document.getElementById("backToTop");
 
 if (topBtn) {
@@ -53,9 +50,8 @@ if (topBtn) {
     };
 }
 
-/* ============================================================
-   4) CLOCK
-============================================================ */
+   // CLOCK
+
 function updateClock() {
     var clockEl = document.getElementById("clock");
     if (!clockEl) return;
@@ -67,9 +63,7 @@ function updateClock() {
 setInterval(updateClock, 1000);
 updateClock();
 
-/* ============================================================
-   5) SERVICES PAGE — SEARCH + SORT + RANDOM
-============================================================ */
+    // SERVICES PAGE — SEARCH + SORT + RANDOM
 
 document.addEventListener("DOMContentLoaded", function () {
 
@@ -148,9 +142,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
 });
 
-/* ============================================================
-   6) Helper Functions
-============================================================ */
 function extractPrice(el) {
     var txt = el.querySelector(".meta").textContent;
     return parseInt(txt.replace(/\D/g, ""));
@@ -159,9 +150,7 @@ function extractPrice(el) {
 function extractName(el) {
     return el.querySelector("h3").textContent.toLowerCase();
 }
-/* ============================================================
-   7) ABOUT PAGE — JOIN OUR STAFF FORM VALIDATION
-============================================================ */
+   // ABOUT PAGE 
 
 document.addEventListener("DOMContentLoaded", function () {
 
@@ -192,7 +181,7 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
 
-        if (!photo.match(/\.(jpg|jpeg|png|gif)$/i)) {
+        if (!photo.match(/\.(jpg|jpeg|png|gif)/i)) {
             alert("Please upload an image file.");
             e.preventDefault();
             return;
@@ -208,9 +197,8 @@ document.addEventListener("DOMContentLoaded", function () {
         alert("Application submitted successfully! Welcome " + name);
     });
 });
-/* ============================================================
-   STAFF POINTS SYSTEM — FUNCTION (Add Points)
-============================================================ */
+
+   // STAFF POINTS SYSTEM — FUNCTION (Add Points)
 
 function addStaffPoints() {
 
@@ -248,9 +236,7 @@ function addStaffPoints() {
     return true;
 }
 
-/* ============================================================
-   STAFF POINTS SYSTEM — EVENT LISTENER
-============================================================ */
+  // STAFF POINTS SYSTEM 
 
 document.addEventListener("DOMContentLoaded", function () {
 
@@ -261,9 +247,8 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 });
-/* ============================================================
-   STAFF POINTS SYSTEM — Display Points (Staff Profile Page)
-============================================================ */
+
+  // STAFF POINTS SYSTEM — (Staff Profile Page)
 
 document.addEventListener("DOMContentLoaded", function () {
 
@@ -282,9 +267,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
     updateRewardBox(points, pointsEl, fillEl, tierEl);
 });
-/* ============================================================
-   FUNCTION: Update reward UI
-============================================================ */
+
+  // FUNCTION: Update reward 
+
 function updateRewardBox(points, pointsEl, fillEl, tierEl) {
 
     var max = 200;
@@ -303,9 +288,8 @@ function updateRewardBox(points, pointsEl, fillEl, tierEl) {
         tierEl.textContent = "(Gold)";
     }
 }
-/* =====================================
-   Evaluation Form Validation 
-===================================== */
+
+  // Evaluation Form Validation 
 
 document.addEventListener("DOMContentLoaded", function () {
 
@@ -345,9 +329,8 @@ document.addEventListener("DOMContentLoaded", function () {
         window.location.href = "customer-dashboard.html";
     };
 });
-// =============================
-//  ADD NEW SERVICE PAGE LOGIC
-// =============================
+
+//  ADD NEW SERVICE PAGE 
 
 document.addEventListener("DOMContentLoaded", function () {
 
@@ -419,9 +402,8 @@ document.getElementById("price").value = "";
 document.getElementById("photo").value = "";
 document.getElementById("desc").value = "";    };
 });
-// =============================
-//  PROVIDER DASHBOARD PAGE LOGIC
-// =============================
+
+//  PROVIDER DASHBOARD PAGE 
 
 document.addEventListener("DOMContentLoaded", function () {
 
@@ -539,15 +521,13 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 });
-// =============================================
-//  MANAGE STAFF PAGE LOGIC (for manage-staff.html only)
-// =============================================
+
+//  MANAGE STAFF PAGE 
 
 document.addEventListener("DOMContentLoaded", function () {
 
     if (!window.location.pathname.includes("manage-staff.html")) return;
 
-    // ===== 1) STAFF ARRAY (Array of Objects) =====
     var staffMembers = [
         { name: "Jood Alkhneen", photo: "images/staff1.jpg" },
         { name: "Remas Almutairi", photo: "images/staff2.jpg" },
@@ -555,7 +535,6 @@ document.addEventListener("DOMContentLoaded", function () {
         { name: "Jwana Alothman", photo: "images/staff4.jpg" }
     ];
 
-    // ===== 2) PRINT STAFF IN TABLE WITH CHECKBOXES =====
     function loadStaff() {
 
         var tbody = document.querySelector(".staff-table tbody");
@@ -578,7 +557,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     loadStaff();
 
-    // ===== 3) DELETE SELECTED STAFF =====
     var deleteBtn = document.querySelector(".btn-black");
 
     if (deleteBtn) {
@@ -610,7 +588,7 @@ document.addEventListener("DOMContentLoaded", function () {
         };
     }
 
-    // ===== 4) ADD NEW STAFF MEMBER =====
+    // ADD NEW STAFF MEMBER 
 
     var currentStaff = document.querySelector(".staff-form");
 
@@ -632,16 +610,17 @@ document.addEventListener("DOMContentLoaded", function () {
                 alert("Please fill all required fields.");
                 return;
             }
-        var nameRegex = /^[A-Za-z ]+$/;
-        if (!nameRegex.test(name)) {
-            alert("Name must contain letters only.");
+
+             if (/^[0-9]/.test(name)) {
+            alert("Name cannot start with a number.");
             return;
         }
-        var allowedE = /\.(jpg|jpeg|png)$/i;
-        if (!allowedE.test(photo)) {
-            alert("Please upload a valid image file (JPG, JPEG, PNG).");
+
+        if (!photo.match(/\.(jpg|jpeg|png|gif)/i)) {
+            alert("Please upload an image file.");
             return;
         }
+       
 
             staffMembers.push({
                 name: name,
