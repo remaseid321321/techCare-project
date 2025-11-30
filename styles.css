@@ -215,8 +215,12 @@ footer .foot-wrap {
 .tech-tips-row {
   display: flex;
   gap: 16px;
- flex-wrap: wrap;
+  flex-wrap: wrap;
+}
 
+.tech-tips-row .item {
+  flex: 1 1 220px;
+  min-width: 0;
 }
 
 .item {
