@@ -376,6 +376,10 @@ document.addEventListener("DOMContentLoaded", function () {
             alert("Price must be a number.");
             return;
         }
+       if (!photo.match(/\.(jpg|jpeg|png|gif)/i)) {
+            alert("Please upload an image file.");
+            return;
+        }
 
         var oldServices = localStorage.getItem("services");
 
