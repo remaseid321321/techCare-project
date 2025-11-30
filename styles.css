@@ -215,6 +215,8 @@ footer .foot-wrap {
 .tech-tips-row {
   display: flex;
   gap: 16px;
+ flex-wrap: wrap;
+
 }
 
 .item {
@@ -787,8 +789,4 @@ main.container {
     margin: 0 !important;   
 }
 
-.tips, .tip, .tip-box, .tip-item {
-    height: auto !important;
-    padding: 20px !important;
-    margin: 20px 0 !important;
-}
+
